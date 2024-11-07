@@ -1,0 +1,211 @@
+#usda 1.0
+(
+    defaultPrim = "Root"
+    metersPerUnit = 1
+    upAxis = "Y"
+)
+
+reorder rootPrims = ["Root", "GridMaterial"]
+
+def Xform "Root"
+{
+    reorder nameChildren = ["GridMaterial", "Sphere"]
+    rel material:binding = None (
+        bindMaterialAs = "weakerThanDescendants"
+    )
+
+    def Sphere "Sphere" (
+        active = true
+        prepend apiSchemas = ["MaterialBindingAPI"]
+        customData = {
+            float3 rotationEulerHint = (0, 3.2288592, 0)
+        }
+    )
+    {
+        reorder nameChildren = ["Collider", "InputTarget", "GridMaterial"]
+        rel material:binding = </Root/GridMaterial/GridMaterial> (
+            bindMaterialAs = "weakerThanDescendants"
+        )
+        double radius = 0.1
+        quatf xformOp:orient = (-0.043619424, 0, 0.99904823, 0)
+        float3 xformOp:scale = (0.5, 0.5, 0.5)
+        float3 xformOp:translate = (0.07128559, 0.38556027, 0.0007687807)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def RealityKitComponent "Collider"
+        {
+            uint group = 1
+            uniform token info:id = "RealityKit.Collider"
+            uint mask = 4294967295
+            token type = "Default"
+
+            def RealityKitStruct "Shape"
+            {
+                float3 extent = (0.2, 0.2, 0.2)
+                float radius = 0.1
+                token shapeType = "Sphere"
+            }
+        }
+
+        def RealityKitComponent "InputTarget"
+        {
+            uniform token info:id = "RealityKit.InputTarget"
+        }
+    }
+
+    def "GridMaterial" (
+        active = true
+        references = @Materials/GridMaterial.usda@
+    )
+    {
+        float3 xformOp:scale = (1, 1, 1)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def "Cabinet_Wall_Rustic" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (0, 0, 0)
+        }
+        prepend references = @Cabinet_Wall_Rustic.usdz@
+    )
+    {
+        quatf xformOp:orient = (1, 0, 0, 0)
+        float3 xformOp:scale = (0.001, 0.001, 0.001)
+        float3 xformOp:translate = (-0.29947415, -0.5600457, 0.1237905)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def "prateleira" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (0, 3.2288592, 0)
+        }
+        prepend references = @prateleira.usdz@
+    )
+    {
+        quatf xformOp:orient = (-0.043619424, 0, 0.99904823, 0)
+        float3 xformOp:scale = (0.002, 0.002, 0.002)
+        float3 xformOp:translate = (0.07845394, -0.32382113, -0.2516818)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def "potion1" (
+        active = true
+        prepend references = @potion1.usdz@
+    )
+    {
+        float3 xformOp:scale = (0.005, 0.005, 0.005)
+        float3 xformOp:translate = (0.19860275, 0.12718542, -0.3445106)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def "Potion" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (0, 3.3161256, 0)
+        }
+        prepend references = @Potion.usdz@
+    )
+    {
+        quatf xformOp:orient = (-0.08715577, 0, 0.9961947, 0)
+        float3 xformOp:scale = (0.02, 0.02, 0.03)
+        float3 xformOp:translate = (-0.08607955, 0.13302621, -0.3152433)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def "Stylized_Potion__FREE" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (0, 0, 0)
+        }
+        prepend references = @Stylized_Potion__FREE.usdz@
+    )
+    {
+        quatf xformOp:orient = (1, 0, 0, 0)
+        float3 xformOp:scale = (0.00038194333, 0.00038194333, 0.00038194333)
+        float3 xformOp:translate = (0.077224806, 0.035118733, -0.31154558)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def "Mana_Potion" (
+        active = true
+        prepend references = @Mana_Potion.usdz@
+    )
+    {
+        quatf xformOp:orient = (1, 0, 0, 0)
+        float3 xformOp:scale = (0.00022985584, 0.00022985584, 0.00022985584)
+        float3 xformOp:translate = (0.2512502, -0.001868723, -0.33626395)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def "Potions_Bottle" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (0, 1.7453289, 0)
+        }
+        prepend references = @Potions_Bottle.usdz@
+    )
+    {
+        quatf xformOp:orient = (0.64278764, 0, 0.7660444, 0)
+        float3 xformOp:scale = (0.0003311108, 0.00033111082, 0.00033111073)
+        float3 xformOp:translate = (-0.12371564, -0.011812432, -0.30322206)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def "Life_Potion_Stylized" (
+        active = true
+        prepend references = @Life_Potion_Stylized.usdz@
+    )
+    {
+        quatf xformOp:orient = (1, 0, 0, 0)
+        float3 xformOp:scale = (0.00032523155, 0.00032523155, 0.00032523155)
+        float3 xformOp:translate = (0.20876567, -0.14058307, -0.34516427)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def "Flask_with_potion" (
+        active = true
+        prepend references = @Flask_with_potion.usdz@
+    )
+    {
+        quatf xformOp:orient = (1, 0, 0, 0)
+        float3 xformOp:scale = (0.0003620737, 0.0003620737, 0.0003620737)
+        float3 xformOp:translate = (-0.071538, -0.10228132, -0.30320236)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def "Stylized_Potion" (
+        active = true
+        prepend references = @Stylized_Potion.usdz@
+    )
+    {
+        quatf xformOp:orient = (0.99999994, 0, 0, 0)
+        float3 xformOp:scale = (0.00032578452, 0.00032578452, 0.00032578452)
+        float3 xformOp:translate = (0.05813346, -0.13477288, -0.30007645)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def "Potion_Of_Healing_Dungeons_and_Dragons" (
+        active = true
+        prepend references = @Potion_Of_Healing_Dungeons_and_Dragons.usdz@
+    )
+    {
+        quatf xformOp:orient = (1, 0, 0, 0)
+        float3 xformOp:scale = (0.020869385, 0.020869385, 0.020869385)
+        float3 xformOp:translate = (-48.876095, -176.1838, 2115.3223)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def "Potion_Of_Healing_Dungeons_and_Dragons_2" (
+        active = true
+        prepend references = @Potion_Of_Healing_Dungeons_and_Dragons 2.usdz@
+    )
+    {
+        quatf xformOp:orient = (1, 0, 0, 0)
+        float3 xformOp:scale = (0.0002750389, 0.0002750389, 0.0002750389)
+        float3 xformOp:translate = (0.042587444, 0.13067517, -0.30585864)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+}
+
