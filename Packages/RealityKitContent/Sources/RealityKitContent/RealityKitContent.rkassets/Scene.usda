@@ -9,7 +9,7 @@ reorder rootPrims = ["Root", "GridMaterial"]
 
 def Xform "Root"
 {
-    reorder nameChildren = ["GridMaterial", "Sphere"]
+    reorder nameChildren = ["GridMaterial", "Sphere", "addPotion1", "addPotion2", "addPotion3", "addPotion4", "addPotion5", "addPotion6", "Timeline"]
     rel material:binding = None (
         bindMaterialAs = "weakerThanDescendants"
     )
@@ -99,6 +99,36 @@ def Xform "Root"
         float3 xformOp:scale = (0.0047490406, 0.0047490406, 0.0047490406)
         float3 xformOp:translate = (0.25801373, 0.26047444, 0.039711967)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def RealityKitComponent "RCP_BehaviorsContainer"
+        {
+            rel behaviors = </Root/potion1/OnTap>
+            uniform token info:id = "RCP.BehaviorsContainer"
+        }
+
+        def Preliminary_Behavior "OnTap"
+        {
+            rel actions = </Root/potion1/OnTap/Action>
+            uniform bool exclusive
+            rel triggers = </Root/potion1/OnTap/Trigger>
+
+            def Preliminary_Trigger "Trigger"
+            {
+                rel affectedObjects = </Root/potion1>
+                token info:id = "TapGesture"
+            }
+
+            def Preliminary_Action "Action"
+            {
+                rel affectedObjects = </Root>
+                rel animationLibraryKey = </Root/addPotion3>
+                rel animationLibraryKeyOverrideKey = </Root/potion1/OnTap/Trigger>
+                token info:id = "PlayTimeline"
+                int loops = 0
+                int performCount = 1
+                token type = "serial"
+            }
+        }
     }
 
     def "Potion" (
@@ -113,6 +143,42 @@ def Xform "Root"
         float3 xformOp:scale = (0.02, 0.02, 0.03)
         float3 xformOp:translate = (-0.03330508, 0.26424137, 0.026944533)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def RealityKitComponent "Billboard"
+        {
+            float blendFactor = 0
+            uniform token info:id = "RealityKit.Billboard"
+        }
+
+        def RealityKitComponent "RCP_BehaviorsContainer"
+        {
+            rel behaviors = </Root/Potion/OnTap>
+            uniform token info:id = "RCP.BehaviorsContainer"
+        }
+
+        def Preliminary_Behavior "OnTap"
+        {
+            rel actions = </Root/Potion/OnTap/Action>
+            uniform bool exclusive
+            rel triggers = </Root/Potion/OnTap/Trigger>
+
+            def Preliminary_Trigger "Trigger"
+            {
+                rel affectedObjects = </Root/Potion>
+                token info:id = "TapGesture"
+            }
+
+            def Preliminary_Action "Action"
+            {
+                rel affectedObjects = </Root>
+                rel animationLibraryKey = </Root/addPotion1>
+                rel animationLibraryKeyOverrideKey = </Root/Potion/OnTap/Trigger>
+                token info:id = "PlayTimeline"
+                int loops = 0
+                int performCount = 1
+                token type = "serial"
+            }
+        }
     }
 
     def "Stylized_Potion__FREE" (
@@ -152,6 +218,36 @@ def Xform "Root"
         float3 xformOp:scale = (0.0003311108, 0.00033111082, 0.00033111073)
         float3 xformOp:translate = (-0.06953063, 0.13550712, 0.042688046)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def RealityKitComponent "RCP_BehaviorsContainer"
+        {
+            rel behaviors = </Root/Potions_Bottle/OnTap>
+            uniform token info:id = "RCP.BehaviorsContainer"
+        }
+
+        def Preliminary_Behavior "OnTap"
+        {
+            rel actions = </Root/Potions_Bottle/OnTap/Action>
+            uniform bool exclusive
+            rel triggers = </Root/Potions_Bottle/OnTap/Trigger>
+
+            def Preliminary_Trigger "Trigger"
+            {
+                rel affectedObjects = </Root/Potions_Bottle>
+                token info:id = "TapGesture"
+            }
+
+            def Preliminary_Action "Action"
+            {
+                rel affectedObjects = </Root>
+                rel animationLibraryKey = </Root/addPotion4>
+                rel animationLibraryKeyOverrideKey = </Root/Potions_Bottle/OnTap/Trigger>
+                token info:id = "PlayTimeline"
+                int loops = 0
+                int performCount = 1
+                token type = "serial"
+            }
+        }
     }
 
     def "Life_Potion_Stylized" (
@@ -207,6 +303,36 @@ def Xform "Root"
         float3 xformOp:scale = (0.0002750389, 0.0002750389, 0.0002750389)
         float3 xformOp:translate = (0.13141061, 0.26142156, 0.034683943)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def RealityKitComponent "RCP_BehaviorsContainer"
+        {
+            rel behaviors = </Root/Potion_Of_Healing_Dungeons_and_Dragons_2/OnTap>
+            uniform token info:id = "RCP.BehaviorsContainer"
+        }
+
+        def Preliminary_Behavior "OnTap"
+        {
+            rel actions = </Root/Potion_Of_Healing_Dungeons_and_Dragons_2/OnTap/Action>
+            uniform bool exclusive
+            rel triggers = </Root/Potion_Of_Healing_Dungeons_and_Dragons_2/OnTap/Trigger>
+
+            def Preliminary_Trigger "Trigger"
+            {
+                rel affectedObjects = </Root/Potion_Of_Healing_Dungeons_and_Dragons_2>
+                token info:id = "TapGesture"
+            }
+
+            def Preliminary_Action "Action"
+            {
+                rel affectedObjects = </Root>
+                rel animationLibraryKey = </Root/addPotion2>
+                rel animationLibraryKeyOverrideKey = </Root/Potion_Of_Healing_Dungeons_and_Dragons_2/OnTap/Trigger>
+                token info:id = "PlayTimeline"
+                int loops = 0
+                int performCount = 1
+                token type = "serial"
+            }
+        }
     }
 
     def Xform "Group" (
@@ -266,6 +392,1072 @@ def Xform "Root"
                             }
                         }
                     }
+                }
+            }
+        }
+    }
+
+    def RealityKitTimeline "addPotion1"
+    {
+        reorder nameChildren = ["Track", "Track3", "Track2", "Track4"]
+        def RealityKitTrack "Track"
+        {
+            reorder nameChildren = ["Transform_By", "Spin", "Spin2", "Transform_By2"]
+            def RealityKitAction "Transform_By"
+            {
+                string actionKind = "moveBy"
+                int blendLayer = 300
+                double duration = 1
+                uniform token info:id = "06CB4F89-FB3C-49CF-AA56-15599448F9D6"
+                float3 position = (2.43118, -11.934833, 8.625651)
+                double startTime = 0.0375140393763212
+                rel target = </Root/Potion>
+
+                def RealityKitStruct "timingFunction"
+                {
+                }
+            }
+
+            def RealityKitAction "Transform_By2"
+            {
+                string actionKind = "moveBy"
+                int blendLayer = 300
+                double duration = 0.7615396476873774
+                uniform token info:id = "06CB4F89-FB3C-49CF-AA56-15599448F9D6"
+                float3 position = (-2.43118, 11.93483, -8.62565)
+                double startTime = 3.9407426046198077
+                rel target = </Root/Potion>
+                float2 ui:nodegraph:node:pos = (20, 20)
+                int ui:nodegraph:node:stackingOrder = 1
+
+                def RealityKitStruct "timingFunction"
+                {
+                }
+            }
+
+            def RealityKitAction "Spin"
+            {
+                string actionKind = "spin"
+                int blendLayer = 400
+                double duration = 0.883
+                uniform token info:id = "D74ADE54-7B93-49CD-B543-CB313D38C79F"
+                float3 localAxis = (0, 0, 1)
+                float revolutions = 0.25
+                double startTime = 1.6075802006124476
+                rel target = </Root/Potion>
+
+                def RealityKitStruct "timingFunction"
+                {
+                }
+            }
+
+            def RealityKitAction "Spin2"
+            {
+                string actionKind = "spin"
+                int blendLayer = 400
+                double duration = 0.883
+                uniform token info:id = "D74ADE54-7B93-49CD-B543-CB313D38C79F"
+                float3 localAxis = (0, 0, 1)
+                float revolutions = -0.25
+                double startTime = 2.49226613890727
+                rel target = </Root/Potion>
+                float2 ui:nodegraph:node:pos = (20, 20)
+                int ui:nodegraph:node:stackingOrder = 1
+
+                def RealityKitStruct "timingFunction"
+                {
+                }
+            }
+        }
+
+        def RealityKitTrack "Track4"
+        {
+        }
+
+        def RealityKitTrack "Track3"
+        {
+            reorder nameChildren = ["Spin", "Spin2"]
+            def RealityKitAction "Transform_By"
+            {
+                string actionKind = "moveBy"
+                int blendLayer = 300
+                double duration = 0.7507998134962833
+                uniform token info:id = "CB89DBA3-9ED5-4FAD-BF13-9E1125EF0514"
+                float3 position = (1.1920929e-7, 3.425498, 0.0000064373025)
+                double startTime = 0.852263781581692
+                rel target = </Root/Potion/Meshes/Sketchfab_model/_987bf64e4b64238a23f40d6bd8238e0_fbx/Object_2/RootNode/grp_potion_01/SM_potionoOutter_01/SM_PotionCork_01>
+
+                def RealityKitStruct "timingFunction"
+                {
+                }
+            }
+
+            def RealityKitAction "Spin"
+            {
+                string actionKind = "spin"
+                int blendLayer = 400
+                double duration = 0.8825188921315129
+                uniform token info:id = "D74ADE54-7B93-49CD-B543-CB313D38C79F"
+                float3 localAxis = (0, 0, 1)
+                float revolutions = -0.25
+                double startTime = 1.6043177687131482
+                rel target = </Root/Potion/Meshes/Sketchfab_model/_987bf64e4b64238a23f40d6bd8238e0_fbx/Object_2/RootNode/grp_potion_01/SM_potionoOutter_01/SM_PotionCork_01>
+                float2 ui:nodegraph:node:pos = (20, 20)
+                int ui:nodegraph:node:stackingOrder = 1
+
+                def RealityKitStruct "timingFunction"
+                {
+                }
+            }
+
+            def RealityKitAction "Spin2"
+            {
+                string actionKind = "spin"
+                int blendLayer = 400
+                double duration = 0.883
+                uniform token info:id = "D74ADE54-7B93-49CD-B543-CB313D38C79F"
+                float3 localAxis = (0, 0, 1)
+                float revolutions = 0.25
+                double startTime = 2.486836660944661
+                rel target = </Root/Potion/Meshes/Sketchfab_model/_987bf64e4b64238a23f40d6bd8238e0_fbx/Object_2/RootNode/grp_potion_01/SM_potionoOutter_01/SM_PotionCork_01>
+                float2 ui:nodegraph:node:pos = (40, 40)
+                int ui:nodegraph:node:stackingOrder = 2
+
+                def RealityKitStruct "timingFunction"
+                {
+                }
+            }
+
+            def RealityKitAction "Transform_By2"
+            {
+                string actionKind = "moveBy"
+                int blendLayer = 300
+                double duration = 0.5795793930432963
+                uniform token info:id = "CB89DBA3-9ED5-4FAD-BF13-9E1125EF0514"
+                float3 position = (1.1920929e-7, -3.4255, -0.00001)
+                double startTime = 3.3712650437411797
+                rel target = </Root/Potion/Meshes/Sketchfab_model/_987bf64e4b64238a23f40d6bd8238e0_fbx/Object_2/RootNode/grp_potion_01/SM_potionoOutter_01/SM_PotionCork_01>
+                float2 ui:nodegraph:node:pos = (20, 20)
+                int ui:nodegraph:node:stackingOrder = 1
+
+                def RealityKitStruct "timingFunction"
+                {
+                }
+            }
+        }
+    }
+
+    def RealityKitTimeline "Timeline"
+    {
+        reorder nameChildren = ["Track", "Track2", "Track3"]
+        def RealityKitTrack "Track"
+        {
+            def RealityKitAction "Play_Timeline"
+            {
+                string actionKind = "timeline"
+                int blendLayer = 500
+                double duration = 4.702282252307185
+                uniform token info:id = "A77BC3B1-5BD7-4B1C-A08B-D2F11B84AA39"
+                double startTime = 0.3016814217758985
+                rel timeline = </Root/addPotion1>
+            }
+        }
+
+        def RealityKitTrack "Track2"
+        {
+            def RealityKitAction "Play_Timeline"
+            {
+                string actionKind = "timeline"
+                int blendLayer = 500
+                double duration = 4.702282252307185
+                uniform token info:id = "B82FAF35-B2B4-4A19-BAEB-25DCE139A830"
+                double startTime = 0.2967058825734835
+                rel timeline = </Root/addPotion2>
+            }
+        }
+
+        def RealityKitTrack "Track3"
+        {
+            def RealityKitAction "Play_Timeline"
+            {
+                string actionKind = "timeline"
+                int blendLayer = 500
+                double duration = 4.702282252307185
+                uniform token info:id = "5F2BD256-AC00-4DDE-B871-1E43E41411D2"
+                double startTime = 0.2929834497990312
+                rel timeline = </Root/addPotion3>
+            }
+        }
+    }
+
+    def RealityKitTimeline "addPotion2"
+    {
+        reorder nameChildren = ["Track", "Track3", "Track2", "Track4"]
+        float2 ui:nodegraph:node:pos = (20, 20)
+        int ui:nodegraph:node:stackingOrder = 1
+
+        def RealityKitTrack "Track"
+        {
+            reorder nameChildren = ["Transform_By", "Spin", "Spin2", "Transform_By2"]
+            def RealityKitAction "Transform_By"
+            {
+                string actionKind = "moveBy"
+                int blendLayer = 300
+                double duration = 1
+                uniform token info:id = "06CB4F89-FB3C-49CF-AA56-15599448F9D6"
+                float3 position = (2.4395752, -782.096, 718.43585)
+                double startTime = 0.0375140393763212
+                rel target = </Root/Potion_Of_Healing_Dungeons_and_Dragons_2>
+
+                def RealityKitStruct "timingFunction"
+                {
+                }
+            }
+
+            def RealityKitAction "Transform_By2"
+            {
+                string actionKind = "moveBy"
+                int blendLayer = 300
+                double duration = 0.7615396476873774
+                uniform token info:id = "06CB4F89-FB3C-49CF-AA56-15599448F9D6"
+                float3 position = (-2.43958, 782.096, -718.43585)
+                double startTime = 3.9407426046198077
+                rel target = </Root/Potion_Of_Healing_Dungeons_and_Dragons_2>
+                float2 ui:nodegraph:node:pos = (20, 20)
+                int ui:nodegraph:node:stackingOrder = 1
+
+                def RealityKitStruct "timingFunction"
+                {
+                }
+            }
+
+            def RealityKitAction "Spin"
+            {
+                string actionKind = "spin"
+                int blendLayer = 400
+                double duration = 0.883
+                uniform token info:id = "D74ADE54-7B93-49CD-B543-CB313D38C79F"
+                float3 localAxis = (1, 0, 0)
+                float revolutions = -0.25
+                double startTime = 1.6075802006124476
+                rel target = </Root/Potion_Of_Healing_Dungeons_and_Dragons_2>
+
+                def RealityKitStruct "timingFunction"
+                {
+                }
+            }
+
+            def RealityKitAction "Spin2"
+            {
+                string actionKind = "spin"
+                int blendLayer = 400
+                double duration = 0.883
+                uniform token info:id = "D74ADE54-7B93-49CD-B543-CB313D38C79F"
+                float3 localAxis = (1, 0, 0)
+                float revolutions = 0.25
+                double startTime = 2.49226613890727
+                rel target = </Root/Potion_Of_Healing_Dungeons_and_Dragons_2>
+                float2 ui:nodegraph:node:pos = (20, 20)
+                int ui:nodegraph:node:stackingOrder = 1
+
+                def RealityKitStruct "timingFunction"
+                {
+                }
+            }
+        }
+
+        def RealityKitTrack "Track4"
+        {
+        }
+
+        def RealityKitTrack "Track3"
+        {
+            reorder nameChildren = ["Spin", "Spin2"]
+            def RealityKitAction "Transform_By"
+            {
+                string actionKind = "moveBy"
+                int blendLayer = 300
+                double duration = 0.7507998134962833
+                uniform token info:id = "CB89DBA3-9ED5-4FAD-BF13-9E1125EF0514"
+                float3 position = (0, 3.425583, 350.70276)
+                double startTime = 0.852263781581692
+                rel target = </Root/Potion_Of_Healing_Dungeons_and_Dragons_2/Meshes/Sketchfab_model/Potion_of_Healing_FBX/RootNode/Potion_of_Healing/Object_4/Potion_of_Healing_Cord_0>
+
+                def RealityKitStruct "timingFunction"
+                {
+                }
+            }
+
+            def RealityKitAction "Spin"
+            {
+                string actionKind = "spin"
+                int blendLayer = 400
+                double duration = 0.8825188921315129
+                uniform token info:id = "D74ADE54-7B93-49CD-B543-CB313D38C79F"
+                float3 localAxis = (1, 0, 0)
+                float revolutions = 0.25
+                double startTime = 1.6043177687131482
+                rel target = </Root/Potion_Of_Healing_Dungeons_and_Dragons_2/Meshes/Sketchfab_model/Potion_of_Healing_FBX/RootNode/Potion_of_Healing/Object_4/Potion_of_Healing_Cord_0>
+                float2 ui:nodegraph:node:pos = (20, 20)
+                int ui:nodegraph:node:stackingOrder = 1
+
+                def RealityKitStruct "timingFunction"
+                {
+                }
+            }
+
+            def RealityKitAction "Spin2"
+            {
+                string actionKind = "spin"
+                int blendLayer = 400
+                double duration = 0.883
+                uniform token info:id = "D74ADE54-7B93-49CD-B543-CB313D38C79F"
+                float3 localAxis = (1, 0, 0)
+                float revolutions = -0.25
+                double startTime = 2.486836660944661
+                rel target = </Root/Potion_Of_Healing_Dungeons_and_Dragons_2/Meshes/Sketchfab_model/Potion_of_Healing_FBX/RootNode/Potion_of_Healing/Object_4/Potion_of_Healing_Cord_0>
+                float2 ui:nodegraph:node:pos = (40, 40)
+                int ui:nodegraph:node:stackingOrder = 2
+
+                def RealityKitStruct "timingFunction"
+                {
+                }
+            }
+
+            def RealityKitAction "Transform_By2"
+            {
+                string actionKind = "moveBy"
+                int blendLayer = 300
+                double duration = 0.5795793930432963
+                uniform token info:id = "CB89DBA3-9ED5-4FAD-BF13-9E1125EF0514"
+                float3 position = (1.1920929e-7, -3.4255, -350.70276)
+                double startTime = 3.3712650437411797
+                rel target = </Root/Potion_Of_Healing_Dungeons_and_Dragons_2/Meshes/Sketchfab_model/Potion_of_Healing_FBX/RootNode/Potion_of_Healing/Object_4/Potion_of_Healing_Cord_0>
+                float2 ui:nodegraph:node:pos = (20, 20)
+                int ui:nodegraph:node:stackingOrder = 1
+
+                def RealityKitStruct "timingFunction"
+                {
+                }
+            }
+        }
+    }
+
+    def RealityKitTimeline "addPotion3"
+    {
+        reorder nameChildren = ["Track", "Track3", "Track2", "Track4"]
+        float2 ui:nodegraph:node:pos = (40, 40)
+        int ui:nodegraph:node:stackingOrder = 2
+
+        def RealityKitTrack "Track"
+        {
+            reorder nameChildren = ["Transform_By", "Spin", "Spin2", "Transform_By2"]
+            def RealityKitAction "Transform_By"
+            {
+                string actionKind = "moveBy"
+                int blendLayer = 300
+                double duration = 1
+                uniform token info:id = "06CB4F89-FB3C-49CF-AA56-15599448F9D6"
+                float3 position = (-6.1835403, -47.280945, 59.186016)
+                double startTime = 0.0375140393763212
+                rel target = </Root/potion1>
+
+                def RealityKitStruct "timingFunction"
+                {
+                }
+            }
+
+            def RealityKitAction "Transform_By2"
+            {
+                string actionKind = "moveBy"
+                int blendLayer = 300
+                double duration = 0.7615396476873774
+                uniform token info:id = "06CB4F89-FB3C-49CF-AA56-15599448F9D6"
+                float3 position = (6.18354, 47.28094, -59.18602)
+                double startTime = 3.9407426046198077
+                rel target = </Root/potion1>
+                float2 ui:nodegraph:node:pos = (20, 20)
+                int ui:nodegraph:node:stackingOrder = 1
+
+                def RealityKitStruct "timingFunction"
+                {
+                }
+            }
+
+            def RealityKitAction "Spin"
+            {
+                string actionKind = "spin"
+                int blendLayer = 400
+                double duration = 0.883
+                uniform token info:id = "D74ADE54-7B93-49CD-B543-CB313D38C79F"
+                float3 localAxis = (0, 0, 1)
+                float revolutions = -0.25
+                double startTime = 1.6075802006124476
+                rel target = </Root/potion1>
+
+                def RealityKitStruct "timingFunction"
+                {
+                }
+            }
+
+            def RealityKitAction "Spin2"
+            {
+                string actionKind = "spin"
+                int blendLayer = 400
+                double duration = 0.883
+                uniform token info:id = "D74ADE54-7B93-49CD-B543-CB313D38C79F"
+                float3 localAxis = (0, 0, 1)
+                float revolutions = 0.25
+                double startTime = 2.49226613890727
+                rel target = </Root/potion1>
+                float2 ui:nodegraph:node:pos = (20, 20)
+                int ui:nodegraph:node:stackingOrder = 1
+
+                def RealityKitStruct "timingFunction"
+                {
+                }
+            }
+        }
+
+        def RealityKitTrack "Track4"
+        {
+        }
+
+        def RealityKitTrack "Track3"
+        {
+            reorder nameChildren = ["Spin", "Spin2"]
+            def RealityKitAction "Transform_By"
+            {
+                string actionKind = "moveBy"
+                int blendLayer = 300
+                double duration = 0.7507998134962833
+                uniform token info:id = "CB89DBA3-9ED5-4FAD-BF13-9E1125EF0514"
+                float3 position = (0.0000042724614, -1.1483911e-7, 0.12435098)
+                double startTime = 0.852263781581692
+                rel target = </Root/potion1/Meshes/Sketchfab_model/_7112b6ee82d49c983c7694832a1cb47_fbx/RootNode/Probka_1_low>
+
+                def RealityKitStruct "timingFunction"
+                {
+                }
+            }
+
+            def RealityKitAction "Spin"
+            {
+                string actionKind = "spin"
+                int blendLayer = 400
+                double duration = 0.8825188921315129
+                uniform token info:id = "D74ADE54-7B93-49CD-B543-CB313D38C79F"
+                float3 localAxis = (0, 1, 0)
+                float revolutions = -0.25
+                double startTime = 1.6043177687131482
+                rel target = </Root/potion1/Meshes/Sketchfab_model/_7112b6ee82d49c983c7694832a1cb47_fbx/RootNode/Probka_1_low>
+                float2 ui:nodegraph:node:pos = (20, 20)
+                int ui:nodegraph:node:stackingOrder = 1
+
+                def RealityKitStruct "timingFunction"
+                {
+                }
+            }
+
+            def RealityKitAction "Spin2"
+            {
+                string actionKind = "spin"
+                int blendLayer = 400
+                double duration = 0.883
+                uniform token info:id = "D74ADE54-7B93-49CD-B543-CB313D38C79F"
+                float3 localAxis = (0, 1, 0)
+                float revolutions = 0.25
+                double startTime = 2.486836660944661
+                rel target = </Root/potion1/Meshes/Sketchfab_model/_7112b6ee82d49c983c7694832a1cb47_fbx/RootNode/Probka_1_low>
+                float2 ui:nodegraph:node:pos = (40, 40)
+                int ui:nodegraph:node:stackingOrder = 2
+
+                def RealityKitStruct "timingFunction"
+                {
+                }
+            }
+
+            def RealityKitAction "Transform_By2"
+            {
+                string actionKind = "moveBy"
+                int blendLayer = 300
+                double duration = 0.5795793930432963
+                uniform token info:id = "CB89DBA3-9ED5-4FAD-BF13-9E1125EF0514"
+                float3 position = (1.1920929e-7, 0, -0.12435)
+                double startTime = 3.3712650437411797
+                rel target = </Root/potion1/Meshes/Sketchfab_model/_7112b6ee82d49c983c7694832a1cb47_fbx/RootNode/Probka_1_low>
+                float2 ui:nodegraph:node:pos = (20, 20)
+                int ui:nodegraph:node:stackingOrder = 1
+
+                def RealityKitStruct "timingFunction"
+                {
+                }
+            }
+        }
+    }
+
+    def RealityKitTimeline "addPotion4"
+    {
+        reorder nameChildren = ["Track5", "Track", "Track3", "Track2", "Track4"]
+        float2 ui:nodegraph:node:pos = (60, 60)
+        int ui:nodegraph:node:stackingOrder = 3
+
+        def RealityKitTrack "Track"
+        {
+            reorder nameChildren = ["Transform_By", "Spin", "Spin2", "Transform_By2"]
+            def RealityKitAction "Transform_By"
+            {
+                string actionKind = "moveBy"
+                int blendLayer = 300
+                double duration = 0.44495894339635067
+                uniform token info:id = "06CB4F89-FB3C-49CF-AA56-15599448F9D6"
+                float3 position = (218.92142, -47.283844, 59.187088)
+                double startTime = 0.03751403937632121
+                rel target = </Root/Potions_Bottle>
+
+                def RealityKitStruct "timingFunction"
+                {
+                }
+            }
+
+            def RealityKitAction "Spin"
+            {
+                string actionKind = "spin"
+                int blendLayer = 400
+                double duration = 0.883
+                uniform token info:id = "D74ADE54-7B93-49CD-B543-CB313D38C79F"
+                float3 localAxis = (1, 0, 0)
+                float revolutions = 0.28
+                double startTime = 1.886
+                rel target = </Root/Potions_Bottle>
+
+                def RealityKitStruct "timingFunction"
+                {
+                }
+            }
+
+            def RealityKitAction "Spin2"
+            {
+                string actionKind = "spin"
+                int blendLayer = 400
+                double duration = 0.883
+                uniform token info:id = "D74ADE54-7B93-49CD-B543-CB313D38C79F"
+                bool isActive = 1
+                float3 localAxis = (1, 0, 0)
+                float revolutions = -0.28
+                double startTime = 2.769
+                rel target = </Root/Potions_Bottle>
+                float2 ui:nodegraph:node:pos = (20, 20)
+                int ui:nodegraph:node:stackingOrder = 1
+
+                def RealityKitStruct "timingFunction"
+                {
+                }
+            }
+
+            def RealityKitAction "Transform_By3"
+            {
+                string actionKind = "moveBy"
+                int blendLayer = 300
+                double duration = 0.7528269917395684
+                uniform token info:id = "06CB4F89-FB3C-49CF-AA56-15599448F9D6"
+                float3 position = (814.33624, -182.17665, -38.874924)
+                double startTime = 0.48247298287267193
+                rel target = </Root/Potions_Bottle>
+                float2 ui:nodegraph:node:pos = (20, 20)
+                int ui:nodegraph:node:stackingOrder = 1
+
+                def RealityKitStruct "timingFunction"
+                {
+                }
+            }
+
+            def RealityKitAction "Transform_By32"
+            {
+                string actionKind = "moveBy"
+                int blendLayer = 300
+                double duration = 0.6209077315944888
+                uniform token info:id = "06CB4F89-FB3C-49CF-AA56-15599448F9D6"
+                float3 position = (-814.33624, 224.84123, 38.87492)
+                double startTime = 4.395852929083486
+                rel target = </Root/Potions_Bottle>
+                float2 ui:nodegraph:node:pos = (40, 40)
+                int ui:nodegraph:node:stackingOrder = 2
+
+                def RealityKitStruct "timingFunction"
+                {
+                }
+            }
+
+            def RealityKitAction "Transform_By2"
+            {
+                string actionKind = "moveBy"
+                int blendLayer = 300
+                double duration = 0.33852641652158383
+                uniform token info:id = "06CB4F89-FB3C-49CF-AA56-15599448F9D6"
+                float3 position = (-218.92142, 47.28384, -59.18709)
+                double startTime = 5.016760660777975
+                rel target = </Root/Potions_Bottle>
+                float2 ui:nodegraph:node:pos = (20, 20)
+                int ui:nodegraph:node:stackingOrder = 1
+
+                def RealityKitStruct "timingFunction"
+                {
+                }
+            }
+        }
+
+        def RealityKitTrack "Track4"
+        {
+        }
+
+        def RealityKitTrack "Track3"
+        {
+            reorder nameChildren = ["Spin", "Spin2"]
+            def RealityKitAction "Transform_By"
+            {
+                string actionKind = "moveBy"
+                int blendLayer = 300
+                double duration = 0.7507998134962833
+                uniform token info:id = "CB89DBA3-9ED5-4FAD-BF13-9E1125EF0514"
+                float3 position = (0.000008653849, 0.000027988106, 3.0017195)
+                double startTime = 1.1352473514830657
+                rel target = </Root/Potions_Bottle/Meshes/Sketchfab_model/Collada_visual_scene_group/cork_low>
+
+                def RealityKitStruct "timingFunction"
+                {
+                }
+            }
+
+            def RealityKitAction "Spin"
+            {
+                string actionKind = "spin"
+                int blendLayer = 400
+                double duration = 0.8825188921315129
+                uniform token info:id = "D74ADE54-7B93-49CD-B543-CB313D38C79F"
+                float3 localAxis = (1, 0, 0)
+                float revolutions = -0.28
+                double startTime = 1.886047165079349
+                rel target = </Root/Potions_Bottle/Meshes/Sketchfab_model/Collada_visual_scene_group/cork_low>
+                float2 ui:nodegraph:node:pos = (20, 20)
+                int ui:nodegraph:node:stackingOrder = 1
+
+                def RealityKitStruct "timingFunction"
+                {
+                }
+            }
+
+            def RealityKitAction "Spin2"
+            {
+                string actionKind = "spin"
+                int blendLayer = 400
+                double duration = 0.883
+                uniform token info:id = "D74ADE54-7B93-49CD-B543-CB313D38C79F"
+                bool isActive = 1
+                float3 localAxis = (1, 0, 0)
+                float revolutions = 0.28
+                double startTime = 2.7685660573108626
+                rel target = </Root/Potions_Bottle/Meshes/Sketchfab_model/Collada_visual_scene_group/cork_low>
+                float2 ui:nodegraph:node:pos = (40, 40)
+                int ui:nodegraph:node:stackingOrder = 2
+
+                def RealityKitStruct "timingFunction"
+                {
+                }
+            }
+
+            def RealityKitAction "Transform_By2"
+            {
+                string actionKind = "moveBy"
+                int blendLayer = 300
+                double duration = 0.7507998134962833
+                uniform token info:id = "CB89DBA3-9ED5-4FAD-BF13-9E1125EF0514"
+                float3 position = (-0.00001, -0.00003, -3.00172)
+                double startTime = 3.6515660574108626
+                rel target = </Root/Potions_Bottle/Meshes/Sketchfab_model/Collada_visual_scene_group/cork_low>
+                float2 ui:nodegraph:node:pos = (20, 20)
+                int ui:nodegraph:node:stackingOrder = 1
+
+                def RealityKitStruct "timingFunction"
+                {
+                }
+            }
+        }
+    }
+
+    def RealityKitTimeline "addPotion5"
+    {
+        reorder nameChildren = ["Track5", "Track", "Track3", "Track2", "Track4"]
+        float2 ui:nodegraph:node:pos = (80, 80)
+        int ui:nodegraph:node:stackingOrder = 4
+
+        def RealityKitTrack "Track"
+        {
+            reorder nameChildren = ["Transform_By", "Spin", "Spin2", "Transform_By2"]
+            def RealityKitAction "Transform_By"
+            {
+                string actionKind = "moveBy"
+                int blendLayer = 300
+                double duration = 0.44495894339635067
+                uniform token info:id = "06CB4F89-FB3C-49CF-AA56-15599448F9D6"
+                float3 position = (-0.0011291504, 0, 184.6403)
+                double startTime = 0.03751403937632121
+                rel target = </Root/Stylized_Potion__FREE>
+
+                def RealityKitStruct "timingFunction"
+                {
+                }
+            }
+
+            def RealityKitAction "Spin"
+            {
+                string actionKind = "spin"
+                int blendLayer = 400
+                double duration = 0.883
+                uniform token info:id = "D74ADE54-7B93-49CD-B543-CB313D38C79F"
+                float3 localAxis = (1, 0, 0)
+                float revolutions = 0.28
+                double startTime = 1.886
+                rel target = </Root/Stylized_Potion__FREE>
+
+                def RealityKitStruct "timingFunction"
+                {
+                }
+            }
+
+            def RealityKitAction "Spin2"
+            {
+                string actionKind = "spin"
+                int blendLayer = 400
+                double duration = 0.883
+                uniform token info:id = "D74ADE54-7B93-49CD-B543-CB313D38C79F"
+                bool isActive = 1
+                float3 localAxis = (1, 0, 0)
+                float revolutions = -0.28
+                double startTime = 2.769
+                rel target = </Root/Stylized_Potion__FREE>
+                float2 ui:nodegraph:node:pos = (20, 20)
+                int ui:nodegraph:node:stackingOrder = 1
+
+                def RealityKitStruct "timingFunction"
+                {
+                }
+            }
+
+            def RealityKitAction "Transform_By3"
+            {
+                string actionKind = "moveBy"
+                int blendLayer = 300
+                double duration = 0.7528269917395684
+                uniform token info:id = "06CB4F89-FB3C-49CF-AA56-15599448F9D6"
+                float3 position = (-0.0012054443, -271.36554, 373.79163)
+                double startTime = 0.48247298287267193
+                rel target = </Root/Stylized_Potion__FREE>
+                float2 ui:nodegraph:node:pos = (20, 20)
+                int ui:nodegraph:node:stackingOrder = 1
+
+                def RealityKitStruct "timingFunction"
+                {
+                }
+            }
+
+            def RealityKitAction "Transform_By32"
+            {
+                string actionKind = "moveBy"
+                int blendLayer = 300
+                double duration = 0.6209077315944888
+                uniform token info:id = "06CB4F89-FB3C-49CF-AA56-15599448F9D6"
+                float3 position = (-814.33624, 224.84123, 38.87492)
+                double startTime = 4.395852929083486
+                rel target = </Root/Stylized_Potion__FREE>
+                float2 ui:nodegraph:node:pos = (40, 40)
+                int ui:nodegraph:node:stackingOrder = 2
+
+                def RealityKitStruct "timingFunction"
+                {
+                }
+            }
+
+            def RealityKitAction "Transform_By2"
+            {
+                string actionKind = "moveBy"
+                int blendLayer = 300
+                double duration = 0.33852641652158383
+                uniform token info:id = "06CB4F89-FB3C-49CF-AA56-15599448F9D6"
+                float3 position = (-218.92142, 47.28384, -59.18709)
+                double startTime = 5.016760660777975
+                rel target = </Root/Potions_Bottle>
+                float2 ui:nodegraph:node:pos = (20, 20)
+                int ui:nodegraph:node:stackingOrder = 1
+
+                def RealityKitStruct "timingFunction"
+                {
+                }
+            }
+        }
+
+        def RealityKitTrack "Track4"
+        {
+        }
+
+        def RealityKitTrack "Track3"
+        {
+            reorder nameChildren = ["Spin", "Spin2"]
+            def RealityKitAction "Transform_By"
+            {
+                string actionKind = "moveBy"
+                int blendLayer = 300
+                double duration = 0.7507998134962833
+                uniform token info:id = "CB89DBA3-9ED5-4FAD-BF13-9E1125EF0514"
+                float3 position = (0.000008653849, 0, 0)
+                double startTime = 1.1352473514830657
+                rel target = </Root/Stylized_Potion/Meshes/Sketchfab_model/Potion_fbx/RootNode/Cork>
+
+                def RealityKitStruct "timingFunction"
+                {
+                }
+            }
+
+            def RealityKitAction "Spin"
+            {
+                string actionKind = "spin"
+                int blendLayer = 400
+                double duration = 0.8825188921315129
+                uniform token info:id = "D74ADE54-7B93-49CD-B543-CB313D38C79F"
+                float3 localAxis = (1, 0, 0)
+                float revolutions = -0.28
+                double startTime = 1.886047165079349
+                rel target = </Root/Stylized_Potion/Meshes/Sketchfab_model/Potion_fbx/RootNode/Cork>
+                float2 ui:nodegraph:node:pos = (20, 20)
+                int ui:nodegraph:node:stackingOrder = 1
+
+                def RealityKitStruct "timingFunction"
+                {
+                }
+            }
+
+            def RealityKitAction "Spin2"
+            {
+                string actionKind = "spin"
+                int blendLayer = 400
+                double duration = 0.883
+                uniform token info:id = "D74ADE54-7B93-49CD-B543-CB313D38C79F"
+                bool isActive = 1
+                float3 localAxis = (1, 0, 0)
+                float revolutions = 0.28
+                double startTime = 2.7685660573108626
+                rel target = </Root/Stylized_Potion/Meshes/Sketchfab_model/Potion_fbx/RootNode/Cork>
+                float2 ui:nodegraph:node:pos = (40, 40)
+                int ui:nodegraph:node:stackingOrder = 2
+
+                def RealityKitStruct "timingFunction"
+                {
+                }
+            }
+
+            def RealityKitAction "Transform_By2"
+            {
+                string actionKind = "moveBy"
+                int blendLayer = 300
+                double duration = 0.7507998134962833
+                uniform token info:id = "CB89DBA3-9ED5-4FAD-BF13-9E1125EF0514"
+                float3 position = (-0.00001, -0.00003, -3.00172)
+                double startTime = 3.6515660574108626
+                rel target = </Root/Stylized_Potion/Meshes/Sketchfab_model/Potion_fbx/RootNode/Cork>
+                float2 ui:nodegraph:node:pos = (20, 20)
+                int ui:nodegraph:node:stackingOrder = 1
+
+                def RealityKitStruct "timingFunction"
+                {
+                }
+            }
+        }
+    }
+
+    def RealityKitTimeline "addPotion6"
+    {
+        reorder nameChildren = ["Track5", "Track", "Track3", "Track2", "Track4"]
+        float2 ui:nodegraph:node:pos = (100, 100)
+        int ui:nodegraph:node:stackingOrder = 5
+
+        def RealityKitTrack "Track"
+        {
+            reorder nameChildren = ["Transform_By", "Spin", "Spin2", "Transform_By2"]
+            def RealityKitAction "Transform_By"
+            {
+                string actionKind = "moveBy"
+                int blendLayer = 300
+                double duration = 0.44495894339635067
+                uniform token info:id = "06CB4F89-FB3C-49CF-AA56-15599448F9D6"
+                float3 position = (0, 0, 0)
+                double startTime = 0.03751403937632121
+                rel target = </Root/Mana_Potion>
+
+                def RealityKitStruct "timingFunction"
+                {
+                }
+            }
+
+            def RealityKitAction "Spin"
+            {
+                string actionKind = "spin"
+                int blendLayer = 400
+                double duration = 0.883
+                uniform token info:id = "D74ADE54-7B93-49CD-B543-CB313D38C79F"
+                float3 localAxis = (1, 0, 0)
+                float revolutions = 0.28
+                double startTime = 1.886
+                rel target = </Root/Potions_Bottle>
+
+                def RealityKitStruct "timingFunction"
+                {
+                }
+            }
+
+            def RealityKitAction "Spin2"
+            {
+                string actionKind = "spin"
+                int blendLayer = 400
+                double duration = 0.883
+                uniform token info:id = "D74ADE54-7B93-49CD-B543-CB313D38C79F"
+                bool isActive = 1
+                float3 localAxis = (1, 0, 0)
+                float revolutions = -0.28
+                double startTime = 2.769
+                rel target = </Root/Potions_Bottle>
+                float2 ui:nodegraph:node:pos = (20, 20)
+                int ui:nodegraph:node:stackingOrder = 1
+
+                def RealityKitStruct "timingFunction"
+                {
+                }
+            }
+
+            def RealityKitAction "Transform_By3"
+            {
+                string actionKind = "moveBy"
+                int blendLayer = 300
+                double duration = 0.7528269917395684
+                uniform token info:id = "06CB4F89-FB3C-49CF-AA56-15599448F9D6"
+                float3 position = (814.33624, -182.17665, -38.874924)
+                double startTime = 0.48247298287267193
+                rel target = </Root/Potions_Bottle>
+                float2 ui:nodegraph:node:pos = (20, 20)
+                int ui:nodegraph:node:stackingOrder = 1
+
+                def RealityKitStruct "timingFunction"
+                {
+                }
+            }
+
+            def RealityKitAction "Transform_By32"
+            {
+                string actionKind = "moveBy"
+                int blendLayer = 300
+                double duration = 0.6209077315944888
+                uniform token info:id = "06CB4F89-FB3C-49CF-AA56-15599448F9D6"
+                float3 position = (-814.33624, 224.84123, 38.87492)
+                double startTime = 4.395852929083486
+                rel target = </Root/Potions_Bottle>
+                float2 ui:nodegraph:node:pos = (40, 40)
+                int ui:nodegraph:node:stackingOrder = 2
+
+                def RealityKitStruct "timingFunction"
+                {
+                }
+            }
+
+            def RealityKitAction "Transform_By2"
+            {
+                string actionKind = "moveBy"
+                int blendLayer = 300
+                double duration = 0.33852641652158383
+                uniform token info:id = "06CB4F89-FB3C-49CF-AA56-15599448F9D6"
+                float3 position = (-218.92142, 47.28384, -59.18709)
+                double startTime = 5.016760660777975
+                rel target = </Root/Potions_Bottle>
+                float2 ui:nodegraph:node:pos = (20, 20)
+                int ui:nodegraph:node:stackingOrder = 1
+
+                def RealityKitStruct "timingFunction"
+                {
+                }
+            }
+        }
+
+        def RealityKitTrack "Track4"
+        {
+        }
+
+        def RealityKitTrack "Track3"
+        {
+            reorder nameChildren = ["Spin", "Spin2"]
+            def RealityKitAction "Transform_By"
+            {
+                string actionKind = "moveBy"
+                int blendLayer = 300
+                double duration = 0.7507998134962833
+                uniform token info:id = "CB89DBA3-9ED5-4FAD-BF13-9E1125EF0514"
+                float3 position = (0.000008653849, 0.000027988106, 3.0017195)
+                double startTime = 1.1352473514830657
+                rel target = </Root/Potions_Bottle/Meshes/Sketchfab_model/Collada_visual_scene_group/cork_low>
+
+                def RealityKitStruct "timingFunction"
+                {
+                }
+            }
+
+            def RealityKitAction "Spin"
+            {
+                string actionKind = "spin"
+                int blendLayer = 400
+                double duration = 0.8825188921315129
+                uniform token info:id = "D74ADE54-7B93-49CD-B543-CB313D38C79F"
+                float3 localAxis = (1, 0, 0)
+                float revolutions = -0.28
+                double startTime = 1.886047165079349
+                rel target = </Root/Potions_Bottle/Meshes/Sketchfab_model/Collada_visual_scene_group/cork_low>
+                float2 ui:nodegraph:node:pos = (20, 20)
+                int ui:nodegraph:node:stackingOrder = 1
+
+                def RealityKitStruct "timingFunction"
+                {
+                }
+            }
+
+            def RealityKitAction "Spin2"
+            {
+                string actionKind = "spin"
+                int blendLayer = 400
+                double duration = 0.883
+                uniform token info:id = "D74ADE54-7B93-49CD-B543-CB313D38C79F"
+                bool isActive = 1
+                float3 localAxis = (1, 0, 0)
+                float revolutions = 0.28
+                double startTime = 2.7685660573108626
+                rel target = </Root/Potions_Bottle/Meshes/Sketchfab_model/Collada_visual_scene_group/cork_low>
+                float2 ui:nodegraph:node:pos = (40, 40)
+                int ui:nodegraph:node:stackingOrder = 2
+
+                def RealityKitStruct "timingFunction"
+                {
+                }
+            }
+
+            def RealityKitAction "Transform_By2"
+            {
+                string actionKind = "moveBy"
+                int blendLayer = 300
+                double duration = 0.7507998134962833
+                uniform token info:id = "CB89DBA3-9ED5-4FAD-BF13-9E1125EF0514"
+                float3 position = (-0.00001, -0.00003, -3.00172)
+                double startTime = 3.6515660574108626
+                rel target = </Root/Potions_Bottle/Meshes/Sketchfab_model/Collada_visual_scene_group/cork_low>
+                float2 ui:nodegraph:node:pos = (20, 20)
+                int ui:nodegraph:node:stackingOrder = 1
+
+                def RealityKitStruct "timingFunction"
+                {
                 }
             }
         }
