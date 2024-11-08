@@ -213,6 +213,9 @@ def Xform "Root"
         active = true
     )
     {
+        float3 xformOp:translate = (0, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
         def "Stylized_Low_poly_Wood_Table_1" (
             active = true
             customData = {

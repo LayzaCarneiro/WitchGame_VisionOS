@@ -12,6 +12,9 @@ import RealityKitContent
 struct ContentView: View {
 
     @State private var enlarge = false
+    @State private var showText = false
+    
+
 
     var body: some View {
         RealityView { content in
@@ -20,7 +23,6 @@ struct ContentView: View {
                 content.add(scene)
             }
         } update: { content in
-            // Update the RealityKit content when SwiftUI state changes
             if let scene = content.entities.first {
                 let uniformScale: Float = enlarge ? 1.4 : 1.0
                 scene.transform.scale = [uniformScale, uniformScale, uniformScale]
