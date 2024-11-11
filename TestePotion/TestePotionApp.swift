@@ -14,10 +14,12 @@ struct TestePotionApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ViewPrincipal()
                 .environment(appModel)
         }
         .windowStyle(.volumetric)
+        .defaultSize(width: 2, height: 2, depth: 1, in: .meters)
+        //        .defaultSize(width: 2.0, height: 2.0, depth: 0.0, in: .meters)
 
         ImmersiveSpace(id: appModel.immersiveSpaceID) {
             ImmersiveView()
