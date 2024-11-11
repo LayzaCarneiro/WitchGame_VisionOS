@@ -87,8 +87,8 @@
       [
         "D66134B1-3681-4A8E-AFE5-29F257229F3B",
         "Root",
-        "Timeline",
-        "Track2"
+        "addPotion7_OFF",
+        "Track3"
       ],
       {
         "isExpanded" : true,
@@ -97,7 +97,129 @@
       [
         "D66134B1-3681-4A8E-AFE5-29F257229F3B",
         "Root",
-        "addPotion9",
+        "addPotion8_OFF"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "D66134B1-3681-4A8E-AFE5-29F257229F3B",
+        "Root",
+        "addPotion4_1",
+        "Track"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "D66134B1-3681-4A8E-AFE5-29F257229F3B",
+        "Root",
+        "Timeline",
+        "Track3"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "D66134B1-3681-4A8E-AFE5-29F257229F3B",
+        "Root",
+        "Potion_Flask",
+        "Meshes",
+        "Sketchfab_model",
+        "root",
+        "GLTF_SceneRootNode",
+        "flask_0",
+        "Object_4"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "D66134B1-3681-4A8E-AFE5-29F257229F3B",
+        "Root",
+        "addPotion4"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "D66134B1-3681-4A8E-AFE5-29F257229F3B",
+        "Root",
+        "addPotion1"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "D66134B1-3681-4A8E-AFE5-29F257229F3B",
+        "Root",
+        "Potion_Flask",
+        "Meshes",
+        "Sketchfab_model",
+        "root",
+        "GLTF_SceneRootNode",
+        "flask_0"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "D66134B1-3681-4A8E-AFE5-29F257229F3B",
+        "Root"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "D66134B1-3681-4A8E-AFE5-29F257229F3B",
+        "Root",
+        "addPotion3",
+        "Track3"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "D66134B1-3681-4A8E-AFE5-29F257229F3B",
+        "Root",
+        "addPotion4",
+        "Track"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "D66134B1-3681-4A8E-AFE5-29F257229F3B",
+        "Root",
+        "addPotion6"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "D66134B1-3681-4A8E-AFE5-29F257229F3B",
+        "Root",
+        "cauldronMovement"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "D66134B1-3681-4A8E-AFE5-29F257229F3B",
+        "Root",
+        "addPotion5",
         "Track"
       ],
       {
@@ -116,7 +238,67 @@
       [
         "D66134B1-3681-4A8E-AFE5-29F257229F3B",
         "Root",
-        "addPotion9",
+        "Timeline",
+        "Track2"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "D66134B1-3681-4A8E-AFE5-29F257229F3B",
+        "Root",
+        "usdz",
+        "Cube_001"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "D66134B1-3681-4A8E-AFE5-29F257229F3B",
+        "Root",
+        "addPotion1",
+        "Track"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "D66134B1-3681-4A8E-AFE5-29F257229F3B",
+        "Root",
+        "cauldronMovement",
+        "Track2"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "D66134B1-3681-4A8E-AFE5-29F257229F3B",
+        "Root",
+        "cauldronSpin",
+        "Track3"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "D66134B1-3681-4A8E-AFE5-29F257229F3B",
+        "Root",
+        "addPotion2",
+        "Track"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "D66134B1-3681-4A8E-AFE5-29F257229F3B",
+        "Root",
+        "addPotion4_1",
         "Track3"
       ],
       {
@@ -135,16 +317,6 @@
       [
         "D66134B1-3681-4A8E-AFE5-29F257229F3B",
         "Root",
-        "addPotion7",
-        "Track3"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "D66134B1-3681-4A8E-AFE5-29F257229F3B",
-        "Root",
         "Timeline"
       ],
       {
@@ -154,7 +326,106 @@
       [
         "D66134B1-3681-4A8E-AFE5-29F257229F3B",
         "Root",
-        "addPotion6",
+        "cauldronMovement",
+        "Track"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "D66134B1-3681-4A8E-AFE5-29F257229F3B",
+        "Root",
+        "addPotion5_OFF",
+        "Track"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "D66134B1-3681-4A8E-AFE5-29F257229F3B",
+        "Root",
+        "cauldronMovement",
+        "Track3"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "D66134B1-3681-4A8E-AFE5-29F257229F3B",
+        "Root",
+        "addPotion2"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "D66134B1-3681-4A8E-AFE5-29F257229F3B",
+        "Root",
+        "addPotion3",
+        "Track"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "D66134B1-3681-4A8E-AFE5-29F257229F3B",
+        "Root",
+        "Timeline",
+        "Track5"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "D66134B1-3681-4A8E-AFE5-29F257229F3B",
+        "Root",
+        "Potion_Flask",
+        "Meshes"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "D66134B1-3681-4A8E-AFE5-29F257229F3B",
+        "Root",
+        "addPotion8_OFF",
+        "Track3"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "D66134B1-3681-4A8E-AFE5-29F257229F3B",
+        "Root",
+        "addPotion8",
+        "Track"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "D66134B1-3681-4A8E-AFE5-29F257229F3B",
+        "Root",
+        "addPotion7",
+        "Track"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "D66134B1-3681-4A8E-AFE5-29F257229F3B",
+        "Root",
+        "addPotion2",
         "Track3"
       ],
       {
@@ -165,6 +436,131 @@
         "D66134B1-3681-4A8E-AFE5-29F257229F3B",
         "Root",
         "Timeline",
+        "Track"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "D66134B1-3681-4A8E-AFE5-29F257229F3B",
+        "Root",
+        "addPotion7_OFF",
+        "Track"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "D66134B1-3681-4A8E-AFE5-29F257229F3B",
+        "Root",
+        "Potion_Flask",
+        "Meshes",
+        "Sketchfab_model",
+        "root"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "D66134B1-3681-4A8E-AFE5-29F257229F3B",
+        "Root",
+        "Potion_Flask",
+        "Meshes",
+        "Sketchfab_model"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "D66134B1-3681-4A8E-AFE5-29F257229F3B",
+        "Root",
+        "addPotion7",
+        "Track3"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "D66134B1-3681-4A8E-AFE5-29F257229F3B",
+        "Root",
+        "Potion_Flask",
+        "Meshes",
+        "Sketchfab_model",
+        "root",
+        "GLTF_SceneRootNode"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "D66134B1-3681-4A8E-AFE5-29F257229F3B",
+        "Root",
+        "addPotion5",
+        "Track3"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "D66134B1-3681-4A8E-AFE5-29F257229F3B",
+        "Root",
+        "Group"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "D66134B1-3681-4A8E-AFE5-29F257229F3B",
+        "Root",
+        "addPotion8",
+        "Track3"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "D66134B1-3681-4A8E-AFE5-29F257229F3B",
+        "Root",
+        "addPotion1",
+        "Track3"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "D66134B1-3681-4A8E-AFE5-29F257229F3B",
+        "Root",
+        "addPotion9",
+        "Track3"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "D66134B1-3681-4A8E-AFE5-29F257229F3B",
+        "Root",
+        "addPotion8_OFF",
+        "Track"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "D66134B1-3681-4A8E-AFE5-29F257229F3B",
+        "Root",
+        "addPotion6",
         "Track3"
       ],
       {
@@ -193,101 +589,7 @@
       [
         "D66134B1-3681-4A8E-AFE5-29F257229F3B",
         "Root",
-        "Potion_Flask",
-        "Meshes"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "D66134B1-3681-4A8E-AFE5-29F257229F3B",
-        "Root",
-        "Potion_Flask",
-        "Meshes",
-        "Sketchfab_model",
-        "root"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "D66134B1-3681-4A8E-AFE5-29F257229F3B",
-        "Root"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "D66134B1-3681-4A8E-AFE5-29F257229F3B",
-        "Root",
-        "addPotion1",
-        "Track3"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "D66134B1-3681-4A8E-AFE5-29F257229F3B",
-        "Root",
-        "addPotion8_OFF",
-        "Track3"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "D66134B1-3681-4A8E-AFE5-29F257229F3B",
-        "Root",
-        "addPotion5",
-        "Track3"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "D66134B1-3681-4A8E-AFE5-29F257229F3B",
-        "Root",
-        "addPotion7_OFF",
-        "Track3"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "D66134B1-3681-4A8E-AFE5-29F257229F3B",
-        "Root",
-        "addPotion4"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "D66134B1-3681-4A8E-AFE5-29F257229F3B",
-        "Root",
-        "Potion_Flask",
-        "Meshes",
-        "Sketchfab_model",
-        "root",
-        "GLTF_SceneRootNode",
-        "flask_0",
-        "Object_4"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "D66134B1-3681-4A8E-AFE5-29F257229F3B",
-        "Root",
-        "addPotion3",
+        "cauldronSpin",
         "Track"
       ],
       {
@@ -297,7 +599,16 @@
       [
         "D66134B1-3681-4A8E-AFE5-29F257229F3B",
         "Root",
-        "addPotion8",
+        "addPotion5"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "D66134B1-3681-4A8E-AFE5-29F257229F3B",
+        "Root",
+        "addPotion9",
         "Track"
       ],
       {
@@ -307,8 +618,8 @@
       [
         "D66134B1-3681-4A8E-AFE5-29F257229F3B",
         "Root",
-        "addPotion1",
-        "Track"
+        "addPotion5_OFF",
+        "Track3"
       ],
       {
         "isExpanded" : true,
@@ -317,8 +628,7 @@
       [
         "D66134B1-3681-4A8E-AFE5-29F257229F3B",
         "Root",
-        "addPotion2",
-        "Track"
+        "Material"
       ],
       {
         "isExpanded" : true,
@@ -327,7 +637,8 @@
       [
         "D66134B1-3681-4A8E-AFE5-29F257229F3B",
         "Root",
-        "addPotion2"
+        "addPotion3_1",
+        "Track"
       ],
       {
         "isExpanded" : true,
@@ -345,135 +656,8 @@
       [
         "D66134B1-3681-4A8E-AFE5-29F257229F3B",
         "Root",
-        "addPotion4",
-        "Track"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "D66134B1-3681-4A8E-AFE5-29F257229F3B",
-        "Root",
-        "addPotion7_OFF",
-        "Track"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "D66134B1-3681-4A8E-AFE5-29F257229F3B",
-        "Root",
-        "addPotion5_OFF",
+        "addPotion3_1",
         "Track3"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "D66134B1-3681-4A8E-AFE5-29F257229F3B",
-        "Root",
-        "addPotion5_OFF"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "D66134B1-3681-4A8E-AFE5-29F257229F3B",
-        "Root",
-        "addPotion1"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "D66134B1-3681-4A8E-AFE5-29F257229F3B",
-        "Root",
-        "addPotion8_OFF"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "D66134B1-3681-4A8E-AFE5-29F257229F3B",
-        "Root",
-        "addPotion2",
-        "Track3"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "D66134B1-3681-4A8E-AFE5-29F257229F3B",
-        "Root",
-        "addPotion5",
-        "Track"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "D66134B1-3681-4A8E-AFE5-29F257229F3B",
-        "Root",
-        "Timeline",
-        "Track"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "D66134B1-3681-4A8E-AFE5-29F257229F3B",
-        "Root",
-        "addPotion8_OFF",
-        "Track"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "D66134B1-3681-4A8E-AFE5-29F257229F3B",
-        "Root",
-        "addPotion7",
-        "Track"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "D66134B1-3681-4A8E-AFE5-29F257229F3B",
-        "Root",
-        "addPotion8",
-        "Track3"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "D66134B1-3681-4A8E-AFE5-29F257229F3B",
-        "Root",
-        "addPotion5_OFF",
-        "Track"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "D66134B1-3681-4A8E-AFE5-29F257229F3B",
-        "Root",
-        "addPotion1",
-        "Track4"
       ],
       {
         "isExpanded" : true,
@@ -484,63 +668,6 @@
         "Root",
         "addPotion4",
         "Track3"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "D66134B1-3681-4A8E-AFE5-29F257229F3B",
-        "Root",
-        "Potion_Flask",
-        "Meshes",
-        "Sketchfab_model",
-        "root",
-        "GLTF_SceneRootNode",
-        "flask_0"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "D66134B1-3681-4A8E-AFE5-29F257229F3B",
-        "Root",
-        "addPotion6"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "D66134B1-3681-4A8E-AFE5-29F257229F3B",
-        "Root",
-        "addPotion3",
-        "Track3"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "D66134B1-3681-4A8E-AFE5-29F257229F3B",
-        "Root",
-        "Potion_Flask",
-        "Meshes",
-        "Sketchfab_model"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "D66134B1-3681-4A8E-AFE5-29F257229F3B",
-        "Root",
-        "Potion_Flask",
-        "Meshes",
-        "Sketchfab_model",
-        "root",
-        "GLTF_SceneRootNode"
       ],
       {
         "isExpanded" : true,

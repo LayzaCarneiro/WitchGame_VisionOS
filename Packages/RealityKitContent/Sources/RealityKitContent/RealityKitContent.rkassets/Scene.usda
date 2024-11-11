@@ -9,7 +9,7 @@ reorder rootPrims = ["Root", "GridMaterial"]
 
 def Xform "Root"
 {
-    reorder nameChildren = ["GridMaterial", "Sphere", "addPotion1", "addPotion2", "addPotion3", "addPotion4", "addPotion5_OFF", "addPotion6", "addPotion7_OFF", "addPotion8_OFF", "addPotion9", "Timeline"]
+    reorder nameChildren = ["GridMaterial", "Sphere", "addPotion1", "addPotion3", "addPotion4", "addPotion5", "addPotion2", "addPotion6", "addPotion7_OFF", "addPotion8_OFF", "addPotion9", "Timeline", "cauldronMovement"]
     rel material:binding = None (
         bindMaterialAs = "weakerThanDescendants"
     )
@@ -110,7 +110,7 @@ def Xform "Root"
             def Preliminary_Action "Action"
             {
                 rel affectedObjects = </Root>
-                rel animationLibraryKey = </Root/addPotion3>
+                rel animationLibraryKey = </Root/addPotion4>
                 rel animationLibraryKeyOverrideKey = </Root/potion1/OnTap/Trigger>
                 token info:id = "PlayTimeline"
                 int loops = 0
@@ -182,7 +182,10 @@ def Xform "Root"
 
         def RealityKitComponent "RCP_BehaviorsContainer"
         {
-            rel behaviors = </Root/Mana_Potion/OnTap>
+            rel behaviors = [
+                </Root/Mana_Potion/OnTap>,
+                </Root/Mana_Potion/OnTap2>,
+            ]
             uniform token info:id = "RCP.BehaviorsContainer"
         }
 
@@ -203,6 +206,70 @@ def Xform "Root"
                 rel affectedObjects = </Root>
                 rel animationLibraryKey = </Root/addPotion6>
                 rel animationLibraryKeyOverrideKey = </Root/Mana_Potion/OnTap/Trigger>
+                token info:id = "PlayTimeline"
+                int loops = 0
+                int performCount = 1
+                token type = "serial"
+            }
+        }
+
+        over "Materials"
+        {
+            over "aiStandardSurface1SG"
+            {
+                token cullMode = "unspecified" (
+                    allowedTokens = ["unspecified", "none", "front", "back"]
+                )
+                token outputs:mtlx:surface.connect = </Root/Mana_Potion/Materials/aiStandardSurface1SG/PreviewSurface.outputs:out>
+                token outputs:realitykit:vertex
+                token outputs:surface.connect = </Root/Mana_Potion/Materials/aiStandardSurface1SG/pbr_shader.outputs:surface>
+                float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (0, 110.5)
+
+                over "pbr_shader" (
+                    active = true
+                )
+                {
+                }
+
+                def Shader "PreviewSurface" (
+                    active = false
+                )
+                {
+                    uniform token info:id = "ND_UsdPreviewSurface_surfaceshader"
+                    token outputs:out
+                    float2 ui:nodegraph:node:pos = (-255, 105)
+                }
+            }
+
+            over "Metal_Frame"
+            {
+                token outputs:mtlx:surface
+                token outputs:realitykit:vertex
+            }
+
+            over "GlassMat"
+            {
+                token outputs:mtlx:surface
+                token outputs:realitykit:vertex
+            }
+        }
+
+        def Preliminary_Behavior "OnTap2"
+        {
+            rel actions = </Root/Mana_Potion/OnTap2/Action>
+            uniform bool exclusive
+            rel triggers = </Root/Mana_Potion/OnTap2/Trigger>
+
+            def Preliminary_Trigger "Trigger"
+            {
+                rel affectedObjects = </Root/Mana_Potion>
+                token info:id = "TapGesture"
+            }
+
+            def Preliminary_Action "Action"
+            {
+                rel affectedObjects = None
+                rel animationLibraryKeyOverrideKey = </Root/Mana_Potion/OnTap2/Trigger>
                 token info:id = "PlayTimeline"
                 int loops = 0
                 int performCount = 1
@@ -245,7 +312,7 @@ def Xform "Root"
             def Preliminary_Action "Action"
             {
                 rel affectedObjects = </Root>
-                rel animationLibraryKey = </Root/addPotion4>
+                rel animationLibraryKey = </Root/addPotion5>
                 rel animationLibraryKeyOverrideKey = </Root/Potions_Bottle/OnTap/Trigger>
                 token info:id = "PlayTimeline"
                 int loops = 0
@@ -297,7 +364,7 @@ def Xform "Root"
             def Preliminary_Action "Action"
             {
                 rel affectedObjects = </Root>
-                rel animationLibraryKey = </Root/addPotion2>
+                rel animationLibraryKey = </Root/addPotion3>
                 rel animationLibraryKeyOverrideKey = </Root/Potion_Of_Healing_Dungeons_and_Dragons_2/OnTap/Trigger>
                 token info:id = "PlayTimeline"
                 int loops = 0
@@ -400,6 +467,190 @@ def Xform "Root"
                             float3 xformOp:translate = (0, 0, 0)
                             uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
                         }
+
+                        over "g_1" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                            customData = {
+                                float3 rotationEulerHint = (-0.08726644, -1.7881393e-7, -1.671356e-8)
+                            }
+                        )
+                        {
+                            rel material:binding = None (
+                                bindMaterialAs = "weakerThanDescendants"
+                            )
+                            quatf xformOp:orient = (0.99904823, -0.043619376, -8.7050786e-8, -1.2165459e-8)
+                            float3 xformOp:scale = (1, 1, 1)
+                            float3 xformOp:translate = (0, 0, 0)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                            def RealityKitComponent "VFXEmitter"
+                            {
+                                uniform token info:id = "RealityKit.VFXEmitter"
+
+                                def RealityKitStruct "currentState"
+                                {
+                                    token birthDirection = "Normal"
+                                    token birthLocation = "Surface"
+                                    float3 emissionDirection = (0, 1, 0)
+                                    double emissionDuration = 0.05
+                                    double emissionDurationVariation = 0
+                                    token emitterShape = "Cylinder"
+                                    double idleDuration = 0.7
+                                    double idleDurationVariation = 0
+                                    bool isEmitting = 1
+                                    bool isLocal = 0
+                                    bool isSpawningEnabled = 0
+                                    bool loops = 1
+                                    float particleSpeed = 0.5
+                                    float particleSpeedVariation = 0.1
+                                    float3 shapeSize = (0.05, 0.01, 0.05)
+                                    bool spawnInheritParentColor = 0
+                                    token spawnOccasion = "OnDeath"
+                                    float spawnSpreadFactor = 0
+                                    float spawnSpreadFactorVariation = 0
+                                    float spawnVelocityFactor = 1
+                                    double warmupDuration = 0
+
+                                    def RealityKitStruct "mainEmitter"
+                                    {
+                                        float3 acceleration = (0, 0.12, 0)
+                                        token billboardMode = "Billboard"
+                                        float birthRate = 2000
+                                        float birthRateVariation = 0
+                                        token blendMode = "Alpha"
+                                        float colorEvolutionPower = 1
+                                        float dampingFactor = 80
+                                        float4 endColorA = (0.010480293, 0.0045649456, 1, 1)
+                                        float4 endColorB = (0.11386989, 0.0064959256, 0.10626237, 1)
+                                        bool isLightingEnabled = 1
+                                        float noiseAnimationSpeed = 0
+                                        float noiseScale = 1
+                                        float noiseStrength = 0.1
+                                        token opacityOverLife = "LinearFadeOut"
+                                        float particleAngle = 0
+                                        float particleAngleVariation = 0
+                                        float particleAngularVelocity = 0
+                                        float particleAngularVelocityVariation = 1
+                                        asset particleImage = @ParticleEmitterPresetTextures/dustsheet.exr@
+                                        double particleLifeSpan = 2
+                                        double particleLifeSpanVariation = 1
+                                        float particleMass = 0.7
+                                        float particleMassVariation = 0.8
+                                        float particleSize = 0.012
+                                        float particleSizeVariation = 0
+                                        float3 radialGravityCenter = (0, 0, 0)
+                                        float radialGravityStrength = 0
+                                        float sizeMultiplierAtEndOfLifespan = 8
+                                        float sizeMultiplierAtEndOfLifespanPower = 0.2
+                                        float spreadingAngle = 0
+                                        float4 startColorA = (1, 1, 1, 0.26)
+                                        float4 startColorB = (0.16113669, 1, 0.12743913, 0.07)
+                                        float stretchFactor = 0
+                                        bool useEndColor = 0
+                                        bool useEndColorRange = 0
+                                        bool useStartColorRange = 1
+                                        float3 vortexDirection = (0, 1, 0)
+                                        float vortexStrength = 0
+                                    }
+
+                                    def RealityKitStruct "spawnedEmitter"
+                                    {
+                                        token billboardMode = "Billboard"
+                                        float birthRate = 100
+                                        float4 endColorA = (0.45834237, 0.0030489305, 1, 1)
+                                        float4 startColorA = (0.061010864, 1, 0.029926121, 1)
+                                        bool useEndColor = 1
+                                        bool useEndColorRange = 0
+                                        bool useStartColorRange = 0
+                                        float vortexStrength = 0
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            def RealityKitComponent "VFXEmitter"
+            {
+                uniform token info:id = "RealityKit.VFXEmitter"
+
+                def RealityKitStruct "currentState"
+                {
+                    token birthDirection = "Normal"
+                    token birthLocation = "Surface"
+                    float3 emissionDirection = (0, 1, 0)
+                    double emissionDuration = 0.08
+                    double emissionDurationVariation = 0
+                    token emitterShape = "Cylinder"
+                    double idleDuration = 0.6
+                    double idleDurationVariation = 0
+                    bool isLocal = 0
+                    bool isSpawningEnabled = 0
+                    bool loops = 1
+                    float particleSpeed = 0.5
+                    float particleSpeedVariation = 0.1
+                    float3 shapeSize = (0.05, 0.01, 0.05)
+                    bool spawnInheritParentColor = 0
+                    token spawnOccasion = "OnDeath"
+                    float spawnSpreadFactor = 0
+                    float spawnSpreadFactorVariation = 0
+                    float spawnVelocityFactor = 1
+                    double warmupDuration = 0
+
+                    def RealityKitStruct "mainEmitter"
+                    {
+                        float3 acceleration = (0, -0.05, 0)
+                        token animationRepeatMode = "PlayOnce"
+                        token billboardMode = "Billboard"
+                        float birthRate = 2000
+                        float birthRateVariation = 0
+                        token blendMode = "Alpha"
+                        float colorEvolutionPower = 1
+                        int64 columnCount = 4
+                        float dampingFactor = 8
+                        float4 endColorA = (0.0013309671, 0.03458923, 1, 1)
+                        float4 endColorB = (0.11386989, 0.0064959256, 0.10626237, 1)
+                        float frameRate = 0
+                        float frameRateVariation = 0
+                        int64 initialFrame = 2
+                        int64 initialFrameVariation = 6
+                        bool isAnimated = 1
+                        bool isLightingEnabled = 0
+                        float noiseAnimationSpeed = 0
+                        float noiseScale = 1
+                        float noiseStrength = 0.1
+                        token opacityOverLife = "LinearFadeOut"
+                        float particleAngle = 0
+                        float particleAngleVariation = 0
+                        float particleAngularVelocity = 0
+                        float particleAngularVelocityVariation = 1
+                        asset particleImage = @ParticleEmitterPresetTextures/dustsheet.exr@
+                        double particleLifeSpan = 2
+                        double particleLifeSpanVariation = 1
+                        float particleMass = 1
+                        float particleMassVariation = 0.8
+                        float particleSize = 0.01
+                        float particleSizeVariation = 0
+                        float3 radialGravityCenter = (0, -0.1, 0)
+                        float radialGravityStrength = -0.1
+                        int64 rowCount = 4
+                        float sizeMultiplierAtEndOfLifespan = 8
+                        float sizeMultiplierAtEndOfLifespanPower = 0.2
+                        token sortOrder = "DecreasingDepth"
+                        float spreadingAngle = 0
+                        float4 startColorA = (1, 1, 1, 0.26)
+                        float4 startColorB = (0.07476571, 1, 0.054131642, 0.07)
+                        float stretchFactor = 0
+                        bool useEndColor = 0
+                        bool useEndColorRange = 0
+                        bool useStartColorRange = 1
+                        float3 vortexDirection = (0, 1, 0)
+                        float vortexStrength = 0
+                    }
+
+                    def RealityKitStruct "spawnedEmitter"
+                    {
                     }
                 }
             }
@@ -444,14 +695,30 @@ def Xform "Root"
         def RealityKitTrack "Track"
         {
             reorder nameChildren = ["Transform_By", "Spin", "Spin2", "Transform_By2"]
+            def RealityKitAction "Spin"
+            {
+                string actionKind = "spin"
+                int blendLayer = 400
+                double duration = 0.883
+                uniform token info:id = "D74ADE54-7B93-49CD-B543-CB313D38C79F"
+                float3 localAxis = (0, 0, 1)
+                float revolutions = 0.25
+                double startTime = 1.833
+                rel target = </Root/Potion>
+
+                def RealityKitStruct "timingFunction"
+                {
+                }
+            }
+
             def RealityKitAction "Transform_By"
             {
                 string actionKind = "moveBy"
                 int blendLayer = 300
-                double duration = 1
-                uniform token info:id = "06CB4F89-FB3C-49CF-AA56-15599448F9D6"
-                float3 position = (2.43118, -11.934833, 8.625651)
-                double startTime = 0.0375140393763212
+                double duration = 0.5033725480186908
+                uniform token info:id = "55DD0E4A-E98D-4D7F-B00E-A7BEF74D8A81"
+                float3 position = (0.0000014305115, 0, 2.5497603)
+                double startTime = 0
                 rel target = </Root/Potion>
 
                 def RealityKitStruct "timingFunction"
@@ -463,28 +730,10 @@ def Xform "Root"
             {
                 string actionKind = "moveBy"
                 int blendLayer = 300
-                double duration = 0.7615396476873774
-                uniform token info:id = "06CB4F89-FB3C-49CF-AA56-15599448F9D6"
-                float3 position = (-2.43118, 11.93483, -8.62565)
-                double startTime = 3.9407426046198077
-                rel target = </Root/Potion>
-                float2 ui:nodegraph:node:pos = (20, 20)
-                int ui:nodegraph:node:stackingOrder = 1
-
-                def RealityKitStruct "timingFunction"
-                {
-                }
-            }
-
-            def RealityKitAction "Spin"
-            {
-                string actionKind = "spin"
-                int blendLayer = 400
-                double duration = 0.883
-                uniform token info:id = "D74ADE54-7B93-49CD-B543-CB313D38C79F"
-                float3 localAxis = (0, 0, 1)
-                float revolutions = 0.25
-                double startTime = 1.6075802006124476
+                double duration = 0.8302892541825185
+                uniform token info:id = "1369F0A4-ECB0-4E0C-B4C0-DF74CB3DCBBA"
+                float3 position = (1.1341853, -12.282018, 8.390277)
+                double startTime = 0.5033725481186908
                 rel target = </Root/Potion>
 
                 def RealityKitStruct "timingFunction"
@@ -500,7 +749,41 @@ def Xform "Root"
                 uniform token info:id = "D74ADE54-7B93-49CD-B543-CB313D38C79F"
                 float3 localAxis = (0, 0, 1)
                 float revolutions = -0.25
-                double startTime = 2.49226613890727
+                double startTime = 2.7160000001
+                rel target = </Root/Potion>
+                float2 ui:nodegraph:node:pos = (20, 20)
+                int ui:nodegraph:node:stackingOrder = 1
+
+                def RealityKitStruct "timingFunction"
+                {
+                }
+            }
+
+            def RealityKitAction "Transform_By22"
+            {
+                string actionKind = "moveBy"
+                int blendLayer = 300
+                double duration = 0.8302892541825185
+                uniform token info:id = "1369F0A4-ECB0-4E0C-B4C0-DF74CB3DCBBA"
+                float3 position = (-1.13419, 12.28202, -8.39028)
+                double startTime = 4.127679055456044
+                rel target = </Root/Potion>
+                float2 ui:nodegraph:node:pos = (20, 20)
+                int ui:nodegraph:node:stackingOrder = 1
+
+                def RealityKitStruct "timingFunction"
+                {
+                }
+            }
+
+            def RealityKitAction "Transform_By_1"
+            {
+                string actionKind = "moveBy"
+                int blendLayer = 300
+                double duration = 0.5033725480186908
+                uniform token info:id = "55DD0E4A-E98D-4D7F-B00E-A7BEF74D8A81"
+                float3 position = (0.0000014305115, 0, -2.54976)
+                double startTime = 4.957968309738561
                 rel target = </Root/Potion>
                 float2 ui:nodegraph:node:pos = (20, 20)
                 int ui:nodegraph:node:stackingOrder = 1
@@ -511,13 +794,9 @@ def Xform "Root"
             }
         }
 
-        def RealityKitTrack "Track4"
-        {
-        }
-
         def RealityKitTrack "Track3"
         {
-            reorder nameChildren = ["Spin", "Spin2"]
+            reorder nameChildren = ["Transform_By", "Spin", "Spin2", "Transform_By3", "Transform_By_1"]
             def RealityKitAction "Transform_By"
             {
                 string actionKind = "moveBy"
@@ -525,7 +804,7 @@ def Xform "Root"
                 double duration = 0.7507998134962833
                 uniform token info:id = "CB89DBA3-9ED5-4FAD-BF13-9E1125EF0514"
                 float3 position = (1.1920929e-7, 3.425498, 0.0000064373025)
-                double startTime = 0.852263781581692
+                double startTime = 1.081863129797977
                 rel target = </Root/Potion/Meshes/Sketchfab_model/_987bf64e4b64238a23f40d6bd8238e0_fbx/Object_2/RootNode/grp_potion_01/SM_potionoOutter_01/SM_PotionCork_01>
 
                 def RealityKitStruct "timingFunction"
@@ -541,7 +820,7 @@ def Xform "Root"
                 uniform token info:id = "D74ADE54-7B93-49CD-B543-CB313D38C79F"
                 float3 localAxis = (0, 0, 1)
                 float revolutions = -0.25
-                double startTime = 1.6043177687131482
+                double startTime = 1.8326629433942607
                 rel target = </Root/Potion/Meshes/Sketchfab_model/_987bf64e4b64238a23f40d6bd8238e0_fbx/Object_2/RootNode/grp_potion_01/SM_potionoOutter_01/SM_PotionCork_01>
                 float2 ui:nodegraph:node:pos = (20, 20)
                 int ui:nodegraph:node:stackingOrder = 1
@@ -559,7 +838,7 @@ def Xform "Root"
                 uniform token info:id = "D74ADE54-7B93-49CD-B543-CB313D38C79F"
                 float3 localAxis = (0, 0, 1)
                 float revolutions = 0.25
-                double startTime = 2.486836660944661
+                double startTime = 2.716
                 rel target = </Root/Potion/Meshes/Sketchfab_model/_987bf64e4b64238a23f40d6bd8238e0_fbx/Object_2/RootNode/grp_potion_01/SM_potionoOutter_01/SM_PotionCork_01>
                 float2 ui:nodegraph:node:pos = (40, 40)
                 int ui:nodegraph:node:stackingOrder = 2
@@ -569,14 +848,14 @@ def Xform "Root"
                 }
             }
 
-            def RealityKitAction "Transform_By2"
+            def RealityKitAction "Transform_By3"
             {
                 string actionKind = "moveBy"
                 int blendLayer = 300
-                double duration = 0.5795793930432963
+                double duration = 0.7507998134962833
                 uniform token info:id = "CB89DBA3-9ED5-4FAD-BF13-9E1125EF0514"
                 float3 position = (1.1920929e-7, -3.4255, -0.00001)
-                double startTime = 3.3712650437411797
+                double startTime = 3.5990000001
                 rel target = </Root/Potion/Meshes/Sketchfab_model/_987bf64e4b64238a23f40d6bd8238e0_fbx/Object_2/RootNode/grp_potion_01/SM_potionoOutter_01/SM_PotionCork_01>
                 float2 ui:nodegraph:node:pos = (20, 20)
                 int ui:nodegraph:node:stackingOrder = 1
@@ -590,48 +869,35 @@ def Xform "Root"
 
     def RealityKitTimeline "Timeline"
     {
-        reorder nameChildren = ["Track", "Track2", "Track3"]
+        reorder nameChildren = ["Track5", "Track", "Track2", "Track3", "Track4"]
         def RealityKitTrack "Track"
         {
-            def RealityKitAction "Play_Timeline"
-            {
-                string actionKind = "timeline"
-                int blendLayer = 500
-                double duration = 4.702282252307185
-                uniform token info:id = "A77BC3B1-5BD7-4B1C-A08B-D2F11B84AA39"
-                double startTime = 0.3016814217758985
-                rel timeline = </Root/addPotion1>
-            }
         }
 
         def RealityKitTrack "Track2"
         {
-            def RealityKitAction "Play_Timeline"
-            {
-                string actionKind = "timeline"
-                int blendLayer = 500
-                double duration = 4.702282252307185
-                uniform token info:id = "B82FAF35-B2B4-4A19-BAEB-25DCE139A830"
-                double startTime = 0.2967058825734835
-                rel timeline = </Root/addPotion2>
-            }
         }
 
         def RealityKitTrack "Track3"
         {
-            def RealityKitAction "Play_Timeline"
+        }
+
+        def RealityKitTrack "Track5"
+        {
+            def RealityKitAction "cauldronMovement"
             {
                 string actionKind = "timeline"
                 int blendLayer = 500
-                double duration = 4.702282252307185
-                uniform token info:id = "5F2BD256-AC00-4DDE-B871-1E43E41411D2"
-                double startTime = 0.2929834497990312
-                rel timeline = </Root/addPotion3>
+                double duration = 2.096001635051159
+                uniform token info:id = "F05FF357-9192-45CE-B23F-AF01D7231406"
+                double loopCount = 0
+                double startTime = 0
+                rel timeline = </Root/cauldronMovement>
             }
         }
     }
 
-    def RealityKitTimeline "addPotion2"
+    def RealityKitTimeline "addPotion3"
     {
         reorder nameChildren = ["Track", "Track3", "Track2", "Track4"]
         float2 ui:nodegraph:node:pos = (20, 20)
@@ -640,38 +906,6 @@ def Xform "Root"
         def RealityKitTrack "Track"
         {
             reorder nameChildren = ["Transform_By", "Spin", "Spin2", "Transform_By2"]
-            def RealityKitAction "Transform_By"
-            {
-                string actionKind = "moveBy"
-                int blendLayer = 300
-                double duration = 1
-                uniform token info:id = "06CB4F89-FB3C-49CF-AA56-15599448F9D6"
-                float3 position = (2.4395752, -782.096, 718.43585)
-                double startTime = 0.0375140393763212
-                rel target = </Root/Potion_Of_Healing_Dungeons_and_Dragons_2>
-
-                def RealityKitStruct "timingFunction"
-                {
-                }
-            }
-
-            def RealityKitAction "Transform_By2"
-            {
-                string actionKind = "moveBy"
-                int blendLayer = 300
-                double duration = 0.7615396476873774
-                uniform token info:id = "06CB4F89-FB3C-49CF-AA56-15599448F9D6"
-                float3 position = (-2.43958, 782.096, -718.43585)
-                double startTime = 3.9407426046198077
-                rel target = </Root/Potion_Of_Healing_Dungeons_and_Dragons_2>
-                float2 ui:nodegraph:node:pos = (20, 20)
-                int ui:nodegraph:node:stackingOrder = 1
-
-                def RealityKitStruct "timingFunction"
-                {
-                }
-            }
-
             def RealityKitAction "Spin"
             {
                 string actionKind = "spin"
@@ -680,7 +914,7 @@ def Xform "Root"
                 uniform token info:id = "D74ADE54-7B93-49CD-B543-CB313D38C79F"
                 float3 localAxis = (1, 0, 0)
                 float revolutions = -0.25
-                double startTime = 1.6075802006124476
+                double startTime = 2.003
                 rel target = </Root/Potion_Of_Healing_Dungeons_and_Dragons_2>
 
                 def RealityKitStruct "timingFunction"
@@ -696,7 +930,7 @@ def Xform "Root"
                 uniform token info:id = "D74ADE54-7B93-49CD-B543-CB313D38C79F"
                 float3 localAxis = (1, 0, 0)
                 float revolutions = 0.25
-                double startTime = 2.49226613890727
+                double startTime = 2.8860000001
                 rel target = </Root/Potion_Of_Healing_Dungeons_and_Dragons_2>
                 float2 ui:nodegraph:node:pos = (20, 20)
                 int ui:nodegraph:node:stackingOrder = 1
@@ -705,10 +939,70 @@ def Xform "Root"
                 {
                 }
             }
-        }
 
-        def RealityKitTrack "Track4"
-        {
+            def RealityKitAction "Transform_By"
+            {
+                string actionKind = "moveBy"
+                int blendLayer = 300
+                double duration = 0.5
+                uniform token info:id = "1073F953-E37A-4A16-864D-8DEB9C21FBD6"
+                float3 position = (0, 0.00024414062, 255.70993)
+                double startTime = 0
+                rel target = </Root/Potion_Of_Healing_Dungeons_and_Dragons_2>
+
+                def RealityKitStruct "timingFunction"
+                {
+                }
+            }
+
+            def RealityKitAction "Transform_By2"
+            {
+                string actionKind = "moveBy"
+                int blendLayer = 300
+                double duration = 1
+                uniform token info:id = "2E0FFD91-AAE0-4926-A050-8B14DB693BA6"
+                float3 position = (-66.72827, -782.77466, 408.03223)
+                double startTime = 0.5000000001
+                rel target = </Root/Potion_Of_Healing_Dungeons_and_Dragons_2>
+
+                def RealityKitStruct "timingFunction"
+                {
+                }
+            }
+
+            def RealityKitAction "Transform_By22"
+            {
+                string actionKind = "moveBy"
+                int blendLayer = 300
+                double duration = 1
+                uniform token info:id = "2E0FFD91-AAE0-4926-A050-8B14DB693BA6"
+                float3 position = (66.72827, 782.77466, -408.03223)
+                double startTime = 4.302873146710242
+                rel target = </Root/Potion_Of_Healing_Dungeons_and_Dragons_2>
+                float2 ui:nodegraph:node:pos = (20, 20)
+                int ui:nodegraph:node:stackingOrder = 1
+
+                def RealityKitStruct "timingFunction"
+                {
+                }
+            }
+
+            def RealityKitAction "Transform_By3"
+            {
+                string actionKind = "moveBy"
+                int blendLayer = 300
+                double duration = 0.5
+                uniform token info:id = "1073F953-E37A-4A16-864D-8DEB9C21FBD6"
+                float3 position = (0, -0.00024, -255.70993)
+                double startTime = 5.302873146810242
+                rel target = </Root/Potion_Of_Healing_Dungeons_and_Dragons_2>
+                float2 ui:nodegraph:node:pos = (20, 20)
+                int ui:nodegraph:node:stackingOrder = 1
+
+                def RealityKitStruct "timingFunction"
+                {
+                }
+            }
         }
 
         def RealityKitTrack "Track3"
@@ -721,7 +1015,7 @@ def Xform "Root"
                 double duration = 0.7507998134962833
                 uniform token info:id = "CB89DBA3-9ED5-4FAD-BF13-9E1125EF0514"
                 float3 position = (0, 3.425583, 350.70276)
-                double startTime = 0.852263781581692
+                double startTime = 1.2521726643107542
                 rel target = </Root/Potion_Of_Healing_Dungeons_and_Dragons_2/Meshes/Sketchfab_model/Potion_of_Healing_FBX/RootNode/Potion_of_Healing/Object_4/Potion_of_Healing_Cord_0>
 
                 def RealityKitStruct "timingFunction"
@@ -737,7 +1031,7 @@ def Xform "Root"
                 uniform token info:id = "D74ADE54-7B93-49CD-B543-CB313D38C79F"
                 float3 localAxis = (1, 0, 0)
                 float revolutions = 0.25
-                double startTime = 1.6043177687131482
+                double startTime = 2.002972477907038
                 rel target = </Root/Potion_Of_Healing_Dungeons_and_Dragons_2/Meshes/Sketchfab_model/Potion_of_Healing_FBX/RootNode/Potion_of_Healing/Object_4/Potion_of_Healing_Cord_0>
                 float2 ui:nodegraph:node:pos = (20, 20)
                 int ui:nodegraph:node:stackingOrder = 1
@@ -755,7 +1049,7 @@ def Xform "Root"
                 uniform token info:id = "D74ADE54-7B93-49CD-B543-CB313D38C79F"
                 float3 localAxis = (1, 0, 0)
                 float revolutions = -0.25
-                double startTime = 2.486836660944661
+                double startTime = 2.886
                 rel target = </Root/Potion_Of_Healing_Dungeons_and_Dragons_2/Meshes/Sketchfab_model/Potion_of_Healing_FBX/RootNode/Potion_of_Healing/Object_4/Potion_of_Healing_Cord_0>
                 float2 ui:nodegraph:node:pos = (40, 40)
                 int ui:nodegraph:node:stackingOrder = 2
@@ -765,14 +1059,14 @@ def Xform "Root"
                 }
             }
 
-            def RealityKitAction "Transform_By2"
+            def RealityKitAction "Transform_By_12"
             {
                 string actionKind = "moveBy"
                 int blendLayer = 300
-                double duration = 0.5795793930432963
+                double duration = 0.7507998134962833
                 uniform token info:id = "CB89DBA3-9ED5-4FAD-BF13-9E1125EF0514"
-                float3 position = (1.1920929e-7, -3.4255, -350.70276)
-                double startTime = 3.3712650437411797
+                float3 position = (0, -3.42558, -350.70276)
+                double startTime = 3.7690000001
                 rel target = </Root/Potion_Of_Healing_Dungeons_and_Dragons_2/Meshes/Sketchfab_model/Potion_of_Healing_FBX/RootNode/Potion_of_Healing/Object_4/Potion_of_Healing_Cord_0>
                 float2 ui:nodegraph:node:pos = (20, 20)
                 int ui:nodegraph:node:stackingOrder = 1
@@ -784,7 +1078,7 @@ def Xform "Root"
         }
     }
 
-    def RealityKitTimeline "addPotion3"
+    def RealityKitTimeline "addPotion4"
     {
         reorder nameChildren = ["Track", "Track3", "Track2", "Track4"]
         float2 ui:nodegraph:node:pos = (40, 40)
@@ -793,38 +1087,6 @@ def Xform "Root"
         def RealityKitTrack "Track"
         {
             reorder nameChildren = ["Transform_By", "Spin", "Spin2", "Transform_By2"]
-            def RealityKitAction "Transform_By"
-            {
-                string actionKind = "moveBy"
-                int blendLayer = 300
-                double duration = 1
-                uniform token info:id = "06CB4F89-FB3C-49CF-AA56-15599448F9D6"
-                float3 position = (-6.1835403, -47.280945, 59.186016)
-                double startTime = 0.0375140393763212
-                rel target = </Root/potion1>
-
-                def RealityKitStruct "timingFunction"
-                {
-                }
-            }
-
-            def RealityKitAction "Transform_By2"
-            {
-                string actionKind = "moveBy"
-                int blendLayer = 300
-                double duration = 0.7615396476873774
-                uniform token info:id = "06CB4F89-FB3C-49CF-AA56-15599448F9D6"
-                float3 position = (6.18354, 47.28094, -59.18602)
-                double startTime = 3.9407426046198077
-                rel target = </Root/potion1>
-                float2 ui:nodegraph:node:pos = (20, 20)
-                int ui:nodegraph:node:stackingOrder = 1
-
-                def RealityKitStruct "timingFunction"
-                {
-                }
-            }
-
             def RealityKitAction "Spin"
             {
                 string actionKind = "spin"
@@ -858,10 +1120,70 @@ def Xform "Root"
                 {
                 }
             }
-        }
 
-        def RealityKitTrack "Track4"
-        {
+            def RealityKitAction "Transform_By"
+            {
+                string actionKind = "moveBy"
+                int blendLayer = 300
+                double duration = 0.5
+                uniform token info:id = "A06D6952-E83D-4AE4-BD1D-95C6C28AD51E"
+                float3 position = (0.00015258789, 0.0000076293945, 18.927183)
+                double startTime = 0
+                rel target = </Root/potion1>
+
+                def RealityKitStruct "timingFunction"
+                {
+                }
+            }
+
+            def RealityKitAction "Transform_By2"
+            {
+                string actionKind = "moveBy"
+                int blendLayer = 300
+                double duration = 0.8169810310946218
+                uniform token info:id = "CC1DC7C2-7577-4832-BA3D-CC2016A08935"
+                float3 position = (18.523228, -47.04928, 46.36571)
+                double startTime = 0.5000000001
+                rel target = </Root/potion1>
+
+                def RealityKitStruct "timingFunction"
+                {
+                }
+            }
+
+            def RealityKitAction "Transform_By22"
+            {
+                string actionKind = "moveBy"
+                int blendLayer = 300
+                double duration = 0.8169810310946218
+                uniform token info:id = "CC1DC7C2-7577-4832-BA3D-CC2016A08935"
+                float3 position = (-18.52323, 47.04928, -46.36571)
+                double startTime = 3.8325174481295057
+                rel target = </Root/potion1>
+                float2 ui:nodegraph:node:pos = (20, 20)
+                int ui:nodegraph:node:stackingOrder = 1
+
+                def RealityKitStruct "timingFunction"
+                {
+                }
+            }
+
+            def RealityKitAction "Transform_By_1"
+            {
+                string actionKind = "moveBy"
+                int blendLayer = 300
+                double duration = 0.5
+                uniform token info:id = "A06D6952-E83D-4AE4-BD1D-95C6C28AD51E"
+                float3 position = (-0.00015, -0.00001, -18.92718)
+                double startTime = 4.649498479324127
+                rel target = </Root/potion1>
+                float2 ui:nodegraph:node:pos = (20, 20)
+                int ui:nodegraph:node:stackingOrder = 1
+
+                def RealityKitStruct "timingFunction"
+                {
+                }
+            }
         }
 
         def RealityKitTrack "Track3"
@@ -918,14 +1240,14 @@ def Xform "Root"
                 }
             }
 
-            def RealityKitAction "Transform_By2"
+            def RealityKitAction "Transform_By3"
             {
                 string actionKind = "moveBy"
                 int blendLayer = 300
-                double duration = 0.5795793930432963
+                double duration = 0.7507998134962833
                 uniform token info:id = "CB89DBA3-9ED5-4FAD-BF13-9E1125EF0514"
-                float3 position = (1.1920929e-7, 0, -0.12435)
-                double startTime = 3.3712650437411797
+                float3 position = (0.0000042724614, -1.1483911e-7, -0.12435)
+                double startTime = 3.3698366610446615
                 rel target = </Root/potion1/Meshes/Sketchfab_model/_7112b6ee82d49c983c7694832a1cb47_fbx/RootNode/Probka_1_low>
                 float2 ui:nodegraph:node:pos = (20, 20)
                 int ui:nodegraph:node:stackingOrder = 1
@@ -937,7 +1259,7 @@ def Xform "Root"
         }
     }
 
-    def RealityKitTimeline "addPotion4"
+    def RealityKitTimeline "addPotion5"
     {
         reorder nameChildren = ["Track", "Track3", "Track2", "Track5", "Track4"]
         float2 ui:nodegraph:node:pos = (60, 60)
@@ -1002,7 +1324,7 @@ def Xform "Root"
                 int blendLayer = 300
                 double duration = 0.7528269917395684
                 uniform token info:id = "06CB4F89-FB3C-49CF-AA56-15599448F9D6"
-                float3 position = (814.33624, -182.17665, -38.874924)
+                float3 position = (690.1947, -153.45125, -119.59272)
                 double startTime = 0.48247298287267193
                 rel target = </Root/Potions_Bottle>
                 float2 ui:nodegraph:node:pos = (20, 20)
@@ -1019,7 +1341,7 @@ def Xform "Root"
                 int blendLayer = 300
                 double duration = 0.7528269917395684
                 uniform token info:id = "06CB4F89-FB3C-49CF-AA56-15599448F9D6"
-                float3 position = (-814.33624, 182.17665, 38.87492)
+                float3 position = (-690.1947, 153.45125, 119.59272)
                 double startTime = 4.275080771763688
                 rel target = </Root/Potions_Bottle>
                 float2 ui:nodegraph:node:pos = (40, 40)
@@ -1126,7 +1448,7 @@ def Xform "Root"
         }
     }
 
-    def RealityKitTimeline "addPotion5_OFF"
+    def RealityKitTimeline "addPotion2"
     {
         reorder nameChildren = ["Track5", "Track", "Track3", "Track2", "Track4"]
         float2 ui:nodegraph:node:pos = (80, 80)
@@ -1345,7 +1667,7 @@ def Xform "Root"
                 int blendLayer = 300
                 double duration = 0.7528269917395684
                 uniform token info:id = "06CB4F89-FB3C-49CF-AA56-15599448F9D6"
-                float3 position = (-262.05023, -449.58606, 1166.7507)
+                float3 position = (-262.05023, -380.7956, 955.33307)
                 double startTime = 0.48247298287267193
                 rel target = </Root/Mana_Potion>
                 float2 ui:nodegraph:node:pos = (20, 20)
@@ -1399,7 +1721,7 @@ def Xform "Root"
                 int blendLayer = 300
                 double duration = 0.7528269917395684
                 uniform token info:id = "06CB4F89-FB3C-49CF-AA56-15599448F9D6"
-                float3 position = (262.05023, 449.58606, -1166.7507)
+                float3 position = (262.05023, 380.7956, -955.33307)
                 double startTime = 4.261448630038788
                 rel target = </Root/Mana_Potion>
                 float2 ui:nodegraph:node:pos = (40, 40)
@@ -2055,7 +2377,7 @@ def Xform "Root"
 
     def "Magic_Potion" (
         active = true
-        prepend references = @Magic_Potion.usdz@
+        references = @Magic_Potion.usdz@
     )
     {
         float3 xformOp:scale = (0.005, 0.005, 0.005)
@@ -2094,7 +2416,7 @@ def Xform "Root"
         customData = {
             float3 rotationEulerHint = (0, 0.43633226, 0)
         }
-        prepend references = @Alchemists_Manual.usdz@
+        references = @Alchemists_Manual.usdz@
     )
     {
         quatf xformOp:orient = (0.976296, 0, 0.21643959, 0)
@@ -2108,7 +2430,7 @@ def Xform "Root"
         customData = {
             float3 rotationEulerHint = (0, 0, 0)
         }
-        prepend references = @Wizard_Potions.usdz@
+        references = @Wizard_Potions.usdz@
     )
     {
         quatf xformOp:orient = (1, 0, 0, 0)
@@ -2280,7 +2602,7 @@ def Xform "Root"
                 }
 
                 def Xform "candle_low" (
-                    prepend references = </Root/Wizard_Potions/Meshes/Sketchfab_model/_e8481d77df04623acf8296df7ab2f72_fbx/RootNode/Low_Polys/candle_low>
+                    references = </Root/Wizard_Potions/Meshes/Sketchfab_model/_e8481d77df04623acf8296df7ab2f72_fbx/RootNode/Low_Polys/candle_low>
                 )
                 {
                     float2 ui:nodegraph:node:pos = (20, 20)
@@ -2318,7 +2640,7 @@ def Xform "Root"
                 }
 
                 def Xform "candle_holder_low" (
-                    prepend references = </Root/Wizard_Potions/Meshes/Sketchfab_model/_e8481d77df04623acf8296df7ab2f72_fbx/RootNode/Low_Polys/candle_holder_low>
+                    references = </Root/Wizard_Potions/Meshes/Sketchfab_model/_e8481d77df04623acf8296df7ab2f72_fbx/RootNode/Low_Polys/candle_holder_low>
                 )
                 {
                     float2 ui:nodegraph:node:pos = (20, 20)
@@ -2363,7 +2685,7 @@ def Xform "Root"
         customData = {
             float3 rotationEulerHint = (-0.12217283, 3.1415927, 0)
         }
-        prepend references = @Potion_Lvl1_Free_Test.usdz@
+        references = @Potion_Lvl1_Free_Test.usdz@
     )
     {
         quatf xformOp:orient = (-4.362986e-8, 2.668517e-9, 0.9981348, 0.06104855)
@@ -2389,7 +2711,7 @@ def Xform "Root"
         customData = {
             float3 rotationEulerHint = (0, -0.52359885, 0)
         }
-        prepend references = @Candles_set.usdz@
+        references = @Candles_set.usdz@
     )
     {
         quatf xformOp:orient = (0.9659258, 0, -0.25881904, 0)
@@ -2403,7 +2725,7 @@ def Xform "Root"
         customData = {
             float3 rotationEulerHint = (-8.7397055e-8, 0.8203048, 1.308997)
         }
-        prepend references = @PotionDeco.usdz@
+        references = @PotionDeco.usdz@
     )
     {
         quatf xformOp:orient = (0.72755265, -0.24274313, 0.3163489, 0.5582709)
@@ -2417,7 +2739,7 @@ def Xform "Root"
         customData = {
             float3 rotationEulerHint = (-0.052359886, 0.69813174, -0.087266386)
         }
-        prepend references = @Alchemists_Tome.usdz@
+        references = @Alchemists_Tome.usdz@
     )
     {
         quatf xformOp:orient = (0.93886703, -0.009661294, 0.3426505, -0.032030206)
@@ -2431,7 +2753,7 @@ def Xform "Root"
         customData = {
             float3 rotationEulerHint = (0, 0.52359885, 0)
         }
-        prepend references = @Medieval_Flask.usdz@
+        references = @Medieval_Flask.usdz@
     )
     {
         quatf xformOp:orient = (0.9659258, 0, 0.25881904, 0)
@@ -2445,7 +2767,7 @@ def Xform "Root"
         customData = {
             float3 rotationEulerHint = (0, -1.3089967, 0)
         }
-        prepend references = @Biting_the_apple.usdz@
+        references = @Biting_the_apple.usdz@
     )
     {
         quatf xformOp:orient = (0.7933534, 0, -0.6087614, 0)
@@ -2456,7 +2778,7 @@ def Xform "Root"
 
     def "Mushroom_bottle" (
         active = true
-        prepend references = @Mushroom_bottle.usdz@
+        references = @Mushroom_bottle.usdz@
     )
     {
         float3 xformOp:scale = (0.02, 0.02, 0.02)
@@ -2601,7 +2923,7 @@ def Xform "Root"
 
     def "Lowpoly_Mushrooms" (
         active = true
-        prepend references = @Lowpoly_Mushrooms.usdz@
+        references = @Lowpoly_Mushrooms.usdz@
     )
     {
         float3 xformOp:scale = (0.0002, 0.0002, 0.0002)
@@ -2750,7 +3072,7 @@ def Xform "Root"
         customData = {
             float3 rotationEulerHint = (0, -0.6788946, 0)
         }
-        prepend references = @Sheep_Skull.usdz@
+        references = @Sheep_Skull.usdz@
     )
     {
         quatf xformOp:orient = (0.94293886, 0, -0.33296597, 0)
@@ -2764,7 +3086,7 @@ def Xform "Root"
         customData = {
             float3 rotationEulerHint = (0, 3.1349828, 0)
         }
-        prepend references = @Wizard_Table.usdz@
+        references = @Wizard_Table.usdz@
     )
     {
         quatf xformOp:orient = (0.003304789, 0, 0.9999946, 0)
@@ -2949,6 +3271,151 @@ def Xform "Root"
                     }
                 }
             }
+        }
+    }
+
+    def RealityKitTimeline "cauldronMovement"
+    {
+        reorder nameChildren = ["Track3", "Track", "Track2"]
+        def RealityKitTrack "Track"
+        {
+            def RealityKitAction "Spin"
+            {
+                string actionKind = "spin"
+                int blendLayer = 400
+                double duration = 2.093604651162791
+                uniform token info:id = "712E8C58-4C6D-4002-85D8-6AF85917C055"
+                float revolutions = 1
+                double startTime = 0
+                rel target = </Root/Group/witch_cauldron/Meshes/Sketchfab_model/Collada_visual_scene_group/g_1>
+
+                def RealityKitStruct "timingFunction"
+                {
+                    token type = "linear"
+                }
+            }
+        }
+
+        def RealityKitTrack "Track3"
+        {
+            def RealityKitAction "Transform_By"
+            {
+                string actionKind = "moveBy"
+                int blendLayer = 300
+                double duration = 0.520689344353244
+                uniform token info:id = "A837425E-C0C1-4726-85BF-072D8C9C954D"
+                quatf rotation = (0.99904823, 0.043619387, 0, 0)
+                double startTime = 0.013244257338183551
+                rel target = </Root/Group/witch_cauldron/Meshes/Sketchfab_model/Collada_visual_scene_group/g_1>
+
+                def RealityKitStruct "timingFunction"
+                {
+                    token type = "default"
+                }
+            }
+
+            def RealityKitAction "Transform_By2"
+            {
+                string actionKind = "moveBy"
+                int blendLayer = 300
+                double duration = 0.520689344353244
+                uniform token info:id = "A837425E-C0C1-4726-85BF-072D8C9C954D"
+                quatf rotation = (0.99904823, -0.043619387, 0, 0)
+                double startTime = 0.5339336017914275
+                rel target = </Root/Group/witch_cauldron/Meshes/Sketchfab_model/Collada_visual_scene_group/g_1>
+                float2 ui:nodegraph:node:pos = (20, 20)
+                int ui:nodegraph:node:stackingOrder = 1
+
+                def RealityKitStruct "timingFunction"
+                {
+                }
+            }
+
+            def RealityKitAction "Transform_By3"
+            {
+                string actionKind = "moveBy"
+                int blendLayer = 300
+                double duration = 0.520689344353244
+                uniform token info:id = "A837425E-C0C1-4726-85BF-072D8C9C954D"
+                quatf rotation = (0.99904823, 0.043619387, 0, 0)
+                double startTime = 1.0546229462446715
+                rel target = </Root/Group/witch_cauldron/Meshes/Sketchfab_model/Collada_visual_scene_group/g_1>
+                float2 ui:nodegraph:node:pos = (557.75, 135.5)
+                int ui:nodegraph:node:stackingOrder = 1
+
+                def RealityKitStruct "timingFunction"
+                {
+                    token type = "default"
+                }
+            }
+
+            def RealityKitAction "Transform_By22"
+            {
+                string actionKind = "moveBy"
+                int blendLayer = 300
+                double duration = 0.520689344353244
+                uniform token info:id = "A837425E-C0C1-4726-85BF-072D8C9C954D"
+                quatf rotation = (0.99904823, -0.043619387, 0, 0)
+                double startTime = 1.5753122906979151
+                rel target = </Root/Group/witch_cauldron/Meshes/Sketchfab_model/Collada_visual_scene_group/g_1>
+                float2 ui:nodegraph:node:pos = (40, 40)
+                int ui:nodegraph:node:stackingOrder = 2
+
+                def RealityKitStruct "timingFunction"
+                {
+                }
+            }
+        }
+
+        def RealityKitTrack "Track2"
+        {
+        }
+    }
+
+    def Material "Material"
+    {
+        token outputs:mtlx:surface.connect = </Root/Material/PreviewSurface.outputs:out>
+        token outputs:realitykit:vertex
+        string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["outputs:mtlx:surface"]
+        float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (332.1953, 74.77734)
+        int ui:nodegraph:realitykit:subgraphOutputs:stackingOrder = 46
+
+        def Shader "PreviewSurface"
+        {
+            uniform token info:id = "ND_UsdPreviewSurface_surfaceshader"
+            token outputs:out
+            float2 ui:nodegraph:node:pos = (93.5, 100.5)
+            int ui:nodegraph:node:stackingOrder = 45
+        }
+    }
+
+    def RealityKitComponent "RCP_BehaviorsContainer"
+    {
+        rel behaviors = </Root/OnAddedToScene>
+        uniform token info:id = "RCP.BehaviorsContainer"
+    }
+
+    def Preliminary_Behavior "OnAddedToScene"
+    {
+        rel actions = </Root/OnAddedToScene/Action>
+        uniform bool exclusive
+        rel triggers = </Root/OnAddedToScene/Trigger>
+
+        def Preliminary_Trigger "Trigger"
+        {
+            rel affectedObjects = </Root>
+            token info:id = "SceneTransition"
+        }
+
+        def Preliminary_Action "Action"
+        {
+            rel affectedObjects = </Root>
+            rel animationLibraryKey = </Root/Timeline>
+            rel animationLibraryKeyOverrideKey = </Root/OnAddedToScene/Trigger>
+            token info:id = "PlayTimeline"
+            int loops = 0
+            int performCount = 1
+            token type = "serial"
         }
     }
 }

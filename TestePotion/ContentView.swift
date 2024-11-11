@@ -11,23 +11,23 @@ import RealityKitContent
 
 struct ContentView: View {
     @State private var showText = false
-    @State private var clickedEntities: Set<UUID> = []
+    @State private var clickedEntities: Set<Entity> = []
     @State private var count = 0
 
     var body: some View {
         RealityView { content in
-            // Add the initial RealityKit content
             if let scene = try? await Entity(named: "Scene", in: realityKitContentBundle) {
                 scene.transform.scale = SIMD3<Float>(0.82, 0.82, 0.82)
                 content.add(scene)
             }
         }
         .gesture(TapGesture().targetedToAnyEntity().onEnded({ value in
-            _ = value.entity.applyTapForBehaviors()
-            handleTap()
+            if !clickedEntities.contains(value.entity) {
+                _ = value.entity.applyTapForBehaviors()
+                print(value.entity.name)
+            }
+            handleTap(entity: value.entity)
         }))
-        .gesture(DragGesture().targetedToAnyEntity())
-        
         
         if showText {
             Text("Hello, World!")
@@ -39,10 +39,9 @@ struct ContentView: View {
     }
     
     
-    private func handleTap() {
-        let entityUUID = UUID()
-        if !clickedEntities.contains(entityUUID) {
-            clickedEntities.insert(entityUUID)
+    private func handleTap(entity: Entity) {
+        if !clickedEntities.contains(entity) {
+            clickedEntities.insert(entity)
             count += 1
             print("clicou entidade, contador: \(count)")
             
