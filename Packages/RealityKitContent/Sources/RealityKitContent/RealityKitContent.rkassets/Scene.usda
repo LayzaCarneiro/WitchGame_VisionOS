@@ -13,7 +13,8 @@ def Xform "Root"
     rel material:binding = None (
         bindMaterialAs = "weakerThanDescendants"
     )
-    float3 xformOp:translate = (-0.17163174, -0.1238956, 0)
+    float3 xformOp:scale = (0.82, 0.82, 0.82)
+    float3 xformOp:translate = (-0.117252156, -0.25617117, 0)
     uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
     def Sphere "Sphere" (

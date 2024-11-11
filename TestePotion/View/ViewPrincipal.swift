@@ -15,6 +15,7 @@ struct ViewPrincipal: View {
         ZStack {
             RealityView { content in
                 if let scene = try? await Entity.load(named: "Scene", in: realityKitContentBundle) {
+                    
                     content.add(scene)
                 } else {
                     print("Erro ao carregar a cena.")
@@ -63,10 +64,10 @@ struct ViewPrincipal: View {
                                 .padding(.bottom, 20)
                         }
 
-                        Spacer()
+                        Spacer(minLength: geometry.size.height * 0.1)
                     }
                     .frame(width: geometry.size.width, height: geometry.size.height)
-                    .offset(x: 0, y: -geometry.size.height * 0.2)
+//                    .offset(x: 1, y: -geometry.size.height * 0.1)
                 }
             }
         }
