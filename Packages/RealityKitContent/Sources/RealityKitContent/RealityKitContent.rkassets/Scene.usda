@@ -13,6 +13,8 @@ def Xform "Root"
     rel material:binding = None (
         bindMaterialAs = "weakerThanDescendants"
     )
+    float3 xformOp:translate = (-0.17163174, -0.1238956, 0)
+    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
     def Sphere "Sphere" (
         active = true
@@ -166,6 +168,38 @@ def Xform "Root"
                 int loops = 0
                 int performCount = 1
                 token type = "serial"
+            }
+        }
+
+        over "Meshes"
+        {
+            over "Sketchfab_model"
+            {
+                over "_987bf64e4b64238a23f40d6bd8238e0_fbx"
+                {
+                    over "Object_2"
+                    {
+                        over "RootNode"
+                        {
+                            over "grp_potion_01"
+                            {
+                                over "SM_potionoOutter_01"
+                                {
+                                    over "SM_lable_01"
+                                    {
+                                        over "SM_lable_01_M_potion_01_0"
+                                        {
+                                            over "SM_lable_01_M_potion_01_0"
+                                            {
+                                                reorder nameChildren = ["SM_lable_01_M_potion_01_0", "SM_lable_01_M_potion_01_1"]
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
             }
         }
     }
@@ -433,6 +467,9 @@ def Xform "Root"
         active = true
     )
     {
+        float3 xformOp:translate = (0, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
         def "Stylized_Low_poly_Wood_Table_1" (
             active = true
             customData = {
