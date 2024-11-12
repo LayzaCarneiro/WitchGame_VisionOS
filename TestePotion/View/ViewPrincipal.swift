@@ -11,11 +11,16 @@ import RealityKitContent
 struct ViewPrincipal: View {
     @StateObject private var viewModel = ContentViewModel()
     private let defaultImage = "orc5"
+    
+    @State private var projectile: Entity? = nil
+    
     var body: some View {
         ZStack {
             RealityView { content in
                 if let scene = try? await Entity.load(named: "Scene", in: realityKitContentBundle) {
                     content.add(scene)
+                    traverseEntities(in: scene)
+                    
                 } else {
                     print("Erro ao carregar a cena.")
                 }
@@ -69,6 +74,14 @@ struct ViewPrincipal: View {
                     .offset(x: 0, y: -geometry.size.height * 0.2)
                 }
             }
+        }
+    }
+    
+    private func traverseEntities(in entity: Entity) {
+        print("Entidade: \(entity.name)")
+
+        for child in entity.children {
+            traverseEntities(in: child)
         }
     }
 }
