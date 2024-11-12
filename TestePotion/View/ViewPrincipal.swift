@@ -10,16 +10,19 @@ import RealityKitContent
 
 struct ViewPrincipal: View {
     @StateObject private var viewModel = ContentViewModel()
-    @State private var showDefaultImage = false
+    var count = 0
     private let defaultImage = "orc5"
-
     var body: some View {
         ZStack {
-            RealityView { content in
+             RealityView { content in
                 if let scene = try? await Entity.load(named: "Scene", in: realityKitContentBundle) {
                     content.add(scene)
+                    
                 } else {
                     print("Erro ao carregar a cena.")
+                }
+                func showClick(entityName: String) {
+                    Text("(Clicou na entidade: \(entityName), contador: \(viewModel.count))")
                 }
             }
             .gesture(TapGesture().targetedToAnyEntity().onEnded({ value in
@@ -27,20 +30,37 @@ struct ViewPrincipal: View {
                 let entityName = value.entity.name
                 viewModel.handleTap(entityName: entityName)
             }))
-
+            //            VStack {
+            //                         Spacer()
+            //                         Text("Contador de cliques: \(viewModel.count)")
+            //                             .font(.largeTitle)
+            //                             .fontWeight(.bold)
+            //                             .foregroundColor(.white)
+            //                             .padding()
+            //                             .background(Color.black.opacity(0.7))
+            //                             .cornerRadius(10)
+            //                             .padding(.bottom, 50)
+            //                     }
+            //                     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+            //                     .offset(y: -100)
+            //                 }
+            
+            
             if viewModel.isTextVisible {
+                
                 GeometryReader { geometry in
                     VStack {
-                        Spacer(minLength: geometry.size.height * 0.5)
-                        
+                        Spacer()
                         if let combination = viewModel.currentCombination,
                            let data = CombinationModel.combinationData[combination] {
+                            VStack {
+                                Image(data.imageName)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 200, height: 200)
+                                    
+                          
                             
-                            Image(data.imageName)
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 200, height: 200)
-                                .padding(.bottom, 10)
                             Text(data.message)
                                 .font(.title)
                                 .fontWeight(.bold)
@@ -49,6 +69,11 @@ struct ViewPrincipal: View {
                                 .background(Color.black.opacity(0.7))
                                 .cornerRadius(10)
                                 .transition(.opacity)
+                                .border(Color.red, width: 10)
+                        }
+                            .padding3D(.back, -130)
+                            .padding3D(.top, 200)
+                                
                                 .onAppear {
                                     DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
                                         withAnimation {
@@ -56,41 +81,65 @@ struct ViewPrincipal: View {
                                         }
                                     }
                                 }
+                            
+                            
+
                         } else {
                             VStack {
-                                Image(systemName: "questionmark.circle")
+                                Image(defaultImage)
                                     .resizable()
-                                    .frame(width: 100, height: 100)
-                                    .padding(.bottom, 10)
-
-                                Text(viewModel.displayedText)
+                                    .scaledToFit()
+                                    .frame(width: 200, height: 200)
+                                
+                                Text("Tente outra combinacao")
+                                    .frame(width:300, height: 100)
+                                    .font(.title)
                                     .fontWeight(.bold)
                                     .foregroundColor(.white)
-                                    .padding()
                                     .background(Color.black.opacity(0.7))
                                     .cornerRadius(10)
                                     .transition(.opacity)
+                                    .border(Color.red, width: 10)
                             }
-                            .padding(.top, 20)
+                                .padding3D(.back, -130)
+                                .padding3D(.top, 200)
 
-                            .onAppear {
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                                    withAnimation {
-                                        showDefaultImage = true
+                               
+                                .onAppear {
+                                    
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+                                        withAnimation {
+                                            viewModel.isTextVisible = false
+                                        }
                                     }
+                                    
                                 }
-                            }
+                            
                         }
+                        Spacer()
 
-                        Spacer(minLength: geometry.size.height * 0.05)
                     }
                     .frame(width: geometry.size.width, height: geometry.size.height)
+//                    .offset(x: 0, y: -geometry.size.height * 0.2)
                 }
             }
+            
+            
+            Text("Voce juntou: \(viewModel.count) pocoes")
+                .font(.headline)
+                .foregroundColor(.white)
+                .padding()
+                .background(Color.black.opacity(0.7))
+                .cornerRadius(10)
+                .padding3D(.back, -550)
+                .padding3D(.bottom, 300)
 
+            
         }
+      
     }
 }
+
 
 #Preview(windowStyle: .volumetric) {
     ViewPrincipal()
