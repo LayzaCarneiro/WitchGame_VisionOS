@@ -12,42 +12,42 @@ class ContentViewModel: ObservableObject {
     @Published var displayedText: String = ""
     @Published var isTextVisible: Bool = false
     @Published var clickedEntities: [String] = []
-    @Published var currentCombination: Set<String>? 
-    
+    @Published var currentCombination: Set<String>?
+
     private let combinationData = CombinationModel.combinationData
-    
+
     func handleTap(entityName: String) {
         count += 1
         print("Clicou na entidade: \(entityName), contador: \(count)")
-        
+
         clickedEntities.append(entityName)
         let entityNames = clickedEntities.joined(separator: ", ")
         displayedText = "Você clicou nas entidades: \(entityNames)"
         
-        if count == 3 {
+        if count >= 3 {
             generateCombination()
-            isTextVisible = true
-            reset()
         }
     }
-    
-    private func generateCombination() {
+
+    func generateCombination() {
         let clickedSet = Set(clickedEntities)
         
-        // Verifica se existe uma combinação para o conjunto clicado
         if let data = combinationData[clickedSet] {
             displayedText = data.message
             currentCombination = clickedSet
+            isTextVisible = true
         } else {
-            displayedText = "Combinação não reconhecida, tente novamente."
+            displayedText = "Tente outras combinações"
             currentCombination = nil
+            isTextVisible = true
         }
+        
+        
     }
-    
+
+
     private func reset() {
         count = 0
         clickedEntities = []
     }
 }
-
-

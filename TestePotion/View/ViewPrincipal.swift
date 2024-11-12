@@ -10,12 +10,13 @@ import RealityKitContent
 
 struct ViewPrincipal: View {
     @StateObject private var viewModel = ContentViewModel()
+    @State private var showDefaultImage = false
     private let defaultImage = "orc5"
+
     var body: some View {
         ZStack {
             RealityView { content in
                 if let scene = try? await Entity.load(named: "Scene", in: realityKitContentBundle) {
-                    
                     content.add(scene)
                 } else {
                     print("Erro ao carregar a cena.")
@@ -30,15 +31,16 @@ struct ViewPrincipal: View {
             if viewModel.isTextVisible {
                 GeometryReader { geometry in
                     VStack {
-                        Spacer()
+                        Spacer(minLength: geometry.size.height * 0.5)
+                        
                         if let combination = viewModel.currentCombination,
                            let data = CombinationModel.combinationData[combination] {
+                            
                             Image(data.imageName)
                                 .resizable()
                                 .scaledToFit()
                                 .frame(width: 200, height: 200)
-                                .padding(.bottom, 20)
-
+                                .padding(.bottom, 10)
                             Text(data.message)
                                 .font(.title)
                                 .fontWeight(.bold)
@@ -54,27 +56,41 @@ struct ViewPrincipal: View {
                                         }
                                     }
                                 }
-                        
-
                         } else {
-                            Image(defaultImage)
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 200, height: 200)
-                                .padding(.bottom, 20)
+                            VStack {
+                                Image(systemName: "questionmark.circle")
+                                    .resizable()
+                                    .frame(width: 100, height: 100)
+                                    .padding(.bottom, 10)
+
+                                Text(viewModel.displayedText)
+                                    .fontWeight(.bold)
+                                    .foregroundColor(.white)
+                                    .padding()
+                                    .background(Color.black.opacity(0.7))
+                                    .cornerRadius(10)
+                                    .transition(.opacity)
+                            }
+                            .padding(.top, 20)
+
+                            .onAppear {
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                                    withAnimation {
+                                        showDefaultImage = true
+                                    }
+                                }
+                            }
                         }
 
-                        Spacer(minLength: geometry.size.height * 0.1)
+                        Spacer(minLength: geometry.size.height * 0.05)
                     }
                     .frame(width: geometry.size.width, height: geometry.size.height)
-//                    .offset(x: 1, y: -geometry.size.height * 0.1)
                 }
             }
+
         }
     }
 }
-
-
 
 #Preview(windowStyle: .volumetric) {
     ViewPrincipal()
