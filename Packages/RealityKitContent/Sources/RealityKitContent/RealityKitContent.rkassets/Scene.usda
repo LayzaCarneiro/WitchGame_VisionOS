@@ -13,47 +13,9 @@ def Xform "Root"
     rel material:binding = None (
         bindMaterialAs = "weakerThanDescendants"
     )
-    float3 xformOp:translate = (-0.17163174, -0.1238956, 0)
+    float3 xformOp:scale = (0.82, 0.82, 0.82)
+    float3 xformOp:translate = (-0.09451778, -0.25617117, 0)
     uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
-
-    def Sphere "Sphere" (
-        active = true
-        prepend apiSchemas = ["MaterialBindingAPI"]
-        customData = {
-            float3 rotationEulerHint = (0, 3.2288592, 0)
-        }
-    )
-    {
-        reorder nameChildren = ["Collider", "InputTarget", "GridMaterial"]
-        rel material:binding = </Root/GridMaterial/GridMaterial> (
-            bindMaterialAs = "weakerThanDescendants"
-        )
-        double radius = 0.1
-        quatf xformOp:orient = (-0.043619424, 0, 0.99904823, 0)
-        float3 xformOp:scale = (0.5, 0.5, 0.5)
-        float3 xformOp:translate = (0.06963442, 0.46646276, -0.018104384)
-        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
-
-        def RealityKitComponent "Collider"
-        {
-            uint group = 1
-            uniform token info:id = "RealityKit.Collider"
-            uint mask = 4294967295
-            token type = "Default"
-
-            def RealityKitStruct "Shape"
-            {
-                float3 extent = (0.2, 0.2, 0.2)
-                float radius = 0.1
-                token shapeType = "Sphere"
-            }
-        }
-
-        def RealityKitComponent "InputTarget"
-        {
-            uniform token info:id = "RealityKit.InputTarget"
-        }
-    }
 
     def "GridMaterial" (
         active = true
@@ -61,20 +23,6 @@ def Xform "Root"
     )
     {
         float3 xformOp:scale = (1, 1, 1)
-        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
-    }
-
-    def "prateleira" (
-        active = true
-        customData = {
-            float3 rotationEulerHint = (0, 0, 0)
-        }
-        references = @prateleira.usdz@
-    )
-    {
-        quatf xformOp:orient = (1, 0, 0, 0)
-        float3 xformOp:scale = (0.002, 0.002, 0.002)
-        float3 xformOp:translate = (0.10381893, -0.18969963, -0.043421447)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
     }
 
@@ -486,69 +434,6 @@ def Xform "Root"
         float3 xformOp:translate = (0, 0, 0)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
-        def "Stylized_Low_poly_Wood_Table_1" (
-            active = true
-            customData = {
-                float3 rotationEulerHint = (0, 0, 0)
-            }
-            references = @Stylized_Low-poly_Wood_Table 1.usdz@
-        )
-        {
-            quatf xformOp:orient = (1, 0, 0, 0)
-            float3 xformOp:scale = (0.002, 0.001, 0.001)
-            float3 xformOp:translate = (0.1367797, -0.4782976, 0.3646081)
-            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
-
-            over "Meshes"
-            {
-                over "Sketchfab_model"
-                {
-                    over "Collada_visual_scene_group"
-                    {
-                        over "_00"
-                        {
-                            quatf xformOp:orient = (1, 0, 0, 0)
-                            float3 xformOp:scale = (0.33275, 0.8984251, 0.33275)
-                            float3 xformOp:translate = (0, 51.572357, -0.000061035156)
-                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
-                        }
-
-                        over "_02_001"
-                        {
-                            quatf xformOp:orient = (0.70710677, 0, -0.70710677, 0)
-                            float3 xformOp:scale = (0.99999994, 0.9999998, 0.99999976)
-                            float3 xformOp:translate = (-0.000957489, -49.68631, -0.0019683838)
-                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
-                        }
-
-                        over "_03_001"
-                        {
-                            quatf xformOp:orient = (0, 0, 1, -5e-7)
-                            float3 xformOp:scale = (0.99999994, 0.9999998, 0.99999976)
-                            float3 xformOp:translate = (0.0009498596, -49.68631, -0.000061035156)
-                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
-                        }
-
-                        over "_05_001"
-                        {
-                            quatf xformOp:orient = (0.7071071, 0, 0.7071064, 0)
-                            float3 xformOp:scale = (0.99999994, 0.9999998, 0.99999976)
-                            float3 xformOp:translate = (-0.000957489, -21.418243, -0.000061035156)
-                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
-                        }
-
-                        over "_04_001"
-                        {
-                            quatf xformOp:orient = (0, 5e-7, 1, 0)
-                            float3 xformOp:scale = (0.99999994, 0.9999998, 0.99999976)
-                            float3 xformOp:translate = (-0.000957489, -21.418243, -0.000061035156)
-                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
-                        }
-                    }
-                }
-            }
-        }
-
         def "witch_cauldron" (
             active = true
             customData = {
@@ -764,6 +649,69 @@ def Xform "Root"
                         float birthRate = 400
                         float dampingFactor = 80
                         float3 radialGravityCenter = (0, 1, 0)
+                    }
+                }
+            }
+        }
+
+        def "Stylized_Low_poly_Wood_Table_1" (
+            active = true
+            customData = {
+                float3 rotationEulerHint = (0, 0, 0)
+            }
+            references = @Stylized_Low-poly_Wood_Table 1.usdz@
+        )
+        {
+            quatf xformOp:orient = (1, 0, 0, 0)
+            float3 xformOp:scale = (0.002, 0.001, 0.001)
+            float3 xformOp:translate = (0.1367797, -0.4782976, 0.3646081)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            over "Meshes"
+            {
+                over "Sketchfab_model"
+                {
+                    over "Collada_visual_scene_group"
+                    {
+                        over "_00"
+                        {
+                            quatf xformOp:orient = (1, 0, 0, 0)
+                            float3 xformOp:scale = (0.33275, 0.8984251, 0.33275)
+                            float3 xformOp:translate = (0, 51.572357, -0.000061035156)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+
+                        over "_02_001"
+                        {
+                            quatf xformOp:orient = (0.70710677, 0, -0.70710677, 0)
+                            float3 xformOp:scale = (0.99999994, 0.9999998, 0.99999976)
+                            float3 xformOp:translate = (-0.000957489, -49.68631, -0.0019683838)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+
+                        over "_03_001"
+                        {
+                            quatf xformOp:orient = (0, 0, 1, -5e-7)
+                            float3 xformOp:scale = (0.99999994, 0.9999998, 0.99999976)
+                            float3 xformOp:translate = (0.0009498596, -49.68631, -0.000061035156)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+
+                        over "_05_001"
+                        {
+                            quatf xformOp:orient = (0.7071071, 0, 0.7071064, 0)
+                            float3 xformOp:scale = (0.99999994, 0.9999998, 0.99999976)
+                            float3 xformOp:translate = (-0.000957489, -21.418243, -0.000061035156)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+
+                        over "_04_001"
+                        {
+                            quatf xformOp:orient = (0, 5e-7, 1, 0)
+                            float3 xformOp:scale = (0.99999994, 0.9999998, 0.99999976)
+                            float3 xformOp:translate = (-0.000957489, -21.418243, -0.000061035156)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
                     }
                 }
             }
@@ -4223,6 +4171,20 @@ def Xform "Root"
                 rel timeline = </Root/addPotion7>
             }
         }
+    }
+
+    def "prateleira" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (0, 0, 0)
+        }
+        references = @prateleira.usdz@
+    )
+    {
+        quatf xformOp:orient = (1, 0, 0, 0)
+        float3 xformOp:scale = (0.002, 0.002, 0.002)
+        float3 xformOp:translate = (0.10381893, -0.18969963, -0.043421447)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
     }
 }
 

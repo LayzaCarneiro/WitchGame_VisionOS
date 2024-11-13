@@ -1,4 +1,3 @@
-//
 //  Model.swift
 //  TestePotion
 //
@@ -9,22 +8,57 @@ import Foundation
 
 struct EntityModel {
     let name: String
-//    UIIImagge[named:fairy1 ]
 }
 
 struct CombinationModel {
     static let combinationData: [Set<String>: (message: String, imageName: String)] = [
-        Set(["SM_potionoOutter_01_M_glass_0", "Potion_of_Healing_Glass_0", "Potion_1_low_Checker_0"]): (
-            "Você encontrou uma combinação poderosa entre SM_potionoOutter_01_M_glass_0, Potion_of_Healing_Glass_0 e Potion_1_low_Checker_0!",
-            "fairy1"),
-        Set(["Potion_1_low_Checker_0", "Potion_of_Healing_Glass_0", "defaultMaterial"]):
-            ("Potion_1_low_Checker_0, Potion_of_Healing_Glass_0 e defaultMaterial criaram algo novo e incrível!",
+        
+        // Combinações simples (poções comuns)
+        Set(["SM_potionoOutter_01_M_glass_0", "botle_low_Botle_0", "Potion_of_Healing_Glass_0"]):
+            ("Você criou a Poção da Cura Suprema, restaurando forças de maneira incrível!",
              "fairy2"),
-        Set(["SM_potionoOutter_01_M_glass_0", "Potion_of_Healing_Glass_0", "defaultMaterial"]): ("SM_potionoOutter_01_M_glass_0, Potion_of_Healing_Glass_0 e defaultMaterial fazem a combinação perfeita!",
+        Set(["SM_potionoOutter_01_M_glass_0", "Potion_of_Healing_Glass_0", "Potion_1_low_Checker_0"]): (
+            "Encontrou uma combinação poderosa, que fortalece a cura!",
+            "orc5"),
+        Set(["defaultMaterial", "Object_1", "Life_low_Life_0"]): (
+            "A Poção da Cura Avançada foi criada, com poder revitalizante!",
+            "fairy1"),
+        Set(["Magic_Potion_Magic_Potion1_0", "CrystalOne_LP_Material__1_0", "Life_low_Life_0"]): (
+            "Criou uma Poção Misteriosa, com efeitos desconhecidos!",
+            "teste"),
+        Set(["Potion_of_Healing_Glass_0", "Potion_1_low_Checker_0", "Life_low_Life_0"]): (
+            "A Poção Curativa foi formada, trazendo um poder imenso de regeneração!",
+            "fairy1"),
+        
+        // Combinações intermediárias (poções de efeito mais complexo)
+        Set(["SM_potionoOutter_01_M_glass_0", "Potion_of_Healing_Glass_0", "defaultMaterial"]): (
+            "A Poção da Cura Perfeita foi criada, ideal para restaurar energias!",
             "elfo3"),
-        Set(["SM_potionoOutter_01_M_glass_0", "Potion_1_low_Checker_0", "defaultMaterial"]): ("SM_potionoOutter_01_M_glass_0,Potion_1_low_Checker_0 e defaultMaterial estão ligados por uma força especial!", "gnomo4")
+        Set(["SM_potionoOutter_01_M_glass_0", "Potion_1_low_Checker_0", "defaultMaterial"]): (
+            "Combinou ingredientes raros, criando uma Poção do Poder Secreto!",
+            "gnomo4"),
+        Set(["Central_Rope_Central_Rope_0", "Potion_of_Healing_Glass_0", "Potion_1_low_Checker_0"]): (
+            "A Poção da Força Misteriosa foi formada, com poderes de proteção!",
+            "gnomo5"),
+        Set(["Central_Rope_Central_Rope_0", "Potion_1_low_Checker_0", "defaultMaterial"]): (
+            "Criou a Poção da Conexão Elementar, unindo forças mágicas!",
+            "elfo2"),
+        Set(["Central_Rope_Central_Rope_0", "Life_low_Life_0", "Potion_of_Healing_Glass_0"]): (
+            "Combinou forças vitais, criando a Poção da Cura Vital!",
+            "fairy2"),
+
+        // Combinações avançadas (poções raras e poderosas)
+        Set(["SM_potionoOutter_01_M_glass_0", "Potion_1_low_Checker_0", "CrystalOne_LP_Material__1_0"]): (
+            "Você criou a Poção da Magia Eterna, que traz um poder imensurável!",
+            "fairy1"),
+        Set(["Central_Rope_copy1_Central_Rope_copy1_0", "Potion_1_low_Checker_0", "defaultMaterial"]): (
+            "Formou a Poção da Alma Indomável, com uma força ilimitada!",
+            "fairy1"),
+        Set(["CrystalOne_LP_Material__1_0", "Potion_of_Healing_Glass_0", "defaultMaterial"]): (
+            "Combinou a Poção da Energia Mística, poderosa e rara!",
+            "fairy1"),
+        Set(["Life_low_Life_0", "Potion_1_low_Checker_0", "defaultMaterial"]): (
+            "Criou a Poção da Força Vital, que restaura a vida e a energia!",
+            "fairy1")
     ]
 }
-
-
-
