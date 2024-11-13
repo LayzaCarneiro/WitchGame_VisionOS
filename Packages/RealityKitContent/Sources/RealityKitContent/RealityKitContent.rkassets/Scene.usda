@@ -9,51 +9,13 @@ reorder rootPrims = ["Root", "GridMaterial"]
 
 def Xform "Root"
 {
-    reorder nameChildren = ["GridMaterial", "Sphere", "addPotion1", "addPotion2", "addPotion3", "addPotion4", "addPotion5", "addPotion6", "addPotion7", "addPotion8", "addPotion9", "Timeline", "cauldronMovement"]
+    reorder nameChildren = ["GridMaterial", "Sphere", "addPotion1", "addPotion2", "addPotion3", "addPotion4", "addPotion5", "addPotion6", "addPotion7", "addPotion8", "addPotion9", "Timeline", "cauldronMovement", "testesPosicao"]
     rel material:binding = None (
         bindMaterialAs = "weakerThanDescendants"
     )
-    float3 xformOp:translate = (-0.17163174, -0.1238956, 0)
+    float3 xformOp:scale = (0.82, 0.82, 0.82)
+    float3 xformOp:translate = (-0.09451778, -0.25617117, 0)
     uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
-
-    def Sphere "Sphere" (
-        active = true
-        prepend apiSchemas = ["MaterialBindingAPI"]
-        customData = {
-            float3 rotationEulerHint = (0, 3.2288592, 0)
-        }
-    )
-    {
-        reorder nameChildren = ["Collider", "InputTarget", "GridMaterial"]
-        rel material:binding = </Root/GridMaterial/GridMaterial> (
-            bindMaterialAs = "weakerThanDescendants"
-        )
-        double radius = 0.1
-        quatf xformOp:orient = (-0.043619424, 0, 0.99904823, 0)
-        float3 xformOp:scale = (0.5, 0.5, 0.5)
-        float3 xformOp:translate = (0.06963442, 0.46646276, -0.018104384)
-        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
-
-        def RealityKitComponent "Collider"
-        {
-            uint group = 1
-            uniform token info:id = "RealityKit.Collider"
-            uint mask = 4294967295
-            token type = "Default"
-
-            def RealityKitStruct "Shape"
-            {
-                float3 extent = (0.2, 0.2, 0.2)
-                float radius = 0.1
-                token shapeType = "Sphere"
-            }
-        }
-
-        def RealityKitComponent "InputTarget"
-        {
-            uniform token info:id = "RealityKit.InputTarget"
-        }
-    }
 
     def "GridMaterial" (
         active = true
@@ -61,20 +23,6 @@ def Xform "Root"
     )
     {
         float3 xformOp:scale = (1, 1, 1)
-        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
-    }
-
-    def "prateleira" (
-        active = true
-        customData = {
-            float3 rotationEulerHint = (0, 0, 0)
-        }
-        references = @prateleira.usdz@
-    )
-    {
-        quatf xformOp:orient = (1, 0, 0, 0)
-        float3 xformOp:scale = (0.002, 0.002, 0.002)
-        float3 xformOp:translate = (0.10381893, -0.18969963, -0.043421447)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
     }
 
@@ -200,6 +148,20 @@ def Xform "Root"
                         }
                     }
                 }
+            }
+        }
+
+        def RealityKitComponent "AudioLibrary"
+        {
+            uniform token info:id = "RealityKit.AudioLibrary"
+
+            def RealityKitDict "resources"
+            {
+                string[] keys = ["viscous-liquid-fall-in-83980.mp3", "quick-pour-86306.mp3"]
+                rel values = [
+                    </Root/viscous_liquid_fall_in_83980_mp3>,
+                    </Root/quick_pour_86306_mp32>,
+                ]
             }
         }
     }
@@ -437,7 +399,9 @@ def Xform "Root"
             }
         }
 
-        def RealityKitComponent "VFXEmitter"
+        def RealityKitComponent "VFXEmitter" (
+            active = false
+        )
         {
             uniform token info:id = "RealityKit.VFXEmitter"
 
@@ -469,69 +433,6 @@ def Xform "Root"
     {
         float3 xformOp:translate = (0, 0, 0)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
-
-        def "Stylized_Low_poly_Wood_Table_1" (
-            active = true
-            customData = {
-                float3 rotationEulerHint = (0, 0, 0)
-            }
-            references = @Stylized_Low-poly_Wood_Table 1.usdz@
-        )
-        {
-            quatf xformOp:orient = (1, 0, 0, 0)
-            float3 xformOp:scale = (0.002, 0.001, 0.001)
-            float3 xformOp:translate = (0.1367797, -0.4782976, 0.3646081)
-            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
-
-            over "Meshes"
-            {
-                over "Sketchfab_model"
-                {
-                    over "Collada_visual_scene_group"
-                    {
-                        over "_00"
-                        {
-                            quatf xformOp:orient = (1, 0, 0, 0)
-                            float3 xformOp:scale = (0.33275, 0.8984251, 0.33275)
-                            float3 xformOp:translate = (0, 51.572357, -0.000061035156)
-                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
-                        }
-
-                        over "_02_001"
-                        {
-                            quatf xformOp:orient = (0.70710677, 0, -0.70710677, 0)
-                            float3 xformOp:scale = (0.99999994, 0.9999998, 0.99999976)
-                            float3 xformOp:translate = (-0.000957489, -49.68631, -0.0019683838)
-                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
-                        }
-
-                        over "_03_001"
-                        {
-                            quatf xformOp:orient = (0, 0, 1, -5e-7)
-                            float3 xformOp:scale = (0.99999994, 0.9999998, 0.99999976)
-                            float3 xformOp:translate = (0.0009498596, -49.68631, -0.000061035156)
-                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
-                        }
-
-                        over "_05_001"
-                        {
-                            quatf xformOp:orient = (0.7071071, 0, 0.7071064, 0)
-                            float3 xformOp:scale = (0.99999994, 0.9999998, 0.99999976)
-                            float3 xformOp:translate = (-0.000957489, -21.418243, -0.000061035156)
-                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
-                        }
-
-                        over "_04_001"
-                        {
-                            quatf xformOp:orient = (0, 5e-7, 1, 0)
-                            float3 xformOp:scale = (0.99999994, 0.9999998, 0.99999976)
-                            float3 xformOp:translate = (-0.000957489, -21.418243, -0.000061035156)
-                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
-                        }
-                    }
-                }
-            }
-        }
 
         def "witch_cauldron" (
             active = true
@@ -752,6 +653,69 @@ def Xform "Root"
                 }
             }
         }
+
+        def "Stylized_Low_poly_Wood_Table_1" (
+            active = true
+            customData = {
+                float3 rotationEulerHint = (0, 0, 0)
+            }
+            references = @Stylized_Low-poly_Wood_Table 1.usdz@
+        )
+        {
+            quatf xformOp:orient = (1, 0, 0, 0)
+            float3 xformOp:scale = (0.002, 0.001, 0.001)
+            float3 xformOp:translate = (0.1367797, -0.4782976, 0.3646081)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            over "Meshes"
+            {
+                over "Sketchfab_model"
+                {
+                    over "Collada_visual_scene_group"
+                    {
+                        over "_00"
+                        {
+                            quatf xformOp:orient = (1, 0, 0, 0)
+                            float3 xformOp:scale = (0.33275, 0.8984251, 0.33275)
+                            float3 xformOp:translate = (0, 51.572357, -0.000061035156)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+
+                        over "_02_001"
+                        {
+                            quatf xformOp:orient = (0.70710677, 0, -0.70710677, 0)
+                            float3 xformOp:scale = (0.99999994, 0.9999998, 0.99999976)
+                            float3 xformOp:translate = (-0.000957489, -49.68631, -0.0019683838)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+
+                        over "_03_001"
+                        {
+                            quatf xformOp:orient = (0, 0, 1, -5e-7)
+                            float3 xformOp:scale = (0.99999994, 0.9999998, 0.99999976)
+                            float3 xformOp:translate = (0.0009498596, -49.68631, -0.000061035156)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+
+                        over "_05_001"
+                        {
+                            quatf xformOp:orient = (0.7071071, 0, 0.7071064, 0)
+                            float3 xformOp:scale = (0.99999994, 0.9999998, 0.99999976)
+                            float3 xformOp:translate = (-0.000957489, -21.418243, -0.000061035156)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+
+                        over "_04_001"
+                        {
+                            quatf xformOp:orient = (0, 5e-7, 1, 0)
+                            float3 xformOp:scale = (0.99999994, 0.9999998, 0.99999976)
+                            float3 xformOp:translate = (-0.000957489, -21.418243, -0.000061035156)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+                    }
+                }
+            }
+        }
     }
 
     def "Stylized_Low_poly_Wood_Table_1"
@@ -788,7 +752,7 @@ def Xform "Root"
 
     def RealityKitTimeline "addPotion1"
     {
-        reorder nameChildren = ["Track", "Track3"]
+        reorder nameChildren = ["Track", "Track3", "Track2"]
         def RealityKitTrack "Track"
         {
             reorder nameChildren = ["Transform_By", "Spin", "Spin2", "Transform_By2"]
@@ -889,15 +853,6 @@ def Xform "Root"
                 {
                 }
             }
-
-            def RealityKitAction "Disable_Entity"
-            {
-                string actionKind = "disable"
-                double duration = 0
-                uniform token info:id = "F28803B9-B2DE-47EB-8093-6716BFE8AD61"
-                double startTime = 5.5185098581392165
-                rel target = </Root/Potion/Meshes/Sketchfab_model/_987bf64e4b64238a23f40d6bd8238e0_fbx/Object_2/RootNode/grp_potion_01/SM_potionoOutter_01/SM_potionLiquid_01>
-            }
         }
 
         def RealityKitTrack "Track3"
@@ -971,21 +926,67 @@ def Xform "Root"
                 }
             }
         }
+
+        def RealityKitTrack "Track2"
+        {
+            def RealityKitAction "Play_Audio"
+            {
+                string actionKind = "audio"
+                string audioResourceName = "quick-pour-86306.mp3"
+                bool controlPlayback = 1
+                double duration = 1.1327449412477444
+                double gain = -7.81005859375
+                uniform token info:id = "97314951-BA14-4319-8C93-67B259816D93"
+                double startTime = 2.0366942553703646
+                rel target = </Root/Potion>
+
+                def RealityKitStruct "handoffType"
+                {
+                }
+            }
+        }
     }
 
     def RealityKitTimeline "Timeline"
     {
-        reorder nameChildren = ["Track5", "Track", "Track2", "Track3", "Track4"]
+        reorder nameChildren = ["Track5", "Track", "Track3"]
         def RealityKitTrack "Track"
         {
-        }
+            def RealityKitAction "Play_Audio"
+            {
+                string actionKind = "audio"
+                string audioResourceName = "water-bubbles-257594.mp3"
+                bool controlPlayback = 1
+                double duration = 34.03754166666667
+                double gain = -3.7589518229166714
+                uniform token info:id = "681128FD-2F2F-48CE-AC67-C3EBDE1F2C09"
+                double loopCount = 0
+                double startTime = 0
+                rel target = </Root>
 
-        def RealityKitTrack "Track2"
-        {
+                def RealityKitStruct "handoffType"
+                {
+                }
+            }
         }
 
         def RealityKitTrack "Track3"
         {
+            def RealityKitAction "Play_Audio"
+            {
+                string actionKind = "audio"
+                string audioResourceName = "creepy-halloween-melody-v2-258509.mp3"
+                bool controlPlayback = 1
+                double duration = 10.7101875
+                uniform token info:id = "47FAED93-1889-4507-A2A2-40FBC747D0F6"
+                double loopCount = 0
+                double startTime = 0
+                rel target = </Root>
+
+                def RealityKitStruct "handoffType"
+                {
+                }
+            }
         }
 
         def RealityKitTrack "Track5"
@@ -1005,7 +1006,7 @@ def Xform "Root"
 
     def RealityKitTimeline "addPotion3"
     {
-        reorder nameChildren = ["Track", "Track3", "Track2"]
+        reorder nameChildren = ["Track", "Track3", "Track2", "Track4"]
         float2 ui:nodegraph:node:pos = (20, 20)
         int ui:nodegraph:node:stackingOrder = 1
 
@@ -1199,8 +1200,29 @@ def Xform "Root"
                 string actionKind = "enable"
                 double duration = 0
                 uniform token info:id = "8F53A5ED-1D04-4797-BAE2-FE9A3DCAC6FF"
-                double startTime = 0
+                double startTime = 5.791589048566086
                 rel target = </Root/Potion_Of_Healing_Dungeons_and_Dragons_2/Meshes/Sketchfab_model/Potion_of_Healing_FBX/RootNode/Potion_of_Healing/Object_4/Potion_of_Healing_Potion_0>
+            }
+        }
+
+        def RealityKitTrack "Track4"
+        {
+            def RealityKitAction "Play_Audio"
+            {
+                string actionKind = "audio"
+                string audioResourceName = "quick-pour-86306.mp3"
+                bool controlPlayback = 1
+                double duration = 1.167099927426341
+                double gain = -7.81005859375
+                uniform token info:id = "97314951-BA14-4319-8C93-67B259816D93"
+                double startTime = 2.3129724516367576
+                rel target = </Root/Potion>
+                float2 ui:nodegraph:node:pos = (20, 20)
+                int ui:nodegraph:node:stackingOrder = 1
+
+                def RealityKitStruct "handoffType"
+                {
+                }
             }
         }
     }
@@ -1384,11 +1406,53 @@ def Xform "Root"
                 }
             }
         }
+
+        def RealityKitTrack "Track2"
+        {
+            def RealityKitAction "Disable_Entity"
+            {
+                string actionKind = "disable"
+                double duration = 0
+                uniform token info:id = "F11C28FC-3105-4D82-BD25-AAD47A65A0B3"
+                double startTime = 2.0627823879239773
+                rel target = </Root/potion1/Meshes/Sketchfab_model/_7112b6ee82d49c983c7694832a1cb47_fbx/RootNode/water_1_low>
+            }
+
+            def RealityKitAction "Enable_Entity"
+            {
+                string actionKind = "enable"
+                double duration = 0
+                uniform token info:id = "B55B3949-ABAB-4D8B-9FAE-DF92AB76406E"
+                double startTime = 5.149781682310836
+                rel target = </Root/potion1/Meshes/Sketchfab_model/_7112b6ee82d49c983c7694832a1cb47_fbx/RootNode/water_1_low>
+            }
+        }
+
+        def RealityKitTrack "Track4"
+        {
+            def RealityKitAction "Play_Audio"
+            {
+                string actionKind = "audio"
+                string audioResourceName = "quick-pour-86306.mp3"
+                bool controlPlayback = 1
+                double duration = 1.167099927426341
+                double gain = -7.81005859375
+                uniform token info:id = "97314951-BA14-4319-8C93-67B259816D93"
+                double startTime = 1.7750037936278549
+                rel target = </Root/Potion>
+                float2 ui:nodegraph:node:pos = (40, 40)
+                int ui:nodegraph:node:stackingOrder = 2
+
+                def RealityKitStruct "handoffType"
+                {
+                }
+            }
+        }
     }
 
     def RealityKitTimeline "addPotion5"
     {
-        reorder nameChildren = ["Track", "Track3", "Track2", "Track5", "Track4"]
+        reorder nameChildren = ["Track", "Track3", "Track4", "Track2"]
         float2 ui:nodegraph:node:pos = (60, 60)
         int ui:nodegraph:node:stackingOrder = 3
 
@@ -1416,7 +1480,7 @@ def Xform "Root"
                 int blendLayer = 400
                 double duration = 0.883
                 uniform token info:id = "D74ADE54-7B93-49CD-B543-CB313D38C79F"
-                float3 localAxis = (1, 0, 0)
+                float3 localAxis = (1, 0.4, 0)
                 float revolutions = 0.28
                 double startTime = 1.886
                 rel target = </Root/Potions_Bottle>
@@ -1451,7 +1515,7 @@ def Xform "Root"
                 int blendLayer = 300
                 double duration = 0.7528269917395684
                 uniform token info:id = "06CB4F89-FB3C-49CF-AA56-15599448F9D6"
-                float3 position = (690.1947, -153.45125, -119.59272)
+                float3 position = (569.1748, -199.65074, -119.59114)
                 double startTime = 0.48247298287267193
                 rel target = </Root/Potions_Bottle>
                 float2 ui:nodegraph:node:pos = (20, 20)
@@ -1499,6 +1563,23 @@ def Xform "Root"
 
         def RealityKitTrack "Track4"
         {
+            def RealityKitAction "Enable_Entity"
+            {
+                string actionKind = "enable"
+                double duration = 0
+                uniform token info:id = "7508E9E7-4D8D-4332-8939-AC73A8AF7BF1"
+                double startTime = 5.4743858967134695
+                rel target = </Root/Potions_Bottle/Meshes/Sketchfab_model/Collada_visual_scene_group/insides_low>
+            }
+
+            def RealityKitAction "Disable_Entity"
+            {
+                string actionKind = "disable"
+                double duration = 0
+                uniform token info:id = "FBECD9A2-C06B-4933-A2AB-4B8356B67201"
+                double startTime = 2.504701459205997
+                rel target = </Root/Potions_Bottle/Meshes/Sketchfab_model/Collada_visual_scene_group/insides_low>
+            }
         }
 
         def RealityKitTrack "Track3"
@@ -1525,7 +1606,7 @@ def Xform "Root"
                 int blendLayer = 400
                 double duration = 0.8825188921315129
                 uniform token info:id = "D74ADE54-7B93-49CD-B543-CB313D38C79F"
-                float3 localAxis = (1, 0, 0)
+                float3 localAxis = (1, 0.4, 0)
                 float revolutions = -0.28
                 double startTime = 1.886047165079349
                 rel target = </Root/Potions_Bottle/Meshes/Sketchfab_model/Collada_visual_scene_group/cork_low>
@@ -1573,11 +1654,32 @@ def Xform "Root"
                 }
             }
         }
+
+        def RealityKitTrack "Track2"
+        {
+            def RealityKitAction "Play_Audio"
+            {
+                string actionKind = "audio"
+                string audioResourceName = "quick-pour-86306.mp3"
+                bool controlPlayback = 1
+                double duration = 1.167099927426341
+                double gain = -7.81005859375
+                uniform token info:id = "97314951-BA14-4319-8C93-67B259816D93"
+                double startTime = 2.2039045164953985
+                rel target = </Root/Potion>
+                float2 ui:nodegraph:node:pos = (40, 40)
+                int ui:nodegraph:node:stackingOrder = 2
+
+                def RealityKitStruct "handoffType"
+                {
+                }
+            }
+        }
     }
 
     def RealityKitTimeline "addPotion2"
     {
-        reorder nameChildren = ["Track", "Track4", "Track2", "Track3", "Track5", "Track6"]
+        reorder nameChildren = ["Track", "Track4", "Track2", "Track3", "Track5", "Track6", "Track7"]
         float2 ui:nodegraph:node:pos = (80, 80)
         int ui:nodegraph:node:stackingOrder = 4
 
@@ -1757,7 +1859,7 @@ def Xform "Root"
 
         def RealityKitTrack "Track2"
         {
-            reorder nameChildren = ["Transform_By", "Transform_By3", "Spin"]
+            reorder nameChildren = ["Transform_By", "Transform_By3", "Spin", "Hide"]
             def RealityKitAction "Transform_By"
             {
                 string actionKind = "moveBy"
@@ -1809,6 +1911,24 @@ def Xform "Root"
                 {
                 }
             }
+
+            def RealityKitAction "Spin2"
+            {
+                string actionKind = "spin"
+                int blendLayer = 400
+                double duration = 0.7871570409009836
+                uniform token info:id = "DAF17079-71BE-4500-8D87-C8F05B7FE562"
+                float3 localAxis = (1, 0, 0)
+                float revolutions = 0.3
+                double startTime = 5.0570546737415105
+                rel target = </Root/Lowpoly_Mushrooms/Meshes/Sketchfab_model/mushrooms_fbx/RootNode/mushroom_12>
+                float2 ui:nodegraph:node:pos = (60, 60)
+                int ui:nodegraph:node:stackingOrder = 3
+
+                def RealityKitStruct "timingFunction"
+                {
+                }
+            }
         }
 
         def RealityKitTrack "Track3"
@@ -1823,6 +1943,89 @@ def Xform "Root"
                 float3 position = (-0.000034332275, -1.1847343, -0.40432644)
                 double startTime = 2.500172405004814
                 rel target = </Root/Lowpoly_Mushrooms/Meshes/Sketchfab_model/mushrooms_fbx/RootNode/mushroom_12>
+
+                def RealityKitStruct "timingFunction"
+                {
+                }
+            }
+
+            def RealityKitAction "Transform_By2"
+            {
+                string actionKind = "moveBy"
+                int blendLayer = 300
+                double duration = 0.3075125890105663
+                uniform token info:id = "9BB7AC10-3739-44F1-BFB5-6E6225C125E3"
+                float3 position = (0.00001, 0, 0.78035)
+                double startTime = 4.844108031247354
+                rel target = </Root/Lowpoly_Mushrooms/Meshes/Sketchfab_model/mushrooms_fbx/RootNode/mushroom_12>
+
+                def RealityKitStruct "timingFunction"
+                {
+                }
+            }
+
+            def RealityKitAction "Transform_By22"
+            {
+                string actionKind = "moveBy"
+                int blendLayer = 300
+                double duration = 0.3053822611753812
+                uniform token info:id = "6F9EC987-6632-4B0A-9F73-15D335CA0FCF"
+                float3 position = (0.00001, 1.04951, 1.21948)
+                double startTime = 5.151620620357921
+                rel target = </Root/Lowpoly_Mushrooms/Meshes/Sketchfab_model/mushrooms_fbx/RootNode/mushroom_12>
+                float2 ui:nodegraph:node:pos = (40, 40)
+                int ui:nodegraph:node:stackingOrder = 2
+
+                def RealityKitStruct "timingFunction"
+                {
+                }
+            }
+
+            def RealityKitAction "Transform_By3"
+            {
+                string actionKind = "moveBy"
+                int blendLayer = 300
+                double duration = 0.2766935034823942
+                uniform token info:id = "6F9EC987-6632-4B0A-9F73-15D335CA0FCF"
+                float3 position = (0.00003, 1.18473, 0.40433)
+                double startTime = 5.4570028816333025
+                rel target = </Root/Lowpoly_Mushrooms/Meshes/Sketchfab_model/mushrooms_fbx/RootNode/mushroom_12>
+                float2 ui:nodegraph:node:pos = (20, 20)
+                int ui:nodegraph:node:stackingOrder = 1
+
+                def RealityKitStruct "timingFunction"
+                {
+                }
+            }
+
+            def RealityKitAction "Transform_By32"
+            {
+                string actionKind = "moveBy"
+                int blendLayer = 300
+                double duration = 0.4411750362623022
+                uniform token info:id = "EA6ED5FF-6AA9-42FD-880A-021FF5A119A9"
+                float3 position = (-0.74331, 3.34221, 6.66812)
+                double startTime = 5.733696385215697
+                rel target = </Root/Lowpoly_Mushrooms/Meshes/Sketchfab_model/mushrooms_fbx/RootNode/mushroom_12>
+                float2 ui:nodegraph:node:pos = (40, 40)
+                int ui:nodegraph:node:stackingOrder = 2
+
+                def RealityKitStruct "timingFunction"
+                {
+                }
+            }
+
+            def RealityKitAction "Transform_By4"
+            {
+                string actionKind = "moveBy"
+                int blendLayer = 300
+                double duration = 0.5
+                uniform token info:id = "7BA4A479-4A7B-458A-A2E1-2C68EC61EF77"
+                float3 position = (4.7683716e-7, 1.86696, 0.0000019073486)
+                double startTime = 6.174871421577999
+                rel target = </Root/Lowpoly_Mushrooms/Meshes/Sketchfab_model/mushrooms_fbx/RootNode/mushroom_12>
+                float2 ui:nodegraph:node:pos = (40, 40)
+                int ui:nodegraph:node:stackingOrder = 2
 
                 def RealityKitStruct "timingFunction"
                 {
@@ -1864,14 +2067,49 @@ def Xform "Root"
                 {
                 }
             }
+        }
+
+        def RealityKitTrack "Track6"
+        {
+            def RealityKitAction "Play_Audio"
+            {
+                string actionKind = "audio"
+                string audioResourceName = "viscous-liquid-fall-in-83980.mp3"
+                bool controlPlayback = 1
+                double duration = 0.8367091046882318
+                double gain = -7.81005859375
+                uniform token info:id = "97314951-BA14-4319-8C93-67B259816D93"
+                double startTime = 3.07300078324547
+                rel target = </Root/Crystal>
+                float2 ui:nodegraph:node:pos = (100, 100)
+                int ui:nodegraph:node:stackingOrder = 5
+
+                def RealityKitStruct "handoffType"
+                {
+                }
+            }
 
             def RealityKitAction "Hide"
             {
                 string actionKind = "hide"
                 int blendLayer = 300
-                double duration = 1.9824894683401777
-                uniform token info:id = "D31F8FEC-A832-41D3-A1D1-092E56F24FE9"
-                double startTime = 4.854793664601747
+                double duration = 0.19863918662325108
+                uniform token info:id = "A0CCF716-D7D0-4C20-B2DC-DA2B659FDEBF"
+                double startTime = 4.767215839671255
+                rel target = </Root/Lowpoly_Mushrooms/Meshes/Sketchfab_model/mushrooms_fbx/RootNode/mushroom_12>
+
+                def RealityKitStruct "timingFunction"
+                {
+                }
+            }
+
+            def RealityKitAction "Show"
+            {
+                string actionKind = "show"
+                int blendLayer = 300
+                double duration = 1.1560072877143701
+                uniform token info:id = "12FA3521-CD51-46D9-B08F-705DB6E1B04F"
+                double startTime = 6.438136623435221
                 rel target = </Root/Lowpoly_Mushrooms/Meshes/Sketchfab_model/mushrooms_fbx/RootNode/mushroom_12>
 
                 def RealityKitStruct "timingFunction"
@@ -1883,7 +2121,7 @@ def Xform "Root"
 
     def RealityKitTimeline "addPotion6"
     {
-        reorder nameChildren = ["Track6", "Track", "Track3", "Track2", "Track5", "Track4"]
+        reorder nameChildren = ["Track", "Track3", "Track4", "Track2", "Track2"]
         float2 ui:nodegraph:node:pos = (100, 100)
         int ui:nodegraph:node:stackingOrder = 5
 
@@ -1996,6 +2234,24 @@ def Xform "Root"
 
         def RealityKitTrack "Track4"
         {
+            reorder nameChildren = ["Disable_Entity", "Enable_Entity"]
+            def RealityKitAction "Disable_Entity"
+            {
+                string actionKind = "disable"
+                double duration = 0
+                uniform token info:id = "53ADFC33-E6F8-435E-A7FF-6C9B4B73A583"
+                double startTime = 2.3497639486463004
+                rel target = </Root/Mana_Potion/Meshes/Sketchfab_model/potion_lp_obj_cleaner_materialmerger_gles/Object_4>
+            }
+
+            def RealityKitAction "Enable_Entity"
+            {
+                string actionKind = "enable"
+                double duration = 0
+                uniform token info:id = "4BCF11EC-9224-4FC9-9929-610F0F4DBFB2"
+                double startTime = 5.469608758949138
+                rel target = </Root/Mana_Potion/Meshes/Sketchfab_model/potion_lp_obj_cleaner_materialmerger_gles/Object_4>
+            }
         }
 
         def RealityKitTrack "Track3"
@@ -2070,11 +2326,32 @@ def Xform "Root"
                 }
             }
         }
+
+        def RealityKitTrack "Track2"
+        {
+            def RealityKitAction "Play_Audio"
+            {
+                string actionKind = "audio"
+                string audioResourceName = "quick-pour-86306.mp3"
+                bool controlPlayback = 1
+                double duration = 0.9839219040821572
+                double gain = -7.81005859375
+                uniform token info:id = "97314951-BA14-4319-8C93-67B259816D93"
+                double startTime = 2.2039045164953985
+                rel target = </Root/Potion>
+                float2 ui:nodegraph:node:pos = (60, 60)
+                int ui:nodegraph:node:stackingOrder = 3
+
+                def RealityKitStruct "handoffType"
+                {
+                }
+            }
+        }
     }
 
     def RealityKitTimeline "addPotion7"
     {
-        reorder nameChildren = ["Track6", "Track", "Track3", "Track2", "Track5", "Track4", "Track2", "Track2", "Track2"]
+        reorder nameChildren = ["Track", "Track3", "Track4", "Track2"]
         float2 ui:nodegraph:node:pos = (120, 120)
         int ui:nodegraph:node:stackingOrder = 6
 
@@ -2102,7 +2379,7 @@ def Xform "Root"
                 int blendLayer = 300
                 double duration = 0.7528269917395684
                 uniform token info:id = "06CB4F89-FB3C-49CF-AA56-15599448F9D6"
-                float3 position = (20.039898, -0.0000076293945, 48.059196)
+                float3 position = (23.687656, -0.0000071525574, 56.753483)
                 double startTime = 0.48247298287267193
                 rel target = </Root/Magic_Potion>
                 float2 ui:nodegraph:node:pos = (20, 20)
@@ -2119,7 +2396,7 @@ def Xform "Root"
                 int blendLayer = 400
                 double duration = 0.883
                 uniform token info:id = "D74ADE54-7B93-49CD-B543-CB313D38C79F"
-                float3 localAxis = (0, 0, 1)
+                float3 localAxis = (0, -0.4, 1)
                 float revolutions = 0.25
                 double startTime = 1.886
                 rel target = </Root/Magic_Potion>
@@ -2138,7 +2415,7 @@ def Xform "Root"
                 double duration = 0.883
                 uniform token info:id = "D74ADE54-7B93-49CD-B543-CB313D38C79F"
                 bool isActive = 1
-                float3 localAxis = (0, 0, 1)
+                float3 localAxis = (0, -0.4, 1)
                 float revolutions = -0.25
                 double startTime = 2.7690000001
                 rel target = </Root/Magic_Potion>
@@ -2156,7 +2433,7 @@ def Xform "Root"
                 int blendLayer = 300
                 double duration = 0.7528269917395684
                 uniform token info:id = "06CB4F89-FB3C-49CF-AA56-15599448F9D6"
-                float3 position = (-20.0399, 0.00001, -48.0592)
+                float3 position = (-23.68766, 0.00001, -56.75348)
                 double startTime = 4.144269981711467
                 rel target = </Root/Magic_Potion>
                 float2 ui:nodegraph:node:pos = (40, 40)
@@ -2187,6 +2464,22 @@ def Xform "Root"
 
         def RealityKitTrack "Track4"
         {
+            def RealityKitAction "Disable_Entity"
+            {
+                string actionKind = "disable"
+                uniform token info:id = "B70B68D8-FC5F-424D-910A-91CAF26872E3"
+                double startTime = 2.582630194864369
+                rel target = </Root/Magic_Potion/Meshes/Sketchfab_model/Magic_Potion_fbx/Object_2/RootNode/Liquid>
+            }
+
+            def RealityKitAction "Enable_Entity"
+            {
+                string actionKind = "enable"
+                double duration = 0
+                uniform token info:id = "BD23D995-1972-4BDC-8D3B-3FDA85A88DCF"
+                double startTime = 5.348290813875137
+                rel target = </Root/Magic_Potion/Meshes/Sketchfab_model/Magic_Potion_fbx/Object_2/RootNode/Liquid>
+            }
         }
 
         def RealityKitTrack "Track3"
@@ -2213,7 +2506,7 @@ def Xform "Root"
                 int blendLayer = 400
                 double duration = 0.8825188921315129
                 uniform token info:id = "D74ADE54-7B93-49CD-B543-CB313D38C79F"
-                float3 localAxis = (0, 0, 1)
+                float3 localAxis = (0, -0.4, 1)
                 float revolutions = -0.25
                 double startTime = 1.886047165079349
                 rel target = </Root/Magic_Potion/Meshes/Sketchfab_model/Magic_Potion_fbx/Object_2/RootNode/group2/Plug1>
@@ -2231,7 +2524,7 @@ def Xform "Root"
                 int blendLayer = 400
                 double duration = 0.8825188921315129
                 uniform token info:id = "D74ADE54-7B93-49CD-B543-CB313D38C79F"
-                float3 localAxis = (0, 0, 1)
+                float3 localAxis = (0, -0.4, 1)
                 float revolutions = 0.25
                 double startTime = 2.7685660573108626
                 rel target = </Root/Magic_Potion/Meshes/Sketchfab_model/Magic_Potion_fbx/Object_2/RootNode/group2/Plug1>
@@ -2260,11 +2553,32 @@ def Xform "Root"
                 }
             }
         }
+
+        def RealityKitTrack "Track2"
+        {
+            def RealityKitAction "Play_Audio"
+            {
+                string actionKind = "audio"
+                string audioResourceName = "quick-pour-86306.mp3"
+                bool controlPlayback = 1
+                double duration = 1.167099927426341
+                double gain = -7.81005859375
+                uniform token info:id = "97314951-BA14-4319-8C93-67B259816D93"
+                double startTime = 2.1203131278294602
+                rel target = </Root/Potion>
+                float2 ui:nodegraph:node:pos = (80, 80)
+                int ui:nodegraph:node:stackingOrder = 4
+
+                def RealityKitStruct "handoffType"
+                {
+                }
+            }
+        }
     }
 
     def RealityKitTimeline "addPotion8"
     {
-        reorder nameChildren = ["Track", "Track4"]
+        reorder nameChildren = ["Track", "Track4", "Track2"]
         float2 ui:nodegraph:node:pos = (140, 140)
         int ui:nodegraph:node:stackingOrder = 7
 
@@ -2292,7 +2606,7 @@ def Xform "Root"
                 int blendLayer = 300
                 double duration = 0.7528269917395684
                 uniform token info:id = "06CB4F89-FB3C-49CF-AA56-15599448F9D6"
-                float3 position = (563.94165, -0.000003991383, -68.84616)
+                float3 position = (550.6643, -0.000009230203, -68.84616)
                 quatf rotation = (1, 0, 0, 0)
                 float3 scale = (1, 1, 1)
                 double startTime = 0.48247298287267193
@@ -2327,12 +2641,83 @@ def Xform "Root"
 
         def RealityKitTrack "Track4"
         {
+            def RealityKitAction "Play_Audio"
+            {
+                string actionKind = "audio"
+                string audioResourceName = "viscous-liquid-fall-in-83980.mp3"
+                bool controlPlayback = 1
+                double duration = 0.9080662483378256
+                double gain = -7.81005859375
+                uniform token info:id = "97314951-BA14-4319-8C93-67B259816D93"
+                double startTime = 1.2840001878383007
+                rel target = </Root/Crystal>
+                float2 ui:nodegraph:node:pos = (80, 80)
+                int ui:nodegraph:node:stackingOrder = 4
+
+                def RealityKitStruct "handoffType"
+                {
+                }
+            }
+
+            def RealityKitAction "Transform_To"
+            {
+                string actionKind = "moveTo"
+                int blendLayer = 300
+                double duration = 1
+                uniform token info:id = "8FADFB7F-7EAC-4B29-9D12-F54ECE162852"
+                float3 position = (61.946804, 69.47671, -200.27505)
+                quatf rotation = (-0.4477759, 0, 0.8941458, 0)
+                float3 scale = (0.19999999, 0.20000008, 0.19999993)
+                double startTime = 3.0375284910713445
+                rel target = </Root/Crystal>
+
+                def RealityKitStruct "transformMode"
+                {
+                    rel referenceEntity = </Root/Group/witch_cauldron>
+                    token type = "relative"
+                }
+
+                def RealityKitStruct "timingFunction"
+                {
+                }
+            }
+        }
+
+        def RealityKitTrack "Track2"
+        {
+            def RealityKitAction "Hide"
+            {
+                string actionKind = "hide"
+                int blendLayer = 300
+                double duration = 0.23690428203624866
+                uniform token info:id = "0897A413-6CEB-4427-92E6-12588B134D8A"
+                double startTime = 2.7449089108632663
+                rel target = </Root/Crystal>
+
+                def RealityKitStruct "timingFunction"
+                {
+                }
+            }
+
+            def RealityKitAction "Show"
+            {
+                string actionKind = "show"
+                int blendLayer = 300
+                double duration = 0.7448436577885212
+                uniform token info:id = "792D9131-8276-431C-9EF5-9C396F8AB0C6"
+                double startTime = 3.935150803776986
+                rel target = </Root/Crystal>
+
+                def RealityKitStruct "timingFunction"
+                {
+                }
+            }
         }
     }
 
     def RealityKitTimeline "addPotion9"
     {
-        reorder nameChildren = ["Track6", "Track", "Track3", "Track2", "Track5", "Track4", "Track2"]
+        reorder nameChildren = ["Track6", "Track", "Track3", "Track2", "Track5", "Track4", "Track2", "Track2"]
         float2 ui:nodegraph:node:pos = (160, 160)
         int ui:nodegraph:node:stackingOrder = 8
 
@@ -2483,6 +2868,27 @@ def Xform "Root"
                 }
             }
         }
+
+        def RealityKitTrack "Track2"
+        {
+            def RealityKitAction "Play_Audio"
+            {
+                string actionKind = "audio"
+                string audioResourceName = "quick-pour-86306.mp3"
+                bool controlPlayback = 1
+                double duration = 1.167099927426341
+                double gain = -7.81005859375
+                uniform token info:id = "97314951-BA14-4319-8C93-67B259816D93"
+                double startTime = 1.62400415792657
+                rel target = </Root/Potion>
+                float2 ui:nodegraph:node:pos = (80, 80)
+                int ui:nodegraph:node:stackingOrder = 4
+
+                def RealityKitStruct "handoffType"
+                {
+                }
+            }
+        }
     }
 
     def "Magic_Potion" (
@@ -2513,6 +2919,10 @@ def Xform "Root"
                                     float3 xformOp:translate = (0, 0, 0)
                                     uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
                                 }
+                            }
+
+                            over "Liquid"
+                            {
                             }
                         }
                     }
@@ -3652,6 +4062,129 @@ def Xform "Root"
                 token type = "serial"
             }
         }
+
+        def RealityKitComponent "AudioLibrary"
+        {
+            uniform token info:id = "RealityKit.AudioLibrary"
+
+            def RealityKitDict "resources"
+            {
+                string[] keys = ["viscous-liquid-fall-in-83980.mp3"]
+                rel values = </Root/viscous_liquid_fall_in_83980_mp32>
+            }
+        }
+
+        def RealityKitComponent "HierarchicalFade"
+        {
+            uniform token info:id = "RealityKit.HierarchicalFade"
+        }
+    }
+
+    def RealityKitComponent "AudioLibrary"
+    {
+        uniform token info:id = "RealityKit.AudioLibrary"
+
+        def RealityKitDict "resources"
+        {
+            string[] keys = ["water-bubbles-257594.mp3", "creepy-halloween-melody-v2-258509.mp3"]
+            rel values = [
+                </Root/water_bubbles_257594_mp3>,
+                </Root/creepy_halloween_melody_v2_258509_mp3>,
+            ]
+        }
+    }
+
+    def RealityKitAudioFile "water_bubbles_257594_mp3"
+    {
+        uniform asset file = @water-bubbles-257594.mp3@
+        uniform bool shouldLoop = 1
+    }
+
+    def RealityKitAudioFile "creepy_halloween_melody_v2_258509_mp3"
+    {
+        uniform asset file = @creepy-halloween-melody-v2-258509.mp3@
+        uniform bool shouldLoop = 1
+    }
+
+    def RealityKitAudioFile "quick_pour_86306_mp3"
+    {
+        uniform asset file = @quick-pour-86306.mp3@
+        uniform bool shouldLoop = 0
+    }
+
+    def RealityKitAudioFile "viscous_liquid_fall_in_83980_mp3"
+    {
+        uniform asset file = @viscous-liquid-fall-in-83980.mp3@
+        uniform bool shouldLoop = 0
+    }
+
+    def RealityKitAudioFile "quick_pour_86306_mp32"
+    {
+        uniform asset file = @quick-pour-86306.mp3@
+        uniform bool shouldLoop = 0
+    }
+
+    def RealityKitAudioFile "viscous_liquid_fall_in_83980_mp32"
+    {
+        uniform asset file = @viscous-liquid-fall-in-83980.mp3@
+        uniform bool shouldLoop = 0
+    }
+
+    def RealityKitTimeline "testesPosicao"
+    {
+        reorder nameChildren = ["Track", "Track2", "Track3"]
+        def RealityKitTrack "Track"
+        {
+            def RealityKitAction "Play_Timeline"
+            {
+                string actionKind = "timeline"
+                int blendLayer = 500
+                double duration = 5.461340857757252
+                uniform token info:id = "3400C94B-7B5E-4198-83F2-E77EB82C940F"
+                double startTime = 0.299740684460888
+                rel timeline = </Root/addPotion1>
+            }
+        }
+
+        def RealityKitTrack "Track2"
+        {
+            def RealityKitAction "Play_Timeline"
+            {
+                string actionKind = "timeline"
+                int blendLayer = 500
+                double duration = 5.4743858967134695
+                uniform token info:id = "3A197421-783A-4786-84E6-0BCF57209CBC"
+                double startTime = 0.2875369550355087
+                rel timeline = </Root/addPotion5>
+            }
+        }
+
+        def RealityKitTrack "Track3"
+        {
+            def RealityKitAction "Play_Timeline"
+            {
+                string actionKind = "timeline"
+                int blendLayer = 500
+                double duration = 5.348290813875137
+                uniform token info:id = "C40686B5-BD12-4E70-9635-C3FC2F79952F"
+                double startTime = 0.27974725803614936
+                rel timeline = </Root/addPotion7>
+            }
+        }
+    }
+
+    def "prateleira" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (0, 0, 0)
+        }
+        references = @prateleira.usdz@
+    )
+    {
+        quatf xformOp:orient = (1, 0, 0, 0)
+        float3 xformOp:scale = (0.002, 0.002, 0.002)
+        float3 xformOp:translate = (0.10381893, -0.18969963, -0.043421447)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
     }
 }
 

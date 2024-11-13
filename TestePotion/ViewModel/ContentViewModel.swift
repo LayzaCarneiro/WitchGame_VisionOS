@@ -12,7 +12,7 @@ class ContentViewModel: ObservableObject {
     @Published var displayedText: String = ""
     @Published var isTextVisible: Bool = false
     @Published var clickedEntities: [String] = []
-    @Published var currentCombination: Set<String>? 
+    @Published var currentCombination: Set<String>?
     
     private let combinationData = CombinationModel.combinationData
     
@@ -33,8 +33,7 @@ class ContentViewModel: ObservableObject {
     
     private func generateCombination() {
         let clickedSet = Set(clickedEntities)
-        
-        // Verifica se existe uma combinação para o conjunto clicado
+              
         if let data = combinationData[clickedSet] {
             displayedText = data.message
             currentCombination = clickedSet
@@ -49,5 +48,3 @@ class ContentViewModel: ObservableObject {
         clickedEntities = []
     }
 }
-
-
