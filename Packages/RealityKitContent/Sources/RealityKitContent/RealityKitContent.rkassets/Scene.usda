@@ -9,7 +9,7 @@ reorder rootPrims = ["Root", "GridMaterial"]
 
 def Xform "Root"
 {
-    reorder nameChildren = ["GridMaterial", "Sphere", "addPotion1", "addPotion2", "addPotion3", "addPotion4", "addPotion5", "addPotion6", "addPotion7", "addPotion8", "addPotion9", "Timeline", "cauldronMovement"]
+    reorder nameChildren = ["GridMaterial", "Sphere", "addPotion1", "addPotion2", "addPotion3", "addPotion4", "addPotion5", "addPotion6", "addPotion7", "addPotion8", "addPotion9", "Timeline", "cauldronMovement", "testesPosicao"]
     rel material:binding = None (
         bindMaterialAs = "weakerThanDescendants"
     )
@@ -1532,7 +1532,7 @@ def Xform "Root"
                 int blendLayer = 400
                 double duration = 0.883
                 uniform token info:id = "D74ADE54-7B93-49CD-B543-CB313D38C79F"
-                float3 localAxis = (1, 0, 0)
+                float3 localAxis = (1, 0.4, 0)
                 float revolutions = 0.28
                 double startTime = 1.886
                 rel target = </Root/Potions_Bottle>
@@ -1567,7 +1567,7 @@ def Xform "Root"
                 int blendLayer = 300
                 double duration = 0.7528269917395684
                 uniform token info:id = "06CB4F89-FB3C-49CF-AA56-15599448F9D6"
-                float3 position = (690.1947, -153.45125, -119.59272)
+                float3 position = (569.1748, -199.65074, -119.59114)
                 double startTime = 0.48247298287267193
                 rel target = </Root/Potions_Bottle>
                 float2 ui:nodegraph:node:pos = (20, 20)
@@ -1658,7 +1658,7 @@ def Xform "Root"
                 int blendLayer = 400
                 double duration = 0.8825188921315129
                 uniform token info:id = "D74ADE54-7B93-49CD-B543-CB313D38C79F"
-                float3 localAxis = (1, 0, 0)
+                float3 localAxis = (1, 0.4, 0)
                 float revolutions = -0.28
                 double startTime = 1.886047165079349
                 rel target = </Root/Potions_Bottle/Meshes/Sketchfab_model/Collada_visual_scene_group/cork_low>
@@ -2431,7 +2431,7 @@ def Xform "Root"
                 int blendLayer = 300
                 double duration = 0.7528269917395684
                 uniform token info:id = "06CB4F89-FB3C-49CF-AA56-15599448F9D6"
-                float3 position = (20.039898, -0.0000076293945, 48.059196)
+                float3 position = (23.687656, -0.0000071525574, 56.753483)
                 double startTime = 0.48247298287267193
                 rel target = </Root/Magic_Potion>
                 float2 ui:nodegraph:node:pos = (20, 20)
@@ -2448,7 +2448,7 @@ def Xform "Root"
                 int blendLayer = 400
                 double duration = 0.883
                 uniform token info:id = "D74ADE54-7B93-49CD-B543-CB313D38C79F"
-                float3 localAxis = (0, 0, 1)
+                float3 localAxis = (0, -0.4, 1)
                 float revolutions = 0.25
                 double startTime = 1.886
                 rel target = </Root/Magic_Potion>
@@ -2467,7 +2467,7 @@ def Xform "Root"
                 double duration = 0.883
                 uniform token info:id = "D74ADE54-7B93-49CD-B543-CB313D38C79F"
                 bool isActive = 1
-                float3 localAxis = (0, 0, 1)
+                float3 localAxis = (0, -0.4, 1)
                 float revolutions = -0.25
                 double startTime = 2.7690000001
                 rel target = </Root/Magic_Potion>
@@ -2485,7 +2485,7 @@ def Xform "Root"
                 int blendLayer = 300
                 double duration = 0.7528269917395684
                 uniform token info:id = "06CB4F89-FB3C-49CF-AA56-15599448F9D6"
-                float3 position = (-20.0399, 0.00001, -48.0592)
+                float3 position = (-23.68766, 0.00001, -56.75348)
                 double startTime = 4.144269981711467
                 rel target = </Root/Magic_Potion>
                 float2 ui:nodegraph:node:pos = (40, 40)
@@ -2558,7 +2558,7 @@ def Xform "Root"
                 int blendLayer = 400
                 double duration = 0.8825188921315129
                 uniform token info:id = "D74ADE54-7B93-49CD-B543-CB313D38C79F"
-                float3 localAxis = (0, 0, 1)
+                float3 localAxis = (0, -0.4, 1)
                 float revolutions = -0.25
                 double startTime = 1.886047165079349
                 rel target = </Root/Magic_Potion/Meshes/Sketchfab_model/Magic_Potion_fbx/Object_2/RootNode/group2/Plug1>
@@ -2576,7 +2576,7 @@ def Xform "Root"
                 int blendLayer = 400
                 double duration = 0.8825188921315129
                 uniform token info:id = "D74ADE54-7B93-49CD-B543-CB313D38C79F"
-                float3 localAxis = (0, 0, 1)
+                float3 localAxis = (0, -0.4, 1)
                 float revolutions = 0.25
                 double startTime = 2.7685660573108626
                 rel target = </Root/Magic_Potion/Meshes/Sketchfab_model/Magic_Potion_fbx/Object_2/RootNode/group2/Plug1>
@@ -4180,6 +4180,49 @@ def Xform "Root"
     {
         uniform asset file = @viscous-liquid-fall-in-83980.mp3@
         uniform bool shouldLoop = 0
+    }
+
+    def RealityKitTimeline "testesPosicao"
+    {
+        reorder nameChildren = ["Track", "Track2", "Track3"]
+        def RealityKitTrack "Track"
+        {
+            def RealityKitAction "Play_Timeline"
+            {
+                string actionKind = "timeline"
+                int blendLayer = 500
+                double duration = 5.461340857757252
+                uniform token info:id = "3400C94B-7B5E-4198-83F2-E77EB82C940F"
+                double startTime = 0.299740684460888
+                rel timeline = </Root/addPotion1>
+            }
+        }
+
+        def RealityKitTrack "Track2"
+        {
+            def RealityKitAction "Play_Timeline"
+            {
+                string actionKind = "timeline"
+                int blendLayer = 500
+                double duration = 5.4743858967134695
+                uniform token info:id = "3A197421-783A-4786-84E6-0BCF57209CBC"
+                double startTime = 0.2875369550355087
+                rel timeline = </Root/addPotion5>
+            }
+        }
+
+        def RealityKitTrack "Track3"
+        {
+            def RealityKitAction "Play_Timeline"
+            {
+                string actionKind = "timeline"
+                int blendLayer = 500
+                double duration = 5.348290813875137
+                uniform token info:id = "C40686B5-BD12-4E70-9635-C3FC2F79952F"
+                double startTime = 0.27974725803614936
+                rel timeline = </Root/addPotion7>
+            }
+        }
     }
 }
 
