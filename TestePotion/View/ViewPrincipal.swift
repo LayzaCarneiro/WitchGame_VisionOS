@@ -12,12 +12,14 @@ struct ViewPrincipal: View {
     @StateObject private var viewModel = ContentViewModel()
     var count = 0
     private let defaultImage = "orc5"
+    
+    @State private var projectile: Entity? = nil
+    
     var body: some View {
         ZStack {
              RealityView { content in
                 if let scene = try? await Entity.load(named: "Scene", in: realityKitContentBundle) {
                     content.add(scene)
-                    
                 } else {
                     print("Erro ao carregar a cena.")
                 }
@@ -137,6 +139,14 @@ struct ViewPrincipal: View {
             
         }
       
+    }
+    
+    private func traverseEntities(in entity: Entity) {
+        print("Entidade: \(entity.name)")
+
+        for child in entity.children {
+            traverseEntities(in: child)
+        }
     }
 }
 
