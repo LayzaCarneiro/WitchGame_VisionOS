@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8CB4DB012CE221D10033F8E4 /* ImmersiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB4DAF72CE221D10033F8E4 /* ImmersiveView.swift */; };
 		8CC6E8C82CDCEB7D0068F616 /* RealityKitContent in Frameworks */ = {isa = PBXBuildFile; productRef = 8CC6E8C72CDCEB7D0068F616 /* RealityKitContent */; };
 /* End PBXBuildFile section */
 
@@ -21,6 +22,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8CB4DAF72CE221D10033F8E4 /* ImmersiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImmersiveView.swift; sourceTree = "<group>"; };
 		8CC6E8C22CDCEB7D0068F616 /* TestePotion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestePotion.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CC6E8C62CDCEB7D0068F616 /* RealityKitContent */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = RealityKitContent; sourceTree = "<group>"; };
 		8CC6E8DD2CDCEB7E0068F616 /* TestePotionTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TestePotionTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -78,6 +80,7 @@
 				8CC6E8C52CDCEB7D0068F616 /* Packages */,
 				8CC6E8E02CDCEB7E0068F616 /* TestePotionTests */,
 				8CC6E8C32CDCEB7D0068F616 /* Products */,
+				8CB4DAF72CE221D10033F8E4 /* ImmersiveView.swift */,
 			);
 			sourceTree = "<group>";
 		};
@@ -175,6 +178,9 @@
 			);
 			mainGroup = 8CC6E8B92CDCEB7D0068F616;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				8CF10D3F2CE190410043D240 /* XCLocalSwiftPackageReference "../Downloads/GenerativeDoodleArt_VisionOS-main-2/Packages/RealityKitContent" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 8CC6E8C32CDCEB7D0068F616 /* Products */;
 			projectDirPath = "";
@@ -208,6 +214,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8CB4DB012CE221D10033F8E4 /* ImmersiveView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -237,7 +244,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"TestePotion/Preview Content\"";
-				DEVELOPMENT_TEAM = 5HHC6W5Z4U;
+				DEVELOPMENT_TEAM = ZFH4AF7HSL;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "$(TARGET_NAME)/Info.plist";
@@ -253,6 +260,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 7;
+				XROS_DEPLOYMENT_TARGET = 2.0;
 			};
 			name = Debug;
 		};
@@ -264,7 +272,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"TestePotion/Preview Content\"";
-				DEVELOPMENT_TEAM = 5HHC6W5Z4U;
+				DEVELOPMENT_TEAM = ZFH4AF7HSL;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "$(TARGET_NAME)/Info.plist";
@@ -280,6 +288,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 7;
+				XROS_DEPLOYMENT_TARGET = 2.0;
 			};
 			name = Release;
 		};
@@ -473,6 +482,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		8CF10D3F2CE190410043D240 /* XCLocalSwiftPackageReference "../Downloads/GenerativeDoodleArt_VisionOS-main-2/Packages/RealityKitContent" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = "../Downloads/GenerativeDoodleArt_VisionOS-main-2/Packages/RealityKitContent";
+		};
+/* End XCLocalSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
 		8CC6E8C72CDCEB7D0068F616 /* RealityKitContent */ = {
