@@ -19,13 +19,13 @@ struct CombinationModel {
              "fairy2"),
         Set(["SM_potionoOutter_01_M_glass_0", "Potion_of_Healing_Glass_0", "Potion_1_low_Checker_0"]): (
             "Encontrou uma combinação poderosa, que fortalece a cura!",
-            "orc5"),
+            "gnomo4"),
         Set(["defaultMaterial", "Object_1", "Life_low_Life_0"]): (
             "A Poção da Cura Avançada foi criada, com poder revitalizante!",
             "fairy1"),
         Set(["Magic_Potion_Magic_Potion1_0", "CrystalOne_LP_Material__1_0", "Life_low_Life_0"]): (
             "Criou uma Poção Misteriosa, com efeitos desconhecidos!",
-            "teste"),
+            "fairy2"),
         Set(["Potion_of_Healing_Glass_0", "Potion_1_low_Checker_0", "Life_low_Life_0"]): (
             "A Poção Curativa foi formada, trazendo um poder imenso de regeneração!",
             "fairy1"),
@@ -48,7 +48,7 @@ struct CombinationModel {
             "fairy2"),
 
         // Combinações avançadas (poções raras e poderosas)
-        Set(["SM_potionoOutter_01_M_glass_0", "Potion_1_low_Checker_0", "CrystalOne_LP_Material__1_0"]): (
+        Set(["Central_Rope_Central_Rope_0", "CrystalOne_LP_Material__1_0", "Life_low_Life_0"]): (
             "Você criou a Poção da Magia Eterna, que traz um poder imensurável!",
             "fairy1"),
         Set(["Central_Rope_copy1_Central_Rope_copy1_0", "Potion_1_low_Checker_0", "defaultMaterial"]): (

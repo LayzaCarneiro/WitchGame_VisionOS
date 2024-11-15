@@ -28,9 +28,11 @@ struct ViewPrincipal: View {
                 }
             }
             .gesture(TapGesture().targetedToAnyEntity().onEnded({ value in
-                _ = value.entity.applyTapForBehaviors()
-                let entityName = value.entity.name
-                viewModel.handleTap(entityName: entityName)
+                if !viewModel.clickedEntities.contains(value.entity.name) {
+                    _ = value.entity.applyTapForBehaviors()
+                    let entityName = value.entity.name
+                    viewModel.handleTap(entityName: entityName)
+                }
             }))
             //            VStack {
             //                         Spacer()
@@ -64,14 +66,14 @@ struct ViewPrincipal: View {
                           
                             
                             Text(data.message)
-                                .font(.title)
+                                .font(Font.custom("KCObraLetraRegular", size: 18))
                                 .fontWeight(.bold)
+                                .cornerRadius(10)
+//                                .border(Color.witch, width: 2)
                                 .foregroundColor(.white)
                                 .padding()
                                 .background(Color.black.opacity(0.7))
-                                .cornerRadius(10)
                                 .transition(.opacity)
-                                .border(Color.red, width: 10)
                         }
                             .padding3D(.back, -130)
                             .padding3D(.top, 200)
@@ -93,15 +95,14 @@ struct ViewPrincipal: View {
                                     .scaledToFit()
                                     .frame(width: 200, height: 200)
                                 
-                                Text("Tente outra combinacao")
+                                Text("Tente outra combinação")
                                     .frame(width:300, height: 100)
-                                    .font(.title)
+                                    .cornerRadius(10)
+                                    .font(Font.custom("KCObraLetraRegular", size: 18))
                                     .fontWeight(.bold)
                                     .foregroundColor(.white)
                                     .background(Color.black.opacity(0.7))
-                                    .cornerRadius(10)
                                     .transition(.opacity)
-                                    .border(Color.red, width: 10)
                             }
                                 .padding3D(.back, -130)
                                 .padding3D(.top, 200)
@@ -127,8 +128,9 @@ struct ViewPrincipal: View {
             }
             
             
-            Text("Voce juntou: \(viewModel.count) pocoes")
-                .font(.headline)
+            Text("Você combinou: \(viewModel.count) poções")
+                .font(Font.custom("KCObraLetraRegular", size: 30))
+//                .font(.headline)
                 .foregroundColor(.white)
                 .padding()
                 .background(Color.black.opacity(0.7))
