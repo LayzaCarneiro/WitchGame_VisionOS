@@ -13,8 +13,9 @@ def Xform "Root"
     rel material:binding = None (
         bindMaterialAs = "weakerThanDescendants"
     )
-    float3 xformOp:scale = (0.82, 0.82, 0.82)
-    float3 xformOp:translate = (-0.09451778, -0.25617117, 0)
+    quatf xformOp:orient = (1, 0, 0, 0)
+    float3 xformOp:scale = (0.85, 0.85, 0.85)
+    float3 xformOp:translate = (-0.09451778, -0.25617, 0)
     uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
     def "GridMaterial" (
@@ -66,6 +67,30 @@ def Xform "Root"
                 int loops = 0
                 int performCount = 1
                 token type = "serial"
+            }
+        }
+
+        def RealityKitComponent "InputTarget"
+        {
+            uniform token info:id = "RealityKit.InputTarget"
+        }
+
+        def RealityKitComponent "Collider"
+        {
+            uint group = 1
+            uniform token info:id = "RealityKit.Collider"
+            uint mask = 4294967295
+            token type = "Default"
+
+            def RealityKitStruct "Shape"
+            {
+                float3 extent = (9.908354, 13.997692, 7.863069)
+                token shapeType = "Box"
+
+                def RealityKitStruct "pose"
+                {
+                    float3 position = (0, 6.998846, -7.1525574e-7)
+                }
             }
         }
     }
@@ -162,6 +187,32 @@ def Xform "Root"
                     </Root/viscous_liquid_fall_in_83980_mp3>,
                     </Root/quick_pour_86306_mp32>,
                 ]
+            }
+        }
+
+        def RealityKitComponent "InputTarget"
+        {
+            uniform token info:id = "RealityKit.InputTarget"
+        }
+
+        def RealityKitComponent "Collider"
+        {
+            uint group = 1
+            uniform token info:id = "RealityKit.Collider"
+            uint mask = 4294967295
+            token type = "Default"
+
+            def RealityKitStruct "Shape"
+            {
+                float3 extent = (2.3859565, 4.8406043, 1.9072434)
+                float height = 4.8406043
+                float radius = 1.1929783
+                token shapeType = "Box"
+
+                def RealityKitStruct "pose"
+                {
+                    float3 position = (-0.027779937, 2.4203022, 0.0025651455)
+                }
             }
         }
     }
@@ -272,6 +323,30 @@ def Xform "Root"
                 token type = "serial"
             }
         }
+
+        def RealityKitComponent "InputTarget"
+        {
+            uniform token info:id = "RealityKit.InputTarget"
+        }
+
+        def RealityKitComponent "Collider"
+        {
+            uint group = 1
+            uniform token info:id = "RealityKit.Collider"
+            uint mask = 4294967295
+            token type = "Default"
+
+            def RealityKitStruct "Shape"
+            {
+                float3 extent = (241.70573, 299.99997, 251.38899)
+                token shapeType = "Box"
+
+                def RealityKitStruct "pose"
+                {
+                    float3 position = (0, 150.3351, -4.8416214)
+                }
+            }
+        }
     }
 
     def "Potions_Bottle" (
@@ -316,6 +391,30 @@ def Xform "Root"
                 token type = "serial"
             }
         }
+
+        def RealityKitComponent "InputTarget"
+        {
+            uniform token info:id = "RealityKit.InputTarget"
+        }
+
+        def RealityKitComponent "Collider"
+        {
+            uint group = 1
+            uniform token info:id = "RealityKit.Collider"
+            uint mask = 4294967295
+            token type = "Default"
+
+            def RealityKitStruct "Shape"
+            {
+                float3 extent = (146.8498, 299.99994, 146.8498)
+                token shapeType = "Box"
+
+                def RealityKitStruct "pose"
+                {
+                    float3 position = (-1.9039459, 146.7066, 2.9006233)
+                }
+            }
+        }
     }
 
     def "Life_Potion_Stylized" (
@@ -355,6 +454,30 @@ def Xform "Root"
                 int loops = 0
                 int performCount = 1
                 token type = "serial"
+            }
+        }
+
+        def RealityKitComponent "InputTarget"
+        {
+            uniform token info:id = "RealityKit.InputTarget"
+        }
+
+        def RealityKitComponent "Collider"
+        {
+            uint group = 1
+            uniform token info:id = "RealityKit.Collider"
+            uint mask = 4294967295
+            token type = "Default"
+
+            def RealityKitStruct "Shape"
+            {
+                float3 extent = (155.75418, 299.99994, 155.75418)
+                token shapeType = "Box"
+
+                def RealityKitStruct "pose"
+                {
+                    float3 position = (0.000011444092, 150.53381, 0.000011444092)
+                }
             }
         }
     }
@@ -425,17 +548,187 @@ def Xform "Root"
                 }
             }
         }
+
+        def RealityKitComponent "InputTarget"
+        {
+            uniform token info:id = "RealityKit.InputTarget"
+        }
+
+        def RealityKitComponent "Collider"
+        {
+            uint group = 1
+            uniform token info:id = "RealityKit.Collider"
+            uint mask = 4294967295
+            token type = "Default"
+
+            def RealityKitStruct "Shape"
+            {
+                float3 extent = (201.46481, 299.99994, 201.44131)
+                token shapeType = "Box"
+
+                def RealityKitStruct "pose"
+                {
+                    float3 position = (0.0000038146973, 146.40073, -0.0000038146973)
+                }
+            }
+        }
     }
 
-    def Xform "Group" (
-        active = true
-    )
+    def Xform "Group"
     {
+        reorder nameChildren = ["Stylized_Low_poly_Wood_Table_1", "witch_cauldron", "witch_cauldron_2"]
         float3 xformOp:translate = (0, 0, 0)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
-        def "witch_cauldron" (
+        def "Stylized_Low_poly_Wood_Table_1" (
             active = true
+            customData = {
+                float3 rotationEulerHint = (0, 0, 0)
+            }
+            references = @Stylized_Low-poly_Wood_Table 1.usdz@
+        )
+        {
+            quatf xformOp:orient = (1, 0, 0, 0)
+            float3 xformOp:scale = (0.002, 0.001, 0.001)
+            float3 xformOp:translate = (0.1367797, -0.4782976, 0.3646081)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            over "Meshes"
+            {
+                over "Sketchfab_model"
+                {
+                    over "Collada_visual_scene_group"
+                    {
+                        over "_00"
+                        {
+                            quatf xformOp:orient = (1, 0, 0, 0)
+                            float3 xformOp:scale = (0.33275, 0.8984251, 0.33275)
+                            float3 xformOp:translate = (0, 51.572357, -0.000061035156)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+
+                        over "_02_001"
+                        {
+                            quatf xformOp:orient = (0.70710677, 0, -0.70710677, 0)
+                            float3 xformOp:scale = (0.99999994, 0.9999998, 0.99999976)
+                            float3 xformOp:translate = (-0.000957489, -49.68631, -0.0019683838)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+
+                        over "_03_001"
+                        {
+                            quatf xformOp:orient = (0, 0, 1, -5e-7)
+                            float3 xformOp:scale = (0.99999994, 0.9999998, 0.99999976)
+                            float3 xformOp:translate = (0.0009498596, -49.68631, -0.000061035156)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+
+                        over "_05_001"
+                        {
+                            quatf xformOp:orient = (0.7071071, 0, 0.7071064, 0)
+                            float3 xformOp:scale = (0.99999994, 0.9999998, 0.99999976)
+                            float3 xformOp:translate = (-0.000957489, -21.418243, -0.000061035156)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+
+                        over "_04_001"
+                        {
+                            quatf xformOp:orient = (0, 5e-7, 1, 0)
+                            float3 xformOp:scale = (0.99999994, 0.9999998, 0.99999976)
+                            float3 xformOp:translate = (-0.000957489, -21.418243, -0.000061035156)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+                    }
+                }
+            }
+
+            def RealityKitComponent "VFXEmitter"
+            {
+                uniform token info:id = "RealityKit.VFXEmitter"
+
+                def RealityKitStruct "currentState"
+                {
+                    token birthDirection = "Normal"
+                    token birthLocation = "Surface"
+                    float3 emissionDirection = (0, 1, 0)
+                    double emissionDuration = 2
+                    double emissionDurationVariation = 0
+                    token emitterShape = "Torus"
+                    double idleDuration = 0.5
+                    double idleDurationVariation = 0
+                    bool isLocal = 0
+                    bool isSpawningEnabled = 0
+                    bool loops = 1
+                    float particleSpeed = 4
+                    float particleSpeedVariation = 0.1
+                    float3 shapeSize = (0.05, 0.01, 0.05)
+                    bool spawnInheritParentColor = 0
+                    token spawnOccasion = "OnDeath"
+                    float spawnSpreadFactor = 0
+                    float spawnSpreadFactorVariation = 0
+                    float spawnVelocityFactor = 1
+                    double warmupDuration = 0
+
+                    def RealityKitStruct "mainEmitter"
+                    {
+                        float3 acceleration = (0, -0.05, 0)
+                        token animationRepeatMode = "PlayOnce"
+                        token billboardMode = "Billboard"
+                        float birthRate = 300
+                        float birthRateVariation = 0
+                        token blendMode = "Alpha"
+                        float colorEvolutionPower = 1
+                        int64 columnCount = 4
+                        float dampingFactor = 8
+                        float4 endColorA = (0.0013309671, 0.03458923, 1, 1)
+                        float4 endColorB = (0.11386989, 0.0064959256, 0.10626237, 1)
+                        float frameRate = 0
+                        float frameRateVariation = 0
+                        int64 initialFrame = 2
+                        int64 initialFrameVariation = 6
+                        bool isAnimated = 1
+                        bool isLightingEnabled = 0
+                        float noiseAnimationSpeed = 0
+                        float noiseScale = 1
+                        float noiseStrength = 0.1
+                        token opacityOverLife = "LinearFadeOut"
+                        float particleAngle = 0
+                        float particleAngleVariation = 0
+                        float particleAngularVelocity = 0
+                        float particleAngularVelocityVariation = 1
+                        asset particleImage = @ParticleEmitterPresetTextures/dustsheet.exr@
+                        double particleLifeSpan = 2
+                        double particleLifeSpanVariation = 1
+                        float particleMass = 1
+                        float particleMassVariation = 0.8
+                        float particleSize = 0.03
+                        float particleSizeVariation = 0
+                        float3 radialGravityCenter = (0, -0.1, 0)
+                        float radialGravityStrength = -0.1
+                        int64 rowCount = 4
+                        float sizeMultiplierAtEndOfLifespan = 8
+                        float sizeMultiplierAtEndOfLifespanPower = 0.2
+                        token sortOrder = "DecreasingDepth"
+                        float spreadingAngle = 0
+                        float4 startColorA = (1, 1, 1, 0.26)
+                        float4 startColorB = (1, 1, 1, 0.07)
+                        float stretchFactor = 0
+                        bool useEndColor = 0
+                        bool useEndColorRange = 0
+                        bool useStartColorRange = 1
+                        float3 vortexDirection = (0, 1, 0)
+                        float vortexStrength = 1
+                    }
+
+                    def RealityKitStruct "spawnedEmitter"
+                    {
+                    }
+                }
+            }
+        }
+
+        def "witch_cauldron" (
+            active = false
             customData = {
                 float3 rotationEulerHint = (0, 0.52359885, 0)
             }
@@ -564,95 +857,6 @@ def Xform "Root"
                 }
             }
 
-            def RealityKitComponent "VFXEmitter"
-            {
-                uniform token info:id = "RealityKit.VFXEmitter"
-
-                def RealityKitStruct "currentState"
-                {
-                    token birthDirection = "Normal"
-                    token birthLocation = "Surface"
-                    float3 emissionDirection = (0, 1, 0)
-                    double emissionDuration = 0.05
-                    double emissionDurationVariation = 0
-                    token emitterShape = "Cylinder"
-                    double idleDuration = 3
-                    double idleDurationVariation = 0
-                    bool isEmitting = 1
-                    bool isLocal = 0
-                    bool isSpawningEnabled = 0
-                    bool loops = 1
-                    float particleSpeed = 0.5
-                    float particleSpeedVariation = 0.1
-                    float3 shapeSize = (0.05, 0.01, 0.05)
-                    bool spawnInheritParentColor = 0
-                    token spawnOccasion = "OnDeath"
-                    float spawnSpreadFactor = 0
-                    float spawnSpreadFactorVariation = 0
-                    float spawnVelocityFactor = 1
-                    double warmupDuration = 0
-
-                    def RealityKitStruct "mainEmitter"
-                    {
-                        float3 acceleration = (0, -0.05, 0)
-                        token animationRepeatMode = "PlayOnce"
-                        token billboardMode = "Billboard"
-                        float birthRate = 2000
-                        float birthRateVariation = 0
-                        token blendMode = "Alpha"
-                        float colorEvolutionPower = 1
-                        int64 columnCount = 4
-                        float dampingFactor = 8
-                        float4 endColorA = (0.0013309671, 0.03458923, 1, 1)
-                        float4 endColorB = (0.11386989, 0.0064959256, 0.10626237, 1)
-                        float frameRate = 0
-                        float frameRateVariation = 0
-                        int64 initialFrame = 2
-                        int64 initialFrameVariation = 6
-                        bool isAnimated = 1
-                        bool isLightingEnabled = 0
-                        float noiseAnimationSpeed = 0
-                        float noiseScale = 1
-                        float noiseStrength = 0.1
-                        token opacityOverLife = "LinearFadeOut"
-                        float particleAngle = 0
-                        float particleAngleVariation = 0
-                        float particleAngularVelocity = 0
-                        float particleAngularVelocityVariation = 1
-                        asset particleImage = @ParticleEmitterPresetTextures/dustsheet.exr@
-                        double particleLifeSpan = 2
-                        double particleLifeSpanVariation = 1
-                        float particleMass = 1
-                        float particleMassVariation = 0.8
-                        float particleSize = 0.01
-                        float particleSizeVariation = 0
-                        float3 radialGravityCenter = (0, -0.1, 0)
-                        float radialGravityStrength = -0.1
-                        int64 rowCount = 4
-                        float sizeMultiplierAtEndOfLifespan = 8
-                        float sizeMultiplierAtEndOfLifespanPower = 0.2
-                        token sortOrder = "DecreasingDepth"
-                        float spreadingAngle = 0
-                        float4 startColorA = (1, 1, 1, 0.26)
-                        float4 startColorB = (1, 1, 1, 0.07)
-                        float stretchFactor = 0
-                        bool useEndColor = 0
-                        bool useEndColorRange = 0
-                        bool useStartColorRange = 1
-                        float3 vortexDirection = (0, 1, 0)
-                        float vortexStrength = 0
-                    }
-
-                    def RealityKitStruct "spawnedEmitter"
-                    {
-                        token billboardMode = "Billboard"
-                        float birthRate = 400
-                        float dampingFactor = 80
-                        float3 radialGravityCenter = (0, 1, 0)
-                    }
-                }
-            }
-
             def RealityKitComponent "RCP_BehaviorsContainer"
             {
                 rel behaviors = </Root/Group/witch_cauldron/OnTap>
@@ -699,20 +903,69 @@ def Xform "Root"
                     rel values = </Root/witch_laugh_189108_mp3>
                 }
             }
+
+            def RealityKitComponent "InputTarget"
+            {
+                uniform token info:id = "RealityKit.InputTarget"
+            }
+
+            def RealityKitComponent "Collider"
+            {
+                uint group = 1
+                uniform token info:id = "RealityKit.Collider"
+                uint mask = 4294967295
+                token type = "Default"
+
+                def RealityKitStruct "Shape"
+                {
+                    float3 extent = (200, 135.02637, 199.86937)
+                    token shapeType = "Box"
+
+                    def RealityKitStruct "pose"
+                    {
+                    }
+                }
+            }
         }
 
-        def "Stylized_Low_poly_Wood_Table_1" (
+        def "witch_cauldron_2" (
             active = true
             customData = {
-                float3 rotationEulerHint = (0, 0, 0)
+                float3 rotationEulerHint = (0, 0.52359873, 0)
             }
-            references = @Stylized_Low-poly_Wood_Table 1.usdz@
+            references = @witch_cauldron_2.usdz@
         )
         {
-            quatf xformOp:orient = (1, 0, 0, 0)
-            float3 xformOp:scale = (0.002, 0.001, 0.001)
-            float3 xformOp:translate = (0.1367797, -0.4782976, 0.3646081)
+            quatf xformOp:orient = (0.9659258, 0, 0.258819, 0)
+            float3 xformOp:scale = (0.0012195122, 0.0012195118, 0.0012195118)
+            float3 xformOp:translate = (0.12880217, -0.09446335, 0.32178044)
             uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            def RealityKitComponent "AudioLibrary"
+            {
+                uniform token info:id = "RealityKit.AudioLibrary"
+            }
+
+            def RealityKitComponent "VFXEmitter"
+            {
+                uniform token info:id = "RealityKit.VFXEmitter"
+
+                def RealityKitStruct "currentState"
+                {
+                    token emitterShape = "Cylinder"
+                    double idleDuration = 0.5
+                    float particleSpeed = 0.15
+
+                    def RealityKitStruct "mainEmitter"
+                    {
+                        float particleSize = 0.1
+                    }
+
+                    def RealityKitStruct "spawnedEmitter"
+                    {
+                    }
+                }
+            }
 
             over "Meshes"
             {
@@ -720,52 +973,171 @@ def Xform "Root"
                 {
                     over "Collada_visual_scene_group"
                     {
-                        over "_00"
+                        over "g_1"
                         {
-                            quatf xformOp:orient = (1, 0, 0, 0)
-                            float3 xformOp:scale = (0.33275, 0.8984251, 0.33275)
-                            float3 xformOp:translate = (0, 51.572357, -0.000061035156)
-                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
-                        }
+                            def RealityKitComponent "VFXEmitter"
+                            {
+                                uniform token info:id = "RealityKit.VFXEmitter"
 
-                        over "_02_001"
-                        {
-                            quatf xformOp:orient = (0.70710677, 0, -0.70710677, 0)
-                            float3 xformOp:scale = (0.99999994, 0.9999998, 0.99999976)
-                            float3 xformOp:translate = (-0.000957489, -49.68631, -0.0019683838)
-                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
-                        }
+                                def RealityKitStruct "currentState"
+                                {
+                                    token birthDirection = "Normal"
+                                    token birthLocation = "Surface"
+                                    float3 emissionDirection = (0, 0, 0)
+                                    double emissionDuration = 1
+                                    double emissionDurationVariation = 0
+                                    token emitterShape = "Sphere"
+                                    double idleDuration = 0
+                                    double idleDurationVariation = 0
+                                    bool isLocal = 0
+                                    bool isSpawningEnabled = 1
+                                    bool loops = 1
+                                    float particleSpeed = 0.1
+                                    float particleSpeedVariation = 0.04
+                                    float3 shapeSize = (0.05, 0.05, 0.05)
+                                    bool spawnInheritParentColor = 1
+                                    token spawnOccasion = "OnUpdate"
+                                    float spawnSpreadFactor = 0
+                                    float spawnSpreadFactorVariation = 0
+                                    float spawnVelocityFactor = 1
+                                    double warmupDuration = 1.5
 
-                        over "_03_001"
-                        {
-                            quatf xformOp:orient = (0, 0, 1, -5e-7)
-                            float3 xformOp:scale = (0.99999994, 0.9999998, 0.99999976)
-                            float3 xformOp:translate = (0.0009498596, -49.68631, -0.000061035156)
-                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
-                        }
+                                    def RealityKitStruct "mainEmitter"
+                                    {
+                                        float3 acceleration = (0, 0, 0)
+                                        token animationRepeatMode = "Looping"
+                                        token billboardMode = "Billboard"
+                                        float birthRate = 40
+                                        float birthRateVariation = 0
+                                        token blendMode = "Additive"
+                                        float colorEvolutionPower = 1
+                                        int64 columnCount = 4
+                                        float dampingFactor = 0.25
+                                        float4 endColorA = (1, 0.051991113, 1, 1)
+                                        float4 endColorB = (0, 0.98059916, 1, 1)
+                                        float frameRate = 30
+                                        float frameRateVariation = 0
+                                        int64 initialFrame = 0
+                                        int64 initialFrameVariation = 2
+                                        bool isAnimated = 1
+                                        bool isLightingEnabled = 0
+                                        float noiseAnimationSpeed = 1
+                                        float noiseScale = 1
+                                        float noiseStrength = 0.1
+                                        token opacityOverLife = "GradualFadeInOut"
+                                        float particleAngle = 0
+                                        float particleAngleVariation = 0.5
+                                        float particleAngularVelocity = 0.25
+                                        float particleAngularVelocityVariation = 0.5
+                                        asset particleImage = @ParticleEmitterPresetTextures/twinkle.exr@
+                                        double particleLifeSpan = 1
+                                        double particleLifeSpanVariation = 0.2
+                                        float particleMass = 1
+                                        float particleMassVariation = 0.2
+                                        float particleSize = 0.05
+                                        float particleSizeVariation = 0.004
+                                        float3 radialGravityCenter = (1, 1, 0)
+                                        float radialGravityStrength = 0
+                                        int64 rowCount = 4
+                                        float sizeMultiplierAtEndOfLifespan = 0.35
+                                        float sizeMultiplierAtEndOfLifespanPower = 3
+                                        token sortOrder = "IncreasingDepth"
+                                        float spreadingAngle = 0
+                                        float4 startColorA = (1, 0.051991113, 1, 1)
+                                        float4 startColorB = (0.9986965, 0.9674097, 0, 1)
+                                        float stretchFactor = 0
+                                        bool useEndColor = 1
+                                        bool useEndColorRange = 1
+                                        bool useStartColorRange = 1
+                                        float3 vortexDirection = (0, 1, 0)
+                                        float vortexStrength = 0
+                                    }
 
-                        over "_05_001"
-                        {
-                            quatf xformOp:orient = (0.7071071, 0, 0.7071064, 0)
-                            float3 xformOp:scale = (0.99999994, 0.9999998, 0.99999976)
-                            float3 xformOp:translate = (-0.000957489, -21.418243, -0.000061035156)
-                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                                    def RealityKitStruct "spawnedEmitter"
+                                    {
+                                        float3 acceleration = (0, -0.04, 0)
+                                        token animationRepeatMode = "AutoReverse"
+                                        token billboardMode = "Billboard"
+                                        float birthRate = 25
+                                        float birthRateVariation = 0
+                                        token blendMode = "Additive"
+                                        float colorEvolutionPower = 0
+                                        int64 columnCount = 4
+                                        float dampingFactor = 3
+                                        float4 endColorA = (0, 0.98059916, 1, 1)
+                                        float4 endColorB = (1, 0.051991113, 1, 1)
+                                        float frameRate = 24
+                                        float frameRateVariation = 0
+                                        int64 initialFrame = 2
+                                        int64 initialFrameVariation = 4
+                                        bool isAnimated = 1
+                                        bool isLightingEnabled = 0
+                                        float noiseAnimationSpeed = 0.25
+                                        float noiseScale = 1
+                                        float noiseStrength = 0.1
+                                        token opacityOverLife = "GradualFadeInOut"
+                                        float particleAngle = 0.745
+                                        float particleAngleVariation = 0.25
+                                        float particleAngularVelocity = 0.25
+                                        float particleAngularVelocityVariation = 0
+                                        asset particleImage = @ParticleEmitterPresetTextures/twinkle.exr@
+                                        double particleLifeSpan = 0.75
+                                        double particleLifeSpanVariation = 0.25
+                                        float particleMass = 1
+                                        float particleMassVariation = 2
+                                        float particleSize = 0.02
+                                        float particleSizeVariation = 0.004
+                                        float3 radialGravityCenter = (0, 0, 0)
+                                        float radialGravityStrength = 0
+                                        int64 rowCount = 4
+                                        float sizeMultiplierAtEndOfLifespan = 0
+                                        float sizeMultiplierAtEndOfLifespanPower = 1
+                                        token sortOrder = "IncreasingID"
+                                        float spreadingAngle = 0
+                                        float4 startColorA = (1, 0.051991113, 1, 0.04)
+                                        float4 startColorB = (0, 0.98059916, 1, 0.04)
+                                        float stretchFactor = 0
+                                        bool useEndColor = 0
+                                        bool useEndColorRange = 1
+                                        bool useStartColorRange = 1
+                                        float3 vortexDirection = (0, 1, 0)
+                                        float vortexStrength = 0
+                                    }
+                                }
+                            }
                         }
+                    }
+                }
+            }
 
-                        over "_04_001"
-                        {
-                            quatf xformOp:orient = (0, 5e-7, 1, 0)
-                            float3 xformOp:scale = (0.99999994, 0.9999998, 0.99999976)
-                            float3 xformOp:translate = (-0.000957489, -21.418243, -0.000061035156)
-                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
-                        }
+            def RealityKitComponent "InputTarget"
+            {
+                uniform token info:id = "RealityKit.InputTarget"
+            }
+
+            def RealityKitComponent "Collider"
+            {
+                uint group = 1
+                uniform token info:id = "RealityKit.Collider"
+                uint mask = 4294967295
+                token type = "Default"
+
+                def RealityKitStruct "Shape"
+                {
+                    float3 extent = (200, 135.02637, 199.86937)
+                    token shapeType = "Box"
+
+                    def RealityKitStruct "pose"
+                    {
                     }
                 }
             }
         }
     }
 
-    def "Stylized_Low_poly_Wood_Table_1"
+    def "Stylized_Low_poly_Wood_Table_1" (
+        active = false
+    )
     {
         def "Meshes"
         {
@@ -1042,7 +1414,7 @@ def Xform "Root"
             {
                 string actionKind = "timeline"
                 int blendLayer = 500
-                double duration = 2.096001635051159
+                double duration = 2.9967077618085423
                 uniform token info:id = "F05FF357-9192-45CE-B23F-AF01D7231406"
                 double loopCount = 0
                 double startTime = 0
@@ -2626,7 +2998,7 @@ def Xform "Root"
 
     def RealityKitTimeline "addPotion8"
     {
-        reorder nameChildren = ["Track", "Track4", "Track2"]
+        reorder nameChildren = ["Track", "Track4", "Track2", "Track3"]
         float2 ui:nodegraph:node:pos = (140, 140)
         int ui:nodegraph:node:stackingOrder = 7
 
@@ -2760,6 +3132,10 @@ def Xform "Root"
                 {
                 }
             }
+        }
+
+        def RealityKitTrack "Track3"
+        {
         }
     }
 
@@ -2967,6 +3343,21 @@ def Xform "Root"
                                     float3 xformOp:translate = (0, 0, 0)
                                     uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
                                 }
+
+                                over "Mouth_bottle2"
+                                {
+                                    over "Mouth_bottle2_Mouth_bottle2_0"
+                                    {
+                                        over "Mouth_bottle2_Mouth_bottle2_0" (
+                                            prepend apiSchemas = ["MaterialBindingAPI"]
+                                        )
+                                        {
+                                            rel material:binding = </Root/Magic_Potion/Materials/Mouth_bottle2> (
+                                                bindMaterialAs = "weakerThanDescendants"
+                                            )
+                                        }
+                                    }
+                                }
                             }
 
                             over "Liquid"
@@ -3005,6 +3396,30 @@ def Xform "Root"
                 int loops = 0
                 int performCount = 1
                 token type = "serial"
+            }
+        }
+
+        def RealityKitComponent "InputTarget"
+        {
+            uniform token info:id = "RealityKit.InputTarget"
+        }
+
+        def RealityKitComponent "Collider"
+        {
+            uint group = 1
+            uniform token info:id = "RealityKit.Collider"
+            uint mask = 4294967295
+            token type = "Default"
+
+            def RealityKitStruct "Shape"
+            {
+                float3 extent = (9.968797, 19.629265, 8.120627)
+                token shapeType = "Box"
+
+                def RealityKitStruct "pose"
+                {
+                    float3 position = (0.967885, 6.021217, 0.0074796677)
+                }
             }
         }
     }
@@ -3533,6 +3948,30 @@ def Xform "Root"
                 token type = "serial"
             }
         }
+
+        def RealityKitComponent "InputTarget"
+        {
+            uniform token info:id = "RealityKit.InputTarget"
+        }
+
+        def RealityKitComponent "Collider"
+        {
+            uint group = 1
+            uniform token info:id = "RealityKit.Collider"
+            uint mask = 4294967295
+            token type = "Default"
+
+            def RealityKitStruct "Shape"
+            {
+                float3 extent = (2.521464, 3.1920228, 2.6823914)
+                token shapeType = "Box"
+
+                def RealityKitStruct "pose"
+                {
+                    float3 position = (0.026082277, 1.5942264, 0.11301005)
+                }
+            }
+        }
     }
 
     def "Lowpoly_Mushrooms" (
@@ -3932,11 +4371,11 @@ def Xform "Root"
             {
                 string actionKind = "spin"
                 int blendLayer = 400
-                double duration = 2.093604651162791
+                double duration = 2.986694800475687
                 uniform token info:id = "712E8C58-4C6D-4002-85D8-6AF85917C055"
                 float revolutions = 1
                 double startTime = 0
-                rel target = </Root/Group/witch_cauldron/Meshes/Sketchfab_model/Collada_visual_scene_group/g_1>
+                rel target = </Root/Group/witch_cauldron_2>
 
                 def RealityKitStruct "timingFunction"
                 {
@@ -3947,15 +4386,16 @@ def Xform "Root"
 
         def RealityKitTrack "Track3"
         {
+            reorder nameChildren = ["Transform_By", "Transform_By2", "Transform_By3", "Transform_By22"]
             def RealityKitAction "Transform_By"
             {
                 string actionKind = "moveBy"
                 int blendLayer = 300
-                double duration = 0.520689344353244
+                double duration = 0.7404331043445498
                 uniform token info:id = "A837425E-C0C1-4726-85BF-072D8C9C954D"
                 quatf rotation = (0.99904823, 0.043619387, 0, 0)
-                double startTime = 0.013244257338183551
-                rel target = </Root/Group/witch_cauldron/Meshes/Sketchfab_model/Collada_visual_scene_group/g_1>
+                double startTime = 0.01324425733818356
+                rel target = </Root/Group/witch_cauldron_2>
 
                 def RealityKitStruct "timingFunction"
                 {
@@ -3967,11 +4407,11 @@ def Xform "Root"
             {
                 string actionKind = "moveBy"
                 int blendLayer = 300
-                double duration = 0.520689344353244
+                double duration = 0.8080180213319302
                 uniform token info:id = "A837425E-C0C1-4726-85BF-072D8C9C954D"
                 quatf rotation = (0.99904823, -0.043619387, 0, 0)
-                double startTime = 0.5339336017914275
-                rel target = </Root/Group/witch_cauldron/Meshes/Sketchfab_model/Collada_visual_scene_group/g_1>
+                double startTime = 0.7536773617827333
+                rel target = </Root/Group/witch_cauldron_2>
                 float2 ui:nodegraph:node:pos = (20, 20)
                 int ui:nodegraph:node:stackingOrder = 1
 
@@ -3984,11 +4424,11 @@ def Xform "Root"
             {
                 string actionKind = "moveBy"
                 int blendLayer = 300
-                double duration = 0.520689344353244
+                double duration = 0.763153842148117
                 uniform token info:id = "A837425E-C0C1-4726-85BF-072D8C9C954D"
                 quatf rotation = (0.99904823, 0.043619387, 0, 0)
-                double startTime = 1.0546229462446715
-                rel target = </Root/Group/witch_cauldron/Meshes/Sketchfab_model/Collada_visual_scene_group/g_1>
+                double startTime = 1.5616953832146634
+                rel target = </Root/Group/witch_cauldron_2>
                 float2 ui:nodegraph:node:pos = (557.75, 135.5)
                 int ui:nodegraph:node:stackingOrder = 1
 
@@ -4002,11 +4442,11 @@ def Xform "Root"
             {
                 string actionKind = "moveBy"
                 int blendLayer = 300
-                double duration = 0.520689344353244
+                double duration = 0.6718585363457618
                 uniform token info:id = "A837425E-C0C1-4726-85BF-072D8C9C954D"
                 quatf rotation = (0.99904823, -0.043619387, 0, 0)
-                double startTime = 1.5753122906979151
-                rel target = </Root/Group/witch_cauldron/Meshes/Sketchfab_model/Collada_visual_scene_group/g_1>
+                double startTime = 2.3248492254627804
+                rel target = </Root/Group/witch_cauldron_2>
                 float2 ui:nodegraph:node:pos = (40, 40)
                 int ui:nodegraph:node:stackingOrder = 2
 
@@ -4014,10 +4454,6 @@ def Xform "Root"
                 {
                 }
             }
-        }
-
-        def RealityKitTrack "Track2"
-        {
         }
     }
 
@@ -4122,9 +4558,35 @@ def Xform "Root"
             }
         }
 
-        def RealityKitComponent "HierarchicalFade"
+        def RealityKitComponent "HierarchicalFade" (
+            active = false
+        )
         {
             uniform token info:id = "RealityKit.HierarchicalFade"
+        }
+
+        def RealityKitComponent "InputTarget"
+        {
+            uniform token info:id = "RealityKit.InputTarget"
+        }
+
+        def RealityKitComponent "Collider"
+        {
+            uint group = 1
+            uniform token info:id = "RealityKit.Collider"
+            uint mask = 4294967295
+            token type = "Default"
+
+            def RealityKitStruct "Shape"
+            {
+                float3 extent = (178.7941, 299.99997, 247.51569)
+                token shapeType = "Box"
+
+                def RealityKitStruct "pose"
+                {
+                    float3 position = (24.30193, 131.25911, 53.623592)
+                }
+            }
         }
     }
 
@@ -4227,7 +4689,7 @@ def Xform "Root"
                 double duration = 2.618213092773945
                 uniform token info:id = "70778532-D344-426C-A906-0FA6853A5989"
                 double startTime = 0.1364503501585623
-                rel target = </Root/Group/witch_cauldron>
+                rel target = </Root/Group/witch_cauldron_2>
 
                 def RealityKitStruct "handoffType"
                 {

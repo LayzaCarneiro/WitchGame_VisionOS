@@ -18,11 +18,64 @@ struct ViewPrincipal: View {
     var body: some View {
         ZStack {
              RealityView { content in
-                if let scene = try? await Entity.load(named: "Scene", in: realityKitContentBundle) {
-                    content.add(scene)
-                } else {
+                 if let scene = try? await Entity.load(named: "Scene", in: realityKitContentBundle) {
+                     let children = scene.children[0].children
+                     
+                     for child in children {
+                         switch child.name {
+                         case "Crystal":
+                             child.components.set(
+                                HoverEffectComponent(.highlight(.init(color: .red, strength: 2)))
+                             )
+                         case "Potion":
+                             child.components.set(
+                                HoverEffectComponent(.highlight(.init(color: .red, strength: 2)))
+                             )
+                         case "potion1":
+                             child.components.set(
+                                HoverEffectComponent(.highlight(.init(color: .red, strength: 2)))
+                             )
+                         case "Mana_Potion":
+                             child.components.set(
+                                HoverEffectComponent(.highlight(.init(color: .red, strength: 2)))
+                             )
+                         case "Potions_Bottle":
+                             child.components.set(
+                                HoverEffectComponent(.highlight(.init(color: .red, strength: 2)))
+                             )
+                         case "Mushroom_bottle":
+                             child.components.set(
+                                HoverEffectComponent(.highlight(.init(color: .red, strength: 2)))
+                             )
+                         case "Life_Potion_Stylized":
+                             child.components.set(
+                                HoverEffectComponent(.highlight(.init(color: .red, strength: 2)))
+                             )
+                         case "Potion_Of_Healing_Dungeons_and_Dragons_2":
+                             child.components.set(
+                                HoverEffectComponent(.highlight(.init(color: .red, strength: 2)))
+                             )
+                         case "Object_1":
+                             child.components.set(
+                                HoverEffectComponent(.highlight(.init(color: .red, strength: 2)))
+                             )
+                         case "Magic_Potion":
+                             child.components.set(
+                                HoverEffectComponent(.highlight(.init(color: .red, strength: 2)))
+                             )
+                         default:
+                             break
+                         }
+                     }
+                                     
+                     scene.transform.scale = SIMD3<Float>(2.0, 2.0, 2.0)
+                     content.add(scene)
+                }
+                 
+                 else {
                     print("Erro ao carregar a cena.")
                 }
+                 
                 func showClick(entityName: String) {
                     Text("(Clicou na entidade: \(entityName), contador: \(viewModel.count))")
                 }
@@ -31,24 +84,10 @@ struct ViewPrincipal: View {
                 if !viewModel.clickedEntities.contains(value.entity.name) {
                     _ = value.entity.applyTapForBehaviors()
                     let entityName = value.entity.name
+                    print(entityName)
                     viewModel.handleTap(entityName: entityName)
                 }
             }))
-            //            VStack {
-            //                         Spacer()
-            //                         Text("Contador de cliques: \(viewModel.count)")
-            //                             .font(.largeTitle)
-            //                             .fontWeight(.bold)
-            //                             .foregroundColor(.white)
-            //                             .padding()
-            //                             .background(Color.black.opacity(0.7))
-            //                             .cornerRadius(10)
-            //                             .padding(.bottom, 50)
-            //                     }
-            //                     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
-            //                     .offset(y: -100)
-            //                 }
-            
             
             if viewModel.isTextVisible {
                 
@@ -62,8 +101,6 @@ struct ViewPrincipal: View {
                                     .resizable()
                                     .scaledToFit()
                                     .frame(width: 200, height: 200)
-                                    
-                          
                             
                             Text(data.message)
                                 .font(Font.custom("KCObraLetraRegular", size: 18))
@@ -86,8 +123,6 @@ struct ViewPrincipal: View {
                                     }
                                 }
                             
-                            
-
                         } else {
                             VStack {
                                 Image(defaultImage)
@@ -95,7 +130,7 @@ struct ViewPrincipal: View {
                                     .scaledToFit()
                                     .frame(width: 200, height: 200)
                                 
-                                Text("Tente outra combinação")
+                                Text("Você criou a Poção da Força Suprema, restaurando forças de maneira incrível!")
                                     .frame(width:300, height: 100)
                                     .cornerRadius(10)
                                     .font(Font.custom("KCObraLetraRegular", size: 18))
@@ -106,8 +141,6 @@ struct ViewPrincipal: View {
                             }
                                 .padding3D(.back, -130)
                                 .padding3D(.top, 200)
-
-                               
                                 .onAppear {
                                     
                                     DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
@@ -127,9 +160,12 @@ struct ViewPrincipal: View {
                 }
             }
             
-            
-            Text("Você combinou: \(viewModel.count) poções")
-                .font(Font.custom("KCObraLetraRegular", size: 30))
+            VStack {
+                Text("Combine 3 poções e descubra qual poção você consegue fazer!\n")
+                Text("Você combinou: \(viewModel.count) poções")
+            }
+                    .font(Font.custom("KCObraLetraRegular", size: 30))
+                
 //                .font(.headline)
                 .foregroundColor(.white)
                 .padding()

@@ -30,6 +30,37 @@ struct CombinationModel {
             "A Poção Curativa foi formada, trazendo um poder imenso de regeneração!",
             "fairy1"),
         
+        //TESTES
+        // 3 primeiros
+        Set(["Potion", "Mushroom_bottle", "Potion_Of_Healing_Dungeons_and_Dragons_2"]): (
+            "A Poção Curativa foi formada, trazendo um poder imenso de regeneração!",
+            "fairy1"),
+       //2 da 2 coluna + ultimo
+        Set(["Potions_Bottle", "Mana_Potion", "Life_Potion_Stylized"]): (
+            "A Poção Curativa foi formada, trazendo um poder imenso de regeneração!",
+            "fairy2"),
+        // 3 ultimos - ok
+        Set(["Magic_Potion", "Crystal", "Life_Potion_Stylized"]): (
+            "A Poção Curativa foi formada, trazendo um poder imenso de regeneração!",
+            "fairy2"),
+        // 3 esquerda
+        Set(["Potion", "Potions_Bottle", "Magic_Potion"]): (
+            "A Poção Curativa foi formada, trazendo um poder imenso de regeneração!",
+            "elfo3"),
+        // 3 direita
+        Set(["potion1", "Mana_Potion", "Life_Potion_Stylized"]): (
+            "A Poção Curativa foi formada, trazendo um poder imenso de regeneração!",
+            "gnomo4"),
+
+        // 3 do meio
+        Set(["Mushroom_bottle", "Potion_of_Healing_Glass_0", "Crystal"]): (
+            "A Poção Curativa foi formada, trazendo um poder imenso de regeneração!",
+            "orc5"),
+        // cruzado
+        Set(["Potion", "defaultMaterial", "Crystal"]): (
+            "A Poção Curativa foi formada, trazendo um poder imenso de regeneração!",
+            "gnomo4"),
+        
         // Combinações intermediárias (poções de efeito mais complexo)
         Set(["SM_potionoOutter_01_M_glass_0", "Potion_of_Healing_Glass_0", "defaultMaterial"]): (
             "A Poção da Cura Perfeita foi criada, ideal para restaurar energias!",
@@ -39,7 +70,7 @@ struct CombinationModel {
             "gnomo4"),
         Set(["Central_Rope_Central_Rope_0", "Potion_of_Healing_Glass_0", "Potion_1_low_Checker_0"]): (
             "A Poção da Força Misteriosa foi formada, com poderes de proteção!",
-            "gnomo5"),
+            "gnomo4"),
         Set(["Central_Rope_Central_Rope_0", "Potion_1_low_Checker_0", "defaultMaterial"]): (
             "Criou a Poção da Conexão Elementar, unindo forças mágicas!",
             "elfo2"),

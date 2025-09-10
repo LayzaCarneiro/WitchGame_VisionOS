@@ -17,6 +17,8 @@ class ContentViewModel: ObservableObject {
     private let combinationData = CombinationModel.combinationData
     
     func handleTap(entityName: String) {
+        if entityName == "defaultMaterial" { return }
+        
         count += 1
         print("Clicou na entidade: \(entityName), contador: \(count)")
         

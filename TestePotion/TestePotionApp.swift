@@ -18,8 +18,7 @@ struct TestePotionApp: App {
                 .environment(appModel)
         }
         .windowStyle(.volumetric)
-        .defaultSize(width: 1, height: 1.5, depth: 1, in: .meters)
-        //        .defaultSize(width: 2.0, height: 2.0, depth: 0.0, in: .meters)
+        .defaultSize(width: 200, height: 200, depth: 200, in: .meters)
 
         ImmersiveSpace(id: appModel.immersiveSpaceID) {
             ImmersiveView()
